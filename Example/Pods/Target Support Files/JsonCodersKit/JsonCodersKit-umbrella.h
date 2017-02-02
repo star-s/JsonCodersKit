@@ -2,6 +2,11 @@
 #import <UIKit/UIKit.h>
 #endif
 
+#import "CollectionMapping.h"
+#import "JCKJsonDecoder.h"
+#import "JCKJsonEncoder.h"
+#import "JCKJsonToObjectTransformer.h"
+#import "JCKObjectToJsonTransformer.h"
 #import "NSCoder+DecodeArray.h"
 #import "NSObject+JsonCompliant.h"
 
