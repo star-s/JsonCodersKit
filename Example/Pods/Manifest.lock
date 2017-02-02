@@ -1,0 +1,16 @@
+PODS:
+  - JsonCodersKit (0.1.0)
+
+DEPENDENCIES:
+  - JsonCodersKit (from `../`)
+
+EXTERNAL SOURCES:
+  JsonCodersKit:
+    :path: ../
+
+SPEC CHECKSUMS:
+  JsonCodersKit: 506b4bef34beb0ab122bd70d79360d91e48c7533
+
+PODFILE CHECKSUM: 7a0a8f581bea258e94d809ba5230de82f953cd62
+
+COCOAPODS: 1.1.1

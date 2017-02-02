@@ -1,0 +1,6 @@
+framework module JsonCodersKit {
+  umbrella header "JsonCodersKit-umbrella.h"
+
+  export *
+  module * { export * }
+}
