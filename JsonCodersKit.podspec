@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'JsonCodersKit'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of JsonCodersKit.'
+  s.summary          = 'Library for encode objects to JSON compliant NSDictionary and vice versa'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+NSCoder subclasses for decode/encode objects conforming NSCoding protocol to JSON compliant NSDictionary
                        DESC
 
   s.homepage         = 'https://github.com/star-s/JsonCodersKit'
