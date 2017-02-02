@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "summary": "A short description of JsonCodersKit.",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/Sergey Starukhin/JsonCodersKit",
+  "homepage": "https://github.com/star-s/JsonCodersKit",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,7 +12,7 @@
     "Sergey Starukhin": "star.s@me.com"
   },
   "source": {
-    "git": "https://github.com/Sergey Starukhin/JsonCodersKit.git",
+    "git": "https://github.com/star-s/JsonCodersKit.git",
     "tag": "0.1.0"
   },
   "platforms": {
