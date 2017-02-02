@@ -48,7 +48,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface NSSet (AxCollectionMapping)
+@interface NSSet (CollectionMapping)
 
 - (NSSet *)transformedSet:(NSValueTransformer *)transformer;
 
