@@ -11,3 +11,11 @@
 @interface JCKJsonToObjectTransformer : NSValueTransformer
 
 @end
+
+@interface JCKKeyedJsonToObjectTransformer : JCKJsonToObjectTransformer
+
+@property (nonatomic, copy, readonly) NSString *keyPath;
+
+- (instancetype)initWithKeyPath:(NSString *)keyPath;
+
+@end
