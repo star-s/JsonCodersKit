@@ -7,7 +7,40 @@
 //
 
 #import "JCKObjectToJsonTransformer.h"
+#import "JCKJsonEncoder.h"
+#import "CollectionMapping.h"
 
 @implementation JCKObjectToJsonTransformer
+
++ (Class)transformedValueClass
+{
+    return [NSDictionary class];
+}
+
++ (BOOL)allowsReverseTransformation
+{
+    return NO;
+}
+
+- (id)transformedValue:(id)value
+{
+    id result = nil;
+    
+    if ([NSJSONSerialization isValidJSONObject: value]) {
+        //
+        result = value;
+        
+    } else if ([value isKindOfClass: [NSArray class]]) {
+        //
+        result = [value transformedArray: self];
+        
+    } else if ([value conformsToProtocol: @protocol(NSCoding)]) {
+        //
+        JCKJsonEncoder *coder = [[JCKJsonEncoder alloc] init];
+        [coder encodeRootObject: value];
+        result = coder.encodedJSONObject;
+    }
+    return result;
+}
 
 @end
