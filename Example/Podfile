@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'JsonCodersKit_Example' do
+  pod 'JsonCodersKit', :path => '../'
+
+  target 'JsonCodersKit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
