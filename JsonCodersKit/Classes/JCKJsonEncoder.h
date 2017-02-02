@@ -10,4 +10,10 @@
 
 @interface JCKJsonEncoder : NSCoder
 
+@property (nonatomic, strong, readonly) NSDictionary *encodedJSONObject;
+
+- (instancetype)initWithMutableDictionary:(NSMutableDictionary *)dictionary;
+
+- (void)encodeRootObject:(id <NSCoding>)rootObject;
+
 @end

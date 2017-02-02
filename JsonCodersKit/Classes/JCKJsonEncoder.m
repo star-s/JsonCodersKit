@@ -7,7 +7,124 @@
 //
 
 #import "JCKJsonEncoder.h"
+#import "NSObject+JsonCompliant.h"
+
+@interface JCKJsonEncoder ()
+
+@property (nonatomic, strong, readonly) NSMutableDictionary *dictionary;
+
+@end
 
 @implementation JCKJsonEncoder
+
+- (instancetype)init
+{
+    return [self initWithMutableDictionary: [NSMutableDictionary dictionary]];
+}
+
+- (instancetype)initWithMutableDictionary:(NSMutableDictionary *)dictionary
+{
+    NSParameterAssert(dictionary != nil);
+    self = [super init];
+    if (self) {
+        _dictionary = dictionary;
+    }
+    return self;
+}
+
+- (NSDictionary *)encodedJSONObject
+{
+    NSAssert([NSJSONSerialization isValidJSONObject: self.dictionary], @"%@ is not valod JSON object", self.dictionary);
+    return [self.dictionary copy];
+}
+
+- (BOOL)allowsKeyedCoding
+{
+    return YES;
+}
+
+- (void)encodeRootObject:(id)rootObject
+{
+    id objectForCoding = [rootObject replacementObjectForCoder: self];
+    
+    if ([objectForCoding isKindOfClass: [NSDictionary class]]) {
+        //
+        if ([objectForCoding jck_isJsonCompliant]) {
+            [self.dictionary addEntriesFromDictionary: objectForCoding];
+        } else {
+            [NSException raise: NSInvalidArgumentException format: @"It's not valid JSON object %@", objectForCoding];
+        }
+    } else if ([[objectForCoding class] jck_isJsonCompliant]) {
+        [NSException raise: NSInvalidArgumentException format: @"Can't encode JSON primitive class %@", NSStringFromClass([objectForCoding class])];
+    } else {
+        [objectForCoding encodeWithCoder: self];
+    }
+}
+
+- (void)encodeObject:(nullable id)objv forKey:(NSString *)key
+{
+    objv = objv ? objv : [NSNull null];
+    
+    id encodenObject = [self jsonObjectFromObject: objv];
+    
+    [self.dictionary setObject: encodenObject forKey: key];
+}
+
+- (void)encodeBool:(BOOL)boolv forKey:(NSString *)key
+{
+    [self.dictionary setObject: [NSNumber numberWithBool: boolv] forKey: key];
+}
+
+- (void)encodeInt:(int)intv forKey:(NSString *)key
+{
+    [self.dictionary setObject: [NSNumber numberWithInt: intv] forKey: key];
+}
+
+- (void)encodeFloat:(float)realv forKey:(NSString *)key
+{
+    [self.dictionary setObject: [NSNumber numberWithFloat: realv] forKey: key];
+}
+
+- (void)encodeDouble:(double)realv forKey:(NSString *)key
+{
+    [self.dictionary setObject: [NSNumber numberWithDouble: realv] forKey: key];
+}
+
+- (void)encodeInteger:(NSInteger)intv forKey:(NSString *)key
+{
+    [self.dictionary setObject: [NSNumber numberWithInteger: intv] forKey: key];
+}
+
+- (NSArray *)encodeCollection:(id <NSFastEnumeration>)collection
+{
+    NSMutableArray *array = [NSMutableArray array];
+    
+    for (id element in collection) {
+        //
+        [array addObject: [self jsonObjectFromObject: element]];
+    }
+    return array;
+}
+
+- (id)jsonObjectFromObject:(id)object
+{
+    id encodedObject = nil;
+    
+    if ([object jck_isJsonCompliant]) {
+        
+        encodedObject = object;
+        
+    } else if ([object conformsToProtocol: @protocol(NSFastEnumeration)]) {
+        
+        encodedObject = [self encodeCollection: object];
+        
+    } else {
+        
+        JCKJsonEncoder *coder = [[self.class alloc] init];
+        [coder encodeRootObject: object];
+        encodedObject = coder.encodedJSONObject;
+    }
+    return encodedObject;
+}
 
 @end
