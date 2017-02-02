@@ -8,6 +8,7 @@
 
 #import "JCKJsonEncoder.h"
 #import "NSObject+JsonCompliant.h"
+#import "CollectionMapping.h"
 
 @interface JCKJsonEncoder ()
 
@@ -64,10 +65,7 @@
 - (void)encodeObject:(nullable id)objv forKey:(NSString *)key
 {
     objv = objv ? objv : [NSNull null];
-    
-    id encodenObject = [self jsonObjectFromObject: objv];
-    
-    [self.dictionary setObject: encodenObject forKey: key];
+    [self.dictionary setObject: [self jsonObjectFromObject: objv] forKey: key];
 }
 
 - (void)encodeBool:(BOOL)boolv forKey:(NSString *)key
@@ -95,17 +93,6 @@
     [self.dictionary setObject: [NSNumber numberWithInteger: intv] forKey: key];
 }
 
-- (NSArray *)encodeCollection:(id <NSFastEnumeration>)collection
-{
-    NSMutableArray *array = [NSMutableArray array];
-    
-    for (id element in collection) {
-        //
-        [array addObject: [self jsonObjectFromObject: element]];
-    }
-    return array;
-}
-
 - (id)jsonObjectFromObject:(id)object
 {
     id encodedObject = nil;
@@ -114,9 +101,11 @@
         
         encodedObject = object;
         
-    } else if ([object conformsToProtocol: @protocol(NSFastEnumeration)]) {
+    } else if ([object isKindOfClass: [NSArray class]]) {
         
-        encodedObject = [self encodeCollection: object];
+        encodedObject = [(NSArray *)object mapWithBlock: ^(id anObject) {
+            return [self jsonObjectFromObject: anObject];
+        }];
         
     } else {
         

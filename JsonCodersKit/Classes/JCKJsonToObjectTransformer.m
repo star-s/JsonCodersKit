@@ -29,26 +29,16 @@
         
     } else if ([value isKindOfClass: [NSDictionary class]]) {
         //
-        result = [self objectFromJson: value];
+        JCKJsonDecoder *coder = [[JCKJsonDecoder alloc] initWithJSONObject: value];
+        result = [coder decodeTopLevelObjectOfClass: [self.class transformedValueClass]];
         
     } else if ([value isKindOfClass: [self.class transformedValueClass]]) {
         //
-        result = [self jsonFromObject: value];
+        JCKJsonEncoder *coder = [[JCKJsonEncoder alloc] init];
+        [coder encodeRootObject: value];
+        result = [coder encodedJSONObject];
     }
     return result;
-}
-
-- (id)objectFromJson:(id)json
-{
-    JCKJsonDecoder *coder = [[JCKJsonDecoder alloc] initWithJSONObject: json];
-    return [coder decodeTopLevelObjectOfClass: [self.class transformedValueClass]];
-}
-
-- (id)jsonFromObject:(id)obj
-{
-    JCKJsonEncoder *coder = [[JCKJsonEncoder alloc] init];
-    [coder encodeRootObject: obj];
-    return [coder encodedJSONObject];
 }
 
 @end
