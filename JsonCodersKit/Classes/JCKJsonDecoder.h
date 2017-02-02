@@ -8,6 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface JCKJsonDecoder : NSCoder
 
+@property (nonatomic, strong, readonly) NSDictionary *JSONObject;
+
+- (instancetype)initWithJSONObject:(NSDictionary *)obj;
+
+- (nullable id)decodeTopLevelObjectOfClass:(Class)aClass;
+
 @end
+
+NS_ASSUME_NONNULL_END

@@ -29,6 +29,7 @@
 
 - (instancetype)initWithBlock:(id __nullable(^)(id __nullable anObject))block
 {
+    NSParameterAssert(block != nil);
     self = [super init];
     if (self) {
         transformator = [block copy];
@@ -38,12 +39,12 @@
 
 - (nullable id)transformedValue:(nullable id)value
 {
-    return transformator ? transformator(value) : [super transformedValue: value];
+    return transformator(value);
 }
 
 @end
 
-@implementation NSArray (AxCollectionsMapping)
+@implementation NSArray (CollectionMapping)
 
 - (NSArray *)transformedArray:(NSValueTransformer *)transformer
 {
@@ -65,7 +66,7 @@
 
 @end
 
-@implementation NSMutableArray (AxCollectionsMapping)
+@implementation NSMutableArray (CollectionMapping)
 
 - (void)transformInPlace:(NSValueTransformer *)transformer
 {
@@ -85,7 +86,7 @@
 
 @end
 
-@implementation NSOrderedSet (AxCollectionsMapping)
+@implementation NSOrderedSet (CollectionMapping)
 
 - (NSOrderedSet *)transformedOrderedSet:(NSValueTransformer *)transformer
 {
@@ -107,7 +108,7 @@
 
 @end
 
-@implementation NSMutableOrderedSet (AxCollectionsMapping)
+@implementation NSMutableOrderedSet (CollectionMapping)
 
 - (void)transformInPlace:(NSValueTransformer *)transformer
 {
@@ -127,7 +128,7 @@
 
 @end
 
-@implementation NSSet (AxCollectionsMapping)
+@implementation NSSet (CollectionMapping)
 
 - (NSSet *)transformedSet:(NSValueTransformer *)transformer
 {
