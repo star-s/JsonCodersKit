@@ -37,9 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		12634A98B7F32CBCFEC5F8AD /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		12634A98B7F32CBCFEC5F8AD /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		23814B02703DC53B87945E1A /* Pods_JsonCodersKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JsonCodersKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3BA5E343999EFE0FFD26F5A9 /* JsonCodersKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = JsonCodersKit.podspec; path = ../JsonCodersKit.podspec; sourceTree = "<group>"; };
+		3BA5E343999EFE0FFD26F5A9 /* JsonCodersKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = JsonCodersKit.podspec; path = ../JsonCodersKit.podspec; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* JsonCodersKit_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JsonCodersKit_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -63,7 +63,7 @@
 		75C43B4A8314A69026DC8003 /* Pods-JsonCodersKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JsonCodersKit_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JsonCodersKit_Tests/Pods-JsonCodersKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		767C22CAA0352F25438DC5F4 /* Pods_JsonCodersKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JsonCodersKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8871915128807177F141D0F3 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		8871915128807177F141D0F3 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		8B5853D565F39504B7353A42 /* Pods-JsonCodersKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JsonCodersKit_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JsonCodersKit_Example/Pods-JsonCodersKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		8E9F30C3A0D7A9CE3CD69D99 /* Pods-JsonCodersKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JsonCodersKit_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-JsonCodersKit_Example/Pods-JsonCodersKit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		E9A5649436743EF46516CDD4 /* Pods-JsonCodersKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JsonCodersKit_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JsonCodersKit_Tests/Pods-JsonCodersKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
