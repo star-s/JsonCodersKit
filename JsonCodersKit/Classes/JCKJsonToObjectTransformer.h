@@ -12,10 +12,14 @@
 
 @end
 
-@interface JCKKeyedJsonToObjectTransformer : JCKJsonToObjectTransformer
-
-@property (nonatomic, copy, readonly) NSString *keyPath;
-
-- (instancetype)initWithKeyPath:(NSString *)keyPath;
-
-@end
+#define JCKSynthesizeTransformer( resultClass ) \
+@interface resultClass##Transformer : JCKJsonToObjectTransformer \
+@end \
+\
+@implementation resultClass##Transformer \
+\
++ (Class)transformedValueClass \
+{ \
+return [resultClass class]; \
+} \
+@end \

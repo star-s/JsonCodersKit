@@ -42,31 +42,3 @@
 }
 
 @end
-
-@implementation JCKKeyedJsonToObjectTransformer
-
-- (instancetype)initWithKeyPath:(NSString *)keyPath
-{
-    self = [super init];
-    if (self) {
-        _keyPath = [keyPath copy];
-    }
-    return self;
-}
-
-- (id)transformedValue:(id)value
-{
-    NSString *keyPath = self.keyPath;
-    
-    if (keyPath && [value isKindOfClass: [NSDictionary class]]) {
-        //
-        id newValue = [value valueForKeyPath: keyPath];
-        
-        if ([newValue isKindOfClass: [NSDictionary class]] || [newValue isKindOfClass: [NSArray class]]) {
-            value = newValue;
-        }
-    }
-    return [super transformedValue: value];
-}
-
-@end
