@@ -1,8 +1,8 @@
 {
   "name": "JsonCodersKit",
   "version": "0.1.0",
-  "summary": "A short description of JsonCodersKit.",
-  "description": "TODO: Add long description of the pod here.",
+  "summary": "Library for encode objects to JSON compliant NSDictionary and vice versa",
+  "description": "NSCoder subclasses for decode/encode objects conforming NSCoding protocol to JSON compliant NSDictionary",
   "homepage": "https://github.com/star-s/JsonCodersKit",
   "license": {
     "type": "MIT",

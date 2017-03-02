@@ -3,6 +3,7 @@
 #endif
 
 #import "CollectionMapping.h"
+#import "JCKCompoundTransformer.h"
 #import "JCKJsonDecoder.h"
 #import "JCKJsonEncoder.h"
 #import "JCKJsonToObjectTransformer.h"
