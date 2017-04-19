@@ -64,6 +64,16 @@
     return [[self decodeObjectForKey: key] integerValue];
 }
 
+- (int32_t)decodeInt32ForKey:(NSString *)key
+{
+    return [self decodeIntForKey: key];
+}
+
+- (int64_t)decodeInt64ForKey:(NSString *)key
+{
+    return [[self decodeObjectForKey: key] longLongValue];
+}
+
 - (id)decodeObjectOfClass:(Class)aClass forKey:(NSString *)key
 {
     id result = nil;

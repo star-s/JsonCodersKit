@@ -93,6 +93,16 @@
     [self.dictionary setObject: [NSNumber numberWithInteger: intv] forKey: key];
 }
 
+- (void)encodeInt32:(int32_t)intv forKey:(NSString *)key
+{
+    [self encodeInt: intv forKey: key];
+}
+
+- (void)encodeInt64:(int64_t)intv forKey:(NSString *)key
+{
+    [self.dictionary setObject: [NSNumber numberWithLongLong: intv] forKey: key];
+}
+
 - (id)jsonObjectFromObject:(id)object
 {
     id encodedObject = nil;
