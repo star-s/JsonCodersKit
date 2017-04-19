@@ -1,24 +1,24 @@
 //
-//  JCKCompoundTransformer.m
+//  JCKCompositeTransformer.m
 //  Pods
 //
-//  Created by Sergey Starukhin on 02.03.17.
+//  Created by Sergey Starukhin on 19.04.17.
 //
 //
 
-#import "JCKCompoundTransformer.h"
+#import "JCKCompositeTransformer.h"
 
 @implementation NSValueTransformer (TransformValueProperty)
 
 + (NSValueTransformer *)valueTransformerWithKey:(NSString *)key
 {
     NSValueTransformer *realTransformer = [[self alloc] init];
-    return [[JCKCompoundTransformer alloc] initWithKey: key subtransformers: realTransformer ? @[realTransformer] : nil];
+    return [[JCKCompositeTransformer alloc] initWithKey: key subtransformers: realTransformer ? @[realTransformer] : nil];
 }
 
 @end
 
-@implementation JCKCompoundTransformer
+@implementation JCKCompositeTransformer
 
 - (instancetype)init
 {

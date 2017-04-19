@@ -18,7 +18,7 @@ FOUNDATION_EXPORT const unsigned char JsonCodersKitVersionString[];
 
 
 #import <JsonCodersKit/CollectionMapping.h>
-#import <JsonCodersKit/JCKCompoundTransformer.h>
+#import <JsonCodersKit/JCKCompositeTransformer.h>
 #import <JsonCodersKit/JCKJsonDecoder.h>
 #import <JsonCodersKit/JCKJsonEncoder.h>
 #import <JsonCodersKit/JCKJsonToObjectTransformer.h>

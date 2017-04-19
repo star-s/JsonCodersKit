@@ -1,14 +1,14 @@
 //
-//  JCKCompoundTransformer.h
+//  JCKCompositeTransformer.h
 //  Pods
 //
-//  Created by Sergey Starukhin on 02.03.17.
+//  Created by Sergey Starukhin on 19.04.17.
 //
 //
 
 #import <Foundation/Foundation.h>
 
-@interface JCKCompoundTransformer : NSValueTransformer
+@interface JCKCompositeTransformer : NSValueTransformer
 
 @property (nullable, readonly, copy) NSString *key;
 @property (nullable, readonly, copy) NSArray *subtransformers;
