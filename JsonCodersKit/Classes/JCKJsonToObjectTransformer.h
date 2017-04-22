@@ -13,9 +13,14 @@
 @end
 
 #define JCKSynthesizeTransformer( resultClass ) \
+JCKSynthesizeTransformerInterface( resultClass ) \
+JCKSynthesizeTransformerImplementation( resultClass ) \
+
+#define JCKSynthesizeTransformerInterface( resultClass ) \
 @interface resultClass##Transformer : JCKJsonToObjectTransformer \
 @end \
-\
+
+#define JCKSynthesizeTransformerImplementation( resultClass ) \
 @implementation resultClass##Transformer \
 \
 + (Class)transformedValueClass \
