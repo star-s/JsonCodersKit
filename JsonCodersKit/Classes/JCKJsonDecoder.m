@@ -108,11 +108,21 @@
     
     if ([result isKindOfClass: [NSArray class]]) {
         //
-        result = [result mapWithBlock: ^(id anObject){
+        id (^decodeObjectBlock)(id anObject) = nil;
+        
+        if ([aClass jck_isJsonCompliant]) {
             //
-            JCKJsonDecoder *decoder = [[self.class alloc] initWithJSONObject: anObject];
-            return [decoder decodeTopLevelObjectOfClass: aClass];
-        }];
+            decodeObjectBlock = ^(id anObject){
+                return [anObject isKindOfClass: aClass] ? anObject : nil;
+            };
+        } else {
+            //
+            decodeObjectBlock = ^(id anObject){
+                JCKJsonDecoder *decoder = [[self.class alloc] initWithJSONObject: anObject];
+                return [decoder decodeTopLevelObjectOfClass: aClass];
+            };
+        }
+        result = [result mapWithBlock: decodeObjectBlock];
         
     } else {
         result = nil;
