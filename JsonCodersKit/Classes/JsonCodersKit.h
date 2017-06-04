@@ -6,7 +6,7 @@
 //  Copyright © 2017 Sergey Starukhin. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for JsonCodersKit.
 FOUNDATION_EXPORT double JsonCodersKitVersionNumber;
