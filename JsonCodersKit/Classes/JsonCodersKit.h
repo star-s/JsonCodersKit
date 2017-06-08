@@ -23,5 +23,5 @@ FOUNDATION_EXPORT const unsigned char JsonCodersKitVersionString[];
 #import <JsonCodersKit/JCKJsonEncoder.h>
 #import <JsonCodersKit/JCKJsonToObjectTransformer.h>
 #import <JsonCodersKit/JCKObjectToJsonTransformer.h>
-#import <JsonCodersKit/NSCoder+DecodeArray.h>
+#import <JsonCodersKit/NSCoder+JCKAdditions.h>
 #import <JsonCodersKit/NSObject+JsonCompliant.h>
