@@ -52,4 +52,25 @@
     return uuid ? [[NSUUID alloc] initWithUUIDString: uuid] : nil;
 }
 
+- (void)encodeDateAsUnixTime:(NSDate *)date forKey:(NSString *)key
+{
+    if (date) {
+        [self encodeDouble: date.timeIntervalSince1970 forKey: key];
+    }
+}
+
+- (void)encodeURLAsString:(NSURL *)url forKey:(NSString *)key
+{
+    if (url) {
+        [self encodeObject: url.absoluteString forKey: key];
+    }
+}
+
+- (void)encodeUUIDAsString:(NSUUID *)uuid forKey:(NSString *)key
+{
+    if (uuid) {
+        [self encodeObject: uuid.UUIDString forKey: key];
+    }
+}
+
 @end
