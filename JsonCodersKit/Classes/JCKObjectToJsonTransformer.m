@@ -10,6 +10,8 @@
 #import "JCKJsonEncoder.h"
 #import "CollectionMapping.h"
 
+NSValueTransformerName const JCKObjectToJsonTransformerName = @"JCKObjectToJsonTransformer";
+
 @implementation JCKObjectToJsonTransformer
 
 + (Class)transformedValueClass

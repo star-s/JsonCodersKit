@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+FOUNDATION_EXPORT NSValueTransformerName const JCKObjectToJsonTransformerName;
+
 @interface JCKObjectToJsonTransformer : NSValueTransformer
 
 @end
