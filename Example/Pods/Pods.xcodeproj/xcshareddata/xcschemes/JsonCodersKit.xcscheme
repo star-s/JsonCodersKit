@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0830"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5D9FCD21FF6AD3F2981CA795421E0981"
+               BlueprintIdentifier = "E1E152F1075343FA4DA88E6A96301E7C"
                BuildableName = "JsonCodersKit.framework"
                BlueprintName = "JsonCodersKit"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5D9FCD21FF6AD3F2981CA795421E0981"
+            BlueprintIdentifier = "E1E152F1075343FA4DA88E6A96301E7C"
             BuildableName = "JsonCodersKit.framework"
             BlueprintName = "JsonCodersKit"
             ReferencedContainer = "container:Pods.xcodeproj">
