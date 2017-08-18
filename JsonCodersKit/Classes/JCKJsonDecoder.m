@@ -30,7 +30,7 @@
 
 - (BOOL)containsValueForKey:(NSString *)key
 {
-    return [self decodeObjectForKey: key] != nil;
+    return [self.JSONObject.allKeys containsObject: key];
 }
 
 - (id)decodeObjectForKey:(NSString *)key

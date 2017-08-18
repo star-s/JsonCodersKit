@@ -73,4 +73,9 @@
     }
 }
 
+- (BOOL)containsNotNullValueForKey:(NSString *)key
+{
+    return ![[self decodeObjectOfClass: [NSNull class] forKey: key] isKindOfClass: [NSNull class]];
+}
+
 @end

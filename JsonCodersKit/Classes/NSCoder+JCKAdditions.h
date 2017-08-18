@@ -24,6 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)encodeURLAsString:(NSURL *)url forKey:(NSString *)key;
 - (void)encodeUUIDAsString:(NSUUID *)uuid forKey:(NSString *)key;
 
+- (BOOL)containsNotNullValueForKey:(NSString *)key;
+
 @end
 
 NS_ASSUME_NONNULL_END
