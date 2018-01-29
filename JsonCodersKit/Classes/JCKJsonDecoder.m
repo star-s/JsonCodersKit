@@ -9,15 +9,22 @@
 #import "JCKJsonDecoder.h"
 #import "NSObject+JsonCompliant.h"
 #import "CollectionMapping.h"
+#import "NSNull+NumericExtension.h"
+
+static BOOL isNullValue = NO;
 
 @implementation JCKJsonDecoder
+
++ (void)setDecodeNullAsValue:(BOOL)nullValue
+{
+    isNullValue = nullValue;
+}
 
 - (instancetype)initWithJSONObject:(NSDictionary *)obj
 {
     NSParameterAssert([obj isKindOfClass: [NSDictionary class]]);
     self = [super init];
     if (self) {
-        //
         _JSONObject = obj;
     }
     return self;
@@ -30,13 +37,21 @@
 
 - (BOOL)containsValueForKey:(NSString *)key
 {
-    return [self.JSONObject.allKeys containsObject: key];
+    if (isNullValue) {
+        return [self.JSONObject.allKeys containsObject: key];
+    } else {
+        return [self decodeObjectForKey: key] != nil;
+    }
 }
 
 - (id)decodeObjectForKey:(NSString *)key
 {
-    id result = [self.JSONObject objectForKey: key];
-    return [result isEqual: [NSNull null]] ? nil : result;
+    if (isNullValue) {
+        return [self.JSONObject objectForKey: key];
+    } else {
+        id value = [self.JSONObject objectForKey: key];
+        return [value isEqual: [NSNull null]] ? nil : value;
+    }
 }
 
 - (BOOL)decodeBoolForKey:(NSString *)key
@@ -81,7 +96,7 @@
     if ([aClass jck_isJsonCompliant]) {
         //
         id rawValue = [self.JSONObject objectForKey: key];
-        result = [rawValue isKindOfClass: aClass] ? rawValue : nil;
+        result = [aClass jck_decodeFromJsonValue: rawValue];
         
     } else {
         //
@@ -113,7 +128,7 @@
         if ([aClass jck_isJsonCompliant]) {
             //
             decodeObjectBlock = ^(id anObject){
-                return [anObject isKindOfClass: aClass] ? anObject : nil;
+                return [aClass jck_decodeFromJsonValue: anObject];
             };
         } else {
             //

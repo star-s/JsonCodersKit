@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JCKJsonDecoder : NSCoder
 
++ (void)setDecodeNullAsValue:(BOOL)nullValue;
+
 @property (nonatomic, strong, readonly) NSDictionary *JSONObject;
 
 - (instancetype)initWithJSONObject:(NSDictionary *)obj;
