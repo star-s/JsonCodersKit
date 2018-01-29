@@ -26,8 +26,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSCoder (JCKAdditions_deprecated)
 
-- (BOOL)containsNotNullValueForKey:(NSString *)key DEPRECATED_MSG_ATTRIBUTE("Don't use this method");
-
 - (nullable NSURL *)decodeURLFromStringForKey:(NSString *)key DEPRECATED_MSG_ATTRIBUTE("Don't use this method");
 - (nullable NSUUID *)decodeUUIDFromStringForKey:(NSString *)key DEPRECATED_MSG_ATTRIBUTE("Don't use this method");
 

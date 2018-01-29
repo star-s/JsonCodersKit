@@ -9,57 +9,13 @@
 #import "JCKJsonDecoder.h"
 #import "NSObject+JsonCompliant.h"
 #import "CollectionMapping.h"
-
-@interface NSNull (NumericExtension)
-
-@property (readonly) double doubleValue;
-@property (readonly) float floatValue;
-@property (readonly) int intValue;
-@property (readonly) NSInteger integerValue;
-@property (readonly) long long longLongValue;
-@property (readonly) BOOL boolValue;
-
-@end
-
-@implementation NSNull (NumericExtension)
-
-- (double)doubleValue
-{
-    return 0.0;
-}
-
-- (float)floatValue
-{
-    return 0.0f;
-}
-
-- (int)intValue
-{
-    return 0;
-}
-
-- (NSInteger)integerValue
-{
-    return 0;
-}
-
-- (long long)longLongValue
-{
-    return 0;
-}
-
-- (BOOL)boolValue
-{
-    return NO;
-}
-
-@end
+#import "NSNull+NumericExtension.h"
 
 static BOOL isNullValue = NO;
 
 @implementation JCKJsonDecoder
 
-+ (void)setNullIsValue:(BOOL)nullValue
++ (void)setDecodeNullAsValue:(BOOL)nullValue
 {
     isNullValue = nullValue;
 }

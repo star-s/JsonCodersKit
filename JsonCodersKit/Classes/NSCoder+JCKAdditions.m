@@ -64,12 +64,6 @@
 
 @implementation NSCoder (JCKAdditions_deprecated)
 
-- (BOOL)containsNotNullValueForKey:(NSString *)key
-{
-    id value = [self decodeObjectForKey: key];
-    return value != nil ? ![value isEqual: [NSNull null]];
-}
-
 - (nullable NSURL *)decodeURLFromStringForKey:(NSString *)key
 {
     NSString *url = [self decodeStringForKey: key];
