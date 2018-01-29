@@ -109,7 +109,7 @@
     
     if ([object jck_isJsonCompliant]) {
         
-        encodedObject = object;
+        encodedObject = [object jck_encodedJsonValue];
         
     } else if ([object isKindOfClass: [NSArray class]]) {
         

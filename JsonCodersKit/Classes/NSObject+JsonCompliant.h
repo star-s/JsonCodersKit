@@ -12,6 +12,10 @@
 
 + (BOOL)jck_isJsonCompliant;
 
++ (id)jck_decodeFromJsonValue:(id)value;
+
 - (BOOL)jck_isJsonCompliant;
+
+- (id)jck_encodedJsonValue;
 
 @end

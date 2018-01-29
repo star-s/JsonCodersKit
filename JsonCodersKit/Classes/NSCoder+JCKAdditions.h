@@ -15,16 +15,24 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSArray *)decodeArrayObjectsOfClass:(Class)aClass forKey:(NSString *)key;
 
 - (nullable NSString *)decodeStringForKey:(NSString *)key;
+- (nullable NSURL *)decodeURLForKey:(NSString *)key;
+- (nullable NSUUID *)decodeUUIDForKey:(NSString *)key;
 
 - (nullable NSDate *)decodeDateFromUnixTimeForKey:(NSString *)key;
-- (nullable NSURL *)decodeURLFromStringForKey:(NSString *)key;
-- (nullable NSUUID *)decodeUUIDFromStringForKey:(NSString *)key;
 
 - (void)encodeDateAsUnixTime:(NSDate *)date forKey:(NSString *)key;
-- (void)encodeURLAsString:(NSURL *)url forKey:(NSString *)key;
-- (void)encodeUUIDAsString:(NSUUID *)uuid forKey:(NSString *)key;
 
 - (BOOL)containsNotNullValueForKey:(NSString *)key;
+
+@end
+
+@interface NSCoder (JCKAdditions_deprecated)
+
+- (nullable NSURL *)decodeURLFromStringForKey:(NSString *)key DEPRECATED_MSG_ATTRIBUTE("Don't use this method");
+- (nullable NSUUID *)decodeUUIDFromStringForKey:(NSString *)key DEPRECATED_MSG_ATTRIBUTE("Don't use this method");
+
+- (void)encodeURLAsString:(NSURL *)url forKey:(NSString *)key DEPRECATED_MSG_ATTRIBUTE("Don't use this method");
+- (void)encodeUUIDAsString:(NSUUID *)uuid forKey:(NSString *)key DEPRECATED_MSG_ATTRIBUTE("Don't use this method");
 
 @end
 

@@ -81,7 +81,7 @@
     if ([aClass jck_isJsonCompliant]) {
         //
         id rawValue = [self.JSONObject objectForKey: key];
-        result = [rawValue isKindOfClass: aClass] ? rawValue : nil;
+        result = [aClass jck_decodeFromJsonValue: rawValue];
         
     } else {
         //
@@ -113,7 +113,7 @@
         if ([aClass jck_isJsonCompliant]) {
             //
             decodeObjectBlock = ^(id anObject){
-                return [anObject isKindOfClass: aClass] ? anObject : nil;
+                return [aClass jck_decodeFromJsonValue: anObject];
             };
         } else {
             //

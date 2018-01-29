@@ -15,9 +15,27 @@
     return NO;
 }
 
++ (id)jck_decodeFromJsonValue:(id)value;
+{
+    if ([self jck_isJsonCompliant] && [value isKindOfClass: self]) {
+        return value;
+    } else {
+        return nil;
+    }
+}
+
 - (BOOL)jck_isJsonCompliant
 {
     return [self.class jck_isJsonCompliant];
+}
+
+- (id)jck_encodedJsonValue
+{
+    if ([self jck_isJsonCompliant]) {
+        return self;
+    } else {
+        return nil;
+    }
 }
 
 @end
@@ -73,6 +91,52 @@
 - (BOOL)jck_isJsonCompliant
 {
     return [NSJSONSerialization isValidJSONObject: self];
+}
+
+@end
+
+@implementation NSURL (JsonCompliant)
+
++ (BOOL)jck_isJsonCompliant
+{
+    return YES;
+}
+
++ (id)jck_decodeFromJsonValue:(id)value;
+{
+    if ([value isKindOfClass: [NSString class]]) {
+        return [self URLWithString: value];
+    } else {
+        return nil;
+    }
+}
+
+- (id)jck_encodedJsonValue
+{
+    return self.absoluteString;
+}
+
+@end
+
+@implementation NSUUID (JsonCompliant)
+
++ (BOOL)jck_isJsonCompliant
+{
+    return YES;
+}
+
++ (id)jck_decodeFromJsonValue:(id)value;
+{
+    if ([value isKindOfClass: [NSString class]]) {
+        return [[self alloc] initWithUUIDString: value];
+    } else {
+        return nil;
+    }
+}
+
+- (id)jck_encodedJsonValue
+{
+    return self.UUIDString;
 }
 
 @end

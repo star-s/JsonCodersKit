@@ -35,10 +35,39 @@
     return [self decodeObjectOfClass: [NSString class] forKey: key];
 }
 
+- (nullable NSURL *)decodeURLForKey:(NSString *)key
+{
+    return [self decodeObjectOfClass: [NSURL class] forKey: key];
+}
+
+- (nullable NSUUID *)decodeUUIDForKey:(NSString *)key
+{
+    return [self decodeObjectOfClass: [NSUUID class] forKey: key];
+}
+
 - (nullable NSDate *)decodeDateFromUnixTimeForKey:(NSString *)key
 {
-    return [NSDate dateWithTimeIntervalSince1970: [self decodeDoubleForKey: key]];
+    if ([self containsValueForKey: key]) {
+        return [NSDate dateWithTimeIntervalSince1970: [self decodeDoubleForKey: key]];
+    }
+    return nil;
 }
+
+- (void)encodeDateAsUnixTime:(NSDate *)date forKey:(NSString *)key
+{
+    if (date) {
+        [self encodeDouble: date.timeIntervalSince1970 forKey: key];
+    }
+}
+
+- (BOOL)containsNotNullValueForKey:(NSString *)key
+{
+    return ![[self decodeObjectOfClass: [NSNull class] forKey: key] isKindOfClass: [NSNull class]];
+}
+
+@end
+
+@implementation NSCoder (JCKAdditions_deprecated)
 
 - (nullable NSURL *)decodeURLFromStringForKey:(NSString *)key
 {
@@ -50,13 +79,6 @@
 {
     NSString *uuid = [self decodeStringForKey: key];
     return uuid ? [[NSUUID alloc] initWithUUIDString: uuid] : nil;
-}
-
-- (void)encodeDateAsUnixTime:(NSDate *)date forKey:(NSString *)key
-{
-    if (date) {
-        [self encodeDouble: date.timeIntervalSince1970 forKey: key];
-    }
 }
 
 - (void)encodeURLAsString:(NSURL *)url forKey:(NSString *)key
@@ -73,9 +95,5 @@
     }
 }
 
-- (BOOL)containsNotNullValueForKey:(NSString *)key
-{
-    return ![[self decodeObjectOfClass: [NSNull class] forKey: key] isKindOfClass: [NSNull class]];
-}
-
 @end
+
