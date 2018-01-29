@@ -55,7 +55,14 @@
 
 @end
 
+static BOOL isNullValue = NO;
+
 @implementation JCKJsonDecoder
+
++ (void)setNullIsValue:(BOOL)nullValue
+{
+    isNullValue = nullValue;
+}
 
 - (instancetype)initWithJSONObject:(NSDictionary *)obj
 {
@@ -74,12 +81,21 @@
 
 - (BOOL)containsValueForKey:(NSString *)key
 {
-    return [self.JSONObject.allKeys containsObject: key];
+    if (isNullValue) {
+        return [self.JSONObject.allKeys containsObject: key];
+    } else {
+        return [self decodeObjectForKey: key] != nil;
+    }
 }
 
 - (id)decodeObjectForKey:(NSString *)key
 {
-    return [self.JSONObject objectForKey: key];
+    if (isNullValue) {
+        return [self.JSONObject objectForKey: key];
+    } else {
+        id value = [self.JSONObject objectForKey: key];
+        return [value isEqual: [NSNull null]] ? nil : value;
+    }
 }
 
 - (BOOL)decodeBoolForKey:(NSString *)key

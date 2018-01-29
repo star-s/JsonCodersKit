@@ -60,15 +60,15 @@
     }
 }
 
+@end
+
+@implementation NSCoder (JCKAdditions_deprecated)
+
 - (BOOL)containsNotNullValueForKey:(NSString *)key
 {
     id value = [self decodeObjectForKey: key];
     return value != nil ? ![value isEqual: [NSNull null]];
 }
-
-@end
-
-@implementation NSCoder (JCKAdditions_deprecated)
 
 - (nullable NSURL *)decodeURLFromStringForKey:(NSString *)key
 {
