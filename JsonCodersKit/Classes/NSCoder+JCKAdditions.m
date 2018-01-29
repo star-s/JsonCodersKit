@@ -62,7 +62,8 @@
 
 - (BOOL)containsNotNullValueForKey:(NSString *)key
 {
-    return ![[self decodeObjectOfClass: [NSNull class] forKey: key] isKindOfClass: [NSNull class]];
+    id value = [self decodeObjectForKey: key];
+    return value != nil ? ![value isEqual: [NSNull null]];
 }
 
 @end

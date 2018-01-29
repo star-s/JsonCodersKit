@@ -10,6 +10,51 @@
 #import "NSObject+JsonCompliant.h"
 #import "CollectionMapping.h"
 
+@interface NSNull (NumericExtension)
+
+@property (readonly) double doubleValue;
+@property (readonly) float floatValue;
+@property (readonly) int intValue;
+@property (readonly) NSInteger integerValue;
+@property (readonly) long long longLongValue;
+@property (readonly) BOOL boolValue;
+
+@end
+
+@implementation NSNull (NumericExtension)
+
+- (double)doubleValue
+{
+    return 0.0;
+}
+
+- (float)floatValue
+{
+    return 0.0f;
+}
+
+- (int)intValue
+{
+    return 0;
+}
+
+- (NSInteger)integerValue
+{
+    return 0;
+}
+
+- (long long)longLongValue
+{
+    return 0;
+}
+
+- (BOOL)boolValue
+{
+    return NO;
+}
+
+@end
+
 @implementation JCKJsonDecoder
 
 - (instancetype)initWithJSONObject:(NSDictionary *)obj
@@ -17,7 +62,6 @@
     NSParameterAssert([obj isKindOfClass: [NSDictionary class]]);
     self = [super init];
     if (self) {
-        //
         _JSONObject = obj;
     }
     return self;
@@ -35,8 +79,7 @@
 
 - (id)decodeObjectForKey:(NSString *)key
 {
-    id result = [self.JSONObject objectForKey: key];
-    return [result isEqual: [NSNull null]] ? nil : result;
+    return [self.JSONObject objectForKey: key];
 }
 
 - (BOOL)decodeBoolForKey:(NSString *)key
