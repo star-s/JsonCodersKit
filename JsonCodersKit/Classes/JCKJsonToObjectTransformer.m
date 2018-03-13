@@ -10,6 +10,22 @@
 #import "JCKJsonDecoder.h"
 #import "JCKJsonEncoder.h"
 #import "CollectionMapping.h"
+#import "NSObject+JsonCompliant.h"
+
+@interface NSValueTransformer (ValueClass)
+
+- (Class)transformedValueClass;
+
+@end
+
+@implementation NSValueTransformer (ValueClass)
+
+- (Class)transformedValueClass
+{
+    return [self.class transformedValueClass];
+}
+
+@end
 
 @implementation JCKJsonToObjectTransformer
 
@@ -30,13 +46,17 @@
     } else if ([value isKindOfClass: [NSDictionary class]]) {
         //
         JCKJsonDecoder *coder = [[JCKJsonDecoder alloc] initWithJSONObject: value];
-        result = [coder decodeTopLevelObjectOfClass: [self.class transformedValueClass]];
+        result = [coder decodeTopLevelObjectOfClass: transformedValueClass];
         
-    } else if ([value isKindOfClass: [self.class transformedValueClass]]) {
+    } else if ([value isKindOfClass: self.transformedValueClass]) {
         //
-        JCKJsonEncoder *coder = [[JCKJsonEncoder alloc] init];
-        [coder encodeRootObject: value];
-        result = [coder encodedJSONObject];
+        if ([self.transformedValueClass jck_isJsonCompliant]) {
+            result = [transformedValueClass jck_decodeFromJsonValue: value];
+        } else {
+            JCKJsonEncoder *coder = [[JCKJsonEncoder alloc] init];
+            [coder encodeRootObject: value];
+            result = [coder encodedJSONObject];
+        }
     }
     return result;
 }
