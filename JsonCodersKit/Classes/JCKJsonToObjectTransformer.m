@@ -10,22 +10,7 @@
 #import "JCKJsonDecoder.h"
 #import "JCKJsonEncoder.h"
 #import "CollectionMapping.h"
-#import "NSObject+JsonCompliant.h"
-
-@interface NSValueTransformer (ValueClass)
-
-- (Class)transformedValueClass;
-
-@end
-
-@implementation NSValueTransformer (ValueClass)
-
-- (Class)transformedValueClass
-{
-    return [self.class transformedValueClass];
-}
-
-@end
+#import "NSObject+DirectCoding.h"
 
 @implementation JCKJsonToObjectTransformer
 
@@ -33,6 +18,20 @@
 {
     [NSException raise: NSInternalInconsistencyException format: @"Metod %@ must be overrided in class %@", NSStringFromSelector(_cmd), NSStringFromClass(self)];
     return nil;
+}
+
+- (instancetype)init
+{
+    return [self initWithTransformedValueClass: [self.class transformedValueClass]];
+}
+
+- (instancetype)initWithTransformedValueClass:(Class)aClass
+{
+    self = [super init];
+    if (self) {
+        _transformedValueClass = aClass;
+    }
+    return self;
 }
 
 - (id)transformedValue:(id)value
@@ -43,19 +42,24 @@
         //
         result = [value transformedArray: self];
         
-    } else if ([value isKindOfClass: [NSDictionary class]]) {
-        //
-        JCKJsonDecoder *coder = [[JCKJsonDecoder alloc] initWithJSONObject: value];
-        result = [coder decodeTopLevelObjectOfClass: transformedValueClass];
-        
     } else if ([value isKindOfClass: self.transformedValueClass]) {
-        //
-        if ([self.transformedValueClass jck_isJsonCompliant]) {
-            result = [transformedValueClass jck_decodeFromJsonValue: value];
+        // Reverse transformation
+        if ([value jck_supportDirectEncodingToJsonValue]) {
+            result = [value jck_encodeToJsonValue];
         } else {
             JCKJsonEncoder *coder = [[JCKJsonEncoder alloc] init];
             [coder encodeRootObject: value];
             result = [coder encodedJSONObject];
+        }
+    } else {
+        if ([self.transformedValueClass jck_supportDirectDecodingFromJsonValue]) {
+            //
+            result = [self.transformedValueClass jck_decodeFromJsonValue: value];
+            
+        } else if ([value isKindOfClass: [NSDictionary class]]) {
+            //
+            JCKJsonDecoder *coder = [[JCKJsonDecoder alloc] initWithJSONObject: value];
+            result = [coder decodeTopLevelObjectOfClass: self.transformedValueClass];
         }
     }
     return result;

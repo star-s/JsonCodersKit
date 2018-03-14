@@ -9,7 +9,7 @@
 #import "JCKObjectToJsonTransformer.h"
 #import "JCKJsonEncoder.h"
 #import "CollectionMapping.h"
-#import "NSObject+JsonCompliant.h"
+#import "NSObject+DirectCoding.h"
 
 NSValueTransformerName const JCKObjectToJsonTransformerName = @"JCKObjectToJsonTransformer";
 
@@ -33,9 +33,9 @@ NSValueTransformerName const JCKObjectToJsonTransformerName = @"JCKObjectToJsonT
         //
         result = [value transformedArray: self];
         
-    } else if ([value jck_isJsonCompliant]) {
+    } else if ([value jck_supportDirectEncodingToJsonValue]) {
         //
-        result = [value jck_encodedJsonValue];
+        result = [value jck_encodeToJsonValue];
         
     } else if ([value conformsToProtocol: @protocol(NSCoding)]) {
         //
