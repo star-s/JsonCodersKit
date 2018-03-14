@@ -15,11 +15,6 @@ NSValueTransformerName const JCKObjectToJsonTransformerName = @"JCKObjectToJsonT
 
 @implementation JCKObjectToJsonTransformer
 
-+ (Class)transformedValueClass
-{
-    return [NSDictionary class];
-}
-
 + (BOOL)allowsReverseTransformation
 {
     return NO;
@@ -29,14 +24,14 @@ NSValueTransformerName const JCKObjectToJsonTransformerName = @"JCKObjectToJsonT
 {
     id result = nil;
     
-    if ([value isKindOfClass: [NSArray class]]) {
-        //
-        result = [value transformedArray: self];
-        
-    } else if ([value jck_supportDirectEncodingToJsonValue]) {
+    if ([value jck_supportDirectEncodingToJsonValue]) {
         //
         result = [value jck_encodeToJsonValue];
         
+    } else if ([value isKindOfClass: [NSArray class]]) {
+        //
+        result = [value transformedArray: self];
+
     } else if ([value conformsToProtocol: @protocol(NSCoding)]) {
         //
         JCKJsonEncoder *coder = [[JCKJsonEncoder alloc] init];

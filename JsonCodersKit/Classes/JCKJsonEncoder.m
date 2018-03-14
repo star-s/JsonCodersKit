@@ -50,8 +50,8 @@
     
     if ([objectForCoding isKindOfClass: [NSDictionary class]]) {
         //
-        if ([objectForCoding jck_supportDirectEncodingToJsonValue]) {
-            [self.dictionary addEntriesFromDictionary: [objectForCoding jck_encodeToJsonValue]];
+        if ([NSJSONSerialization isValidJSONObject: objectForCoding]) {
+            [self.dictionary addEntriesFromDictionary: objectForCoding];
         } else {
             [NSException raise: NSInvalidArgumentException format: @"It's not valid JSON object %@", objectForCoding];
         }

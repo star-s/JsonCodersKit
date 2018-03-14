@@ -12,7 +12,7 @@
 
 @property (nonatomic, readonly) Class transformedValueClass;
 
-- (instancetype)initWithTransformedValueClass:(Class)aClass;
+- (instancetype)initWithTransformedValueClass:(Class)aClass NS_DESIGNATED_INITIALIZER;
 
 @end
 

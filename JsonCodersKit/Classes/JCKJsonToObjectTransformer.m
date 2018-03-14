@@ -43,7 +43,7 @@
         result = [value transformedArray: self];
         
     } else if ([value isKindOfClass: self.transformedValueClass]) {
-        // Reverse transformation
+        // Reverse transformation Obj -> Json
         if ([value jck_supportDirectEncodingToJsonValue]) {
             result = [value jck_encodeToJsonValue];
         } else {
@@ -52,6 +52,7 @@
             result = [coder encodedJSONObject];
         }
     } else {
+        // Forward transformation Json -> Obj
         if ([self.transformedValueClass jck_supportDirectDecodingFromJsonValue]) {
             //
             result = [self.transformedValueClass jck_decodeFromJsonValue: value];
