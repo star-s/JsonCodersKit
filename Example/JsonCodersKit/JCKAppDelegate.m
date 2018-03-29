@@ -7,12 +7,14 @@
 //
 
 #import "JCKAppDelegate.h"
+#import "NSDate+DirectCoding.h"
 
 @implementation JCKAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [NSDate setJsonCodingFormatter: [[NSISO8601DateFormatter alloc] init]];
     return YES;
 }
 
