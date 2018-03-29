@@ -7,7 +7,7 @@
 //
 
 #import "JCKJsonEncoder.h"
-#import "NSObject+JsonCompliant.h"
+#import "NSObject+DirectCoding.h"
 #import "CollectionMapping.h"
 
 @interface JCKJsonEncoder ()
@@ -50,12 +50,12 @@
     
     if ([objectForCoding isKindOfClass: [NSDictionary class]]) {
         //
-        if ([objectForCoding jck_isJsonCompliant]) {
+        if ([NSJSONSerialization isValidJSONObject: objectForCoding]) {
             [self.dictionary addEntriesFromDictionary: objectForCoding];
         } else {
             [NSException raise: NSInvalidArgumentException format: @"It's not valid JSON object %@", objectForCoding];
         }
-    } else if ([[objectForCoding class] jck_isJsonCompliant]) {
+    } else if ([[objectForCoding class] jck_supportDirectDecodingFromJsonValue]) {
         [NSException raise: NSInvalidArgumentException format: @"Can't encode JSON primitive class %@", NSStringFromClass([objectForCoding class])];
     } else {
         [objectForCoding encodeWithCoder: self];
@@ -107,9 +107,9 @@
 {
     id encodedObject = nil;
     
-    if ([object jck_isJsonCompliant]) {
+    if ([object jck_supportDirectEncodingToJsonValue]) {
         
-        encodedObject = [object jck_encodedJsonValue];
+        encodedObject = [object jck_encodeToJsonValue];
         
     } else if ([object isKindOfClass: [NSArray class]]) {
         

@@ -10,6 +10,7 @@
 #import "JCKJsonDecoder.h"
 #import "JCKJsonEncoder.h"
 #import "CollectionMapping.h"
+#import "NSObject+DirectCoding.h"
 
 @implementation JCKJsonToObjectTransformer
 
@@ -17,6 +18,20 @@
 {
     [NSException raise: NSInternalInconsistencyException format: @"Metod %@ must be overrided in class %@", NSStringFromSelector(_cmd), NSStringFromClass(self)];
     return nil;
+}
+
+- (instancetype)init
+{
+    return [self initWithTransformedValueClass: [self.class transformedValueClass]];
+}
+
+- (instancetype)initWithTransformedValueClass:(Class)aClass
+{
+    self = [super init];
+    if (self) {
+        _transformedValueClass = aClass;
+    }
+    return self;
 }
 
 - (id)transformedValue:(id)value
@@ -27,16 +42,26 @@
         //
         result = [value transformedArray: self];
         
-    } else if ([value isKindOfClass: [NSDictionary class]]) {
-        //
-        JCKJsonDecoder *coder = [[JCKJsonDecoder alloc] initWithJSONObject: value];
-        result = [coder decodeTopLevelObjectOfClass: [self.class transformedValueClass]];
-        
-    } else if ([value isKindOfClass: [self.class transformedValueClass]]) {
-        //
-        JCKJsonEncoder *coder = [[JCKJsonEncoder alloc] init];
-        [coder encodeRootObject: value];
-        result = [coder encodedJSONObject];
+    } else if ([value isKindOfClass: self.transformedValueClass]) {
+        // Reverse transformation Obj -> Json
+        if ([value jck_supportDirectEncodingToJsonValue]) {
+            result = [value jck_encodeToJsonValue];
+        } else {
+            JCKJsonEncoder *coder = [[JCKJsonEncoder alloc] init];
+            [coder encodeRootObject: value];
+            result = [coder encodedJSONObject];
+        }
+    } else {
+        // Forward transformation Json -> Obj
+        if ([self.transformedValueClass jck_supportDirectDecodingFromJsonValue]) {
+            //
+            result = [self.transformedValueClass jck_decodeFromJsonValue: value];
+            
+        } else if ([value isKindOfClass: [NSDictionary class]]) {
+            //
+            JCKJsonDecoder *coder = [[JCKJsonDecoder alloc] initWithJSONObject: value];
+            result = [coder decodeTopLevelObjectOfClass: self.transformedValueClass];
+        }
     }
     return result;
 }

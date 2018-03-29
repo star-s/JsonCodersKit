@@ -7,32 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0766230C083392C38FB458AC43978F85 /* NSNull+NumericExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 070C464D32FC2D747E8E506389859895 /* NSNull+NumericExtension.m */; };
+		001CE626FEC426702C04022EA4FCF7E9 /* JCKObjectToJsonTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CE47F3677B69315BA25CD30603BD1A8 /* JCKObjectToJsonTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07A9C877B9FFFD7CD2036DB6F8FB8C2C /* Pods-JsonCodersKit_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B07F2AD66C350216F84AAF3207BA21F7 /* Pods-JsonCodersKit_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0827D060A306F93B69BC44FB753363D0 /* Pods-JsonCodersKit_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4054410CE806A12683457212906EDF6C /* Pods-JsonCodersKit_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0C0CF57638E43F7A8DC0A2A72927B563 /* NSCoder+JCKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC53F48DD5E2FB1890616128BAEC0482 /* NSCoder+JCKAdditions.m */; };
-		1B73D510C9134642FDBE938555893C3A /* JCKJsonEncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 4346AB90976C65CDF02A2D17A68FF2D1 /* JCKJsonEncoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		22BE003D1ACA76BB808018AF22B5644E /* NSObject+JsonCompliant.m in Sources */ = {isa = PBXBuildFile; fileRef = 21B4CE99AB8BD388D40278B93A2A599E /* NSObject+JsonCompliant.m */; };
-		26398244B84BC40226B9DDF76DF886D9 /* NSNull+NumericExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = ED179A30D2354326A35987E353874185 /* NSNull+NumericExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		268244B03F7E9D117BA3DF159888C583 /* JCKJsonDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 69FC3B6B57B0CF93827B278DA6E01A00 /* JCKJsonDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		287A7E0276B7B9FB78DCB1EE2D5DAAA3 /* JCKJsonToObjectTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 618320E627F4F84D2627ADD6B7A1F959 /* JCKJsonToObjectTransformer.m */; };
+		0C32FB974706460093475672BBDB5074 /* CollectionMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E54BBD01B155C9C4751F7721948EF0B /* CollectionMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2B4E97F6D25BABB8F3B0090B62715624 /* NSObject+DirectCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = BE7F2DCD6D943B0A51416D9E5FEDFD37 /* NSObject+DirectCoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2D8E6282024CC8D0D20562F053D4E3CD /* NSNull+NumericExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B5EACE3E2AF5F418AF20469E2C6780F /* NSNull+NumericExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		32AD28267BA4ED65643D125925F2A236 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		3F6065070F4EA00AB9ADFABB710E5D80 /* JsonCodersKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E5DB6BE1B061A87A95FBB80196131E /* JsonCodersKit-dummy.m */; };
-		3F67A7E68F0019C0B4EFFA6EB9BAB5E9 /* JCKJsonDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DF90B8EFD8C8C1DBCE2E33985B86DA /* JCKJsonDecoder.m */; };
-		53EC0168AB3831B212AED5B3CB86F768 /* JCKJsonEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF9D0393F75C08FE37B13E6E36CADE3 /* JCKJsonEncoder.m */; };
-		6179DC8505C442E7889851C1E8BA3E51 /* JCKObjectToJsonTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0392D89176AF874DF5715C1831E7CEFA /* JCKObjectToJsonTransformer.m */; };
-		645157DBD2EDCA33ED4809AF6FFF2504 /* JCKCompositeTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 70743F7B91F3CD96C47953DB22205BD8 /* JCKCompositeTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		38AE035BD8CFDE1347C3D0E2708F71CD /* JCKJsonToObjectTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = A473982CE8DF60F078901CEF7A5D9A2D /* JCKJsonToObjectTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		494521C46D4EA6CAF04C17AF8440AFF0 /* NSCoder+JCKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = EB03880711346592F998D3FCEB6A1827 /* NSCoder+JCKAdditions.m */; };
+		4E3D46CE31E69EB1F349EFA675F1E08A /* JCKJsonEncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F56E8314D9F655022D03084C345B038 /* JCKJsonEncoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4F20BB88D98FA2E8FDB10FF1963CE518 /* JCKCompositeTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF29B867B6DE087174CE4FE28D891C2 /* JCKCompositeTransformer.m */; };
+		5C74431C79C06C7F7671C768FE3F4A85 /* JsonCodersKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 23AE9F4A2D963F315F9C366956379383 /* JsonCodersKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5FA17F51071E27EE6077CB146D4E18DE /* JCKJsonEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6BFC662D8ACC1856DD08693E250F37 /* JCKJsonEncoder.m */; };
+		8074472C14F963677A842857DF621C12 /* JCKJsonDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E6C2F1388B99BBE14AAEAF1DEF88216 /* JCKJsonDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		964436C8189C0EF8CF56F93451789104 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		9F6B16B4C82393F5F65800EBE7C41B10 /* JCKJsonToObjectTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = DFEA658B3C5CFC1FD5380F6FE3CEC3B7 /* JCKJsonToObjectTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A8CE7FC2D2EA317616ABAAB189244F1B /* NSObject+JsonCompliant.h in Headers */ = {isa = PBXBuildFile; fileRef = CDDDA31EBCB152840E61FCF3F8CCDAB9 /* NSObject+JsonCompliant.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A092CD96B9E38C77AF897706A273EEE4 /* JCKCompositeTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D014F03CBD94E05CEDC4F1830746DA /* JCKCompositeTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ABC7B912AB4BB8742573565554068358 /* JCKObjectToJsonTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = EECA7F5D4DC835C7C02BD972B46DC681 /* JCKObjectToJsonTransformer.m */; };
 		B3BB810AC49610A43A0BBE5D8495867F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		C1458716D1AA154D73E039963157AE0F /* CollectionMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 666C0AE47F5FE0025F64C4FA21065577 /* CollectionMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DE807093A4379E896D8E7A84B4CF2B11 /* JsonCodersKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B2E7CCDB8B4ECD58E2AD450881A01727 /* JsonCodersKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E1EA0765522BD0718E501ABA739255AB /* CollectionMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C532BC4D484F16AC8B0268EAD768D49 /* CollectionMapping.m */; };
-		E2C60CD27AD8B77F1D7AC6848B617DDB /* JCKObjectToJsonTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6AB4ABC2D3F88E5658EDE02BC15F5D1D /* JCKObjectToJsonTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EEE8824E9AA37C66A7DDAA69463DDF19 /* NSCoder+JCKAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 12D8AB2FBC6098DA237133BDD5B2DAF0 /* NSCoder+JCKAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCA9D739842B23CA604F2A3B38516C70 /* CollectionMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 31E68303EABC42313CBE42A3666239A7 /* CollectionMapping.m */; };
+		C8238DA7FDC61A9E1156112798645FE7 /* JCKJsonToObjectTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE06B9B85828D50A7147E85B47C80AD /* JCKJsonToObjectTransformer.m */; };
+		CC4B5E910257120CF0735216F7636C0E /* NSCoder+JCKAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D0B07C55A5F891D1E3D8914F3A22746 /* NSCoder+JCKAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DA43DCEAA0BDF2B0D3649C1BB1C09B9C /* JCKJsonDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 393B170226C940BB5817A4E84FBB9EEA /* JCKJsonDecoder.m */; };
+		DD50624C982864C6FF90FE74416C1127 /* JsonCodersKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D873B03BB4BF21E0C2C04B01415334DC /* JsonCodersKit-dummy.m */; };
+		E387DFD6330CBD369C0C874209D76B43 /* NSNull+NumericExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BC25D4FD1DCCE9CC9E58841662382667 /* NSNull+NumericExtension.m */; };
 		EFE81AC9916E516E8F05DD6E3416B6BA /* Pods-JsonCodersKit_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 62024F162C02177BB81E04055072FC07 /* Pods-JsonCodersKit_Example-dummy.m */; };
-		FB2744A2C65BE96401B6E59EEF10F0B9 /* JCKCompositeTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9E014022412FE37083ACFEEDBC13B6 /* JCKCompositeTransformer.m */; };
+		FE58D09CB1B85504A7EA44120E52AD56 /* NSObject+DirectCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 228FA57BE351D0423A6963E579273C07 /* NSObject+DirectCoding.m */; };
 		FEDC056F92DFE737D34DAA87371F02AA /* Pods-JsonCodersKit_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F9CF282877ABA618728D4792E147B6 /* Pods-JsonCodersKit_Tests-dummy.m */; };
 /* End PBXBuildFile section */
 
@@ -47,53 +47,53 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0392D89176AF874DF5715C1831E7CEFA /* JCKObjectToJsonTransformer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JCKObjectToJsonTransformer.m; path = JsonCodersKit/Classes/JCKObjectToJsonTransformer.m; sourceTree = "<group>"; };
-		070C464D32FC2D747E8E506389859895 /* NSNull+NumericExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSNull+NumericExtension.m"; path = "JsonCodersKit/Classes/NSNull+NumericExtension.m"; sourceTree = "<group>"; };
-		12D8AB2FBC6098DA237133BDD5B2DAF0 /* NSCoder+JCKAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSCoder+JCKAdditions.h"; path = "JsonCodersKit/Classes/NSCoder+JCKAdditions.h"; sourceTree = "<group>"; };
+		0B5EACE3E2AF5F418AF20469E2C6780F /* NSNull+NumericExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSNull+NumericExtension.h"; path = "JsonCodersKit/Classes/NSNull+NumericExtension.h"; sourceTree = "<group>"; };
+		0F56E8314D9F655022D03084C345B038 /* JCKJsonEncoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JCKJsonEncoder.h; path = JsonCodersKit/Classes/JCKJsonEncoder.h; sourceTree = "<group>"; };
 		1599336BF86DC91F8B3167AFEA1BC908 /* Pods-JsonCodersKit_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-JsonCodersKit_Tests.modulemap"; sourceTree = "<group>"; };
-		1B038CDB5134366159CAB6D9C24124CF /* JsonCodersKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JsonCodersKit-prefix.pch"; sourceTree = "<group>"; };
-		1F9E014022412FE37083ACFEEDBC13B6 /* JCKCompositeTransformer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JCKCompositeTransformer.m; path = JsonCodersKit/Classes/JCKCompositeTransformer.m; sourceTree = "<group>"; };
 		20B9800611D96252977C351059D974C2 /* Pods-JsonCodersKit_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JsonCodersKit_Tests-resources.sh"; sourceTree = "<group>"; };
-		21B4CE99AB8BD388D40278B93A2A599E /* NSObject+JsonCompliant.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+JsonCompliant.m"; path = "JsonCodersKit/Classes/NSObject+JsonCompliant.m"; sourceTree = "<group>"; };
-		3C532BC4D484F16AC8B0268EAD768D49 /* CollectionMapping.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CollectionMapping.m; path = JsonCodersKit/Classes/CollectionMapping.m; sourceTree = "<group>"; };
+		228FA57BE351D0423A6963E579273C07 /* NSObject+DirectCoding.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+DirectCoding.m"; path = "JsonCodersKit/Classes/NSObject+DirectCoding.m"; sourceTree = "<group>"; };
+		23AE9F4A2D963F315F9C366956379383 /* JsonCodersKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JsonCodersKit.h; path = JsonCodersKit/Classes/JsonCodersKit.h; sourceTree = "<group>"; };
+		2E54BBD01B155C9C4751F7721948EF0B /* CollectionMapping.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CollectionMapping.h; path = JsonCodersKit/Classes/CollectionMapping.h; sourceTree = "<group>"; };
+		2E6C2F1388B99BBE14AAEAF1DEF88216 /* JCKJsonDecoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JCKJsonDecoder.h; path = JsonCodersKit/Classes/JCKJsonDecoder.h; sourceTree = "<group>"; };
+		31E68303EABC42313CBE42A3666239A7 /* CollectionMapping.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CollectionMapping.m; path = JsonCodersKit/Classes/CollectionMapping.m; sourceTree = "<group>"; };
+		393B170226C940BB5817A4E84FBB9EEA /* JCKJsonDecoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JCKJsonDecoder.m; path = JsonCodersKit/Classes/JCKJsonDecoder.m; sourceTree = "<group>"; };
+		3B6BFC662D8ACC1856DD08693E250F37 /* JCKJsonEncoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JCKJsonEncoder.m; path = JsonCodersKit/Classes/JCKJsonEncoder.m; sourceTree = "<group>"; };
 		4054410CE806A12683457212906EDF6C /* Pods-JsonCodersKit_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JsonCodersKit_Example-umbrella.h"; sourceTree = "<group>"; };
-		4346AB90976C65CDF02A2D17A68FF2D1 /* JCKJsonEncoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JCKJsonEncoder.h; path = JsonCodersKit/Classes/JCKJsonEncoder.h; sourceTree = "<group>"; };
 		4472AF9E639B5F4BA15A2BB2EC837B65 /* Pods-JsonCodersKit_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JsonCodersKit_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		469D63A3F489B5DA85F9C2BA5A4B2963 /* Pods-JsonCodersKit_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JsonCodersKit_Example-resources.sh"; sourceTree = "<group>"; };
 		46F9CF282877ABA618728D4792E147B6 /* Pods-JsonCodersKit_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JsonCodersKit_Tests-dummy.m"; sourceTree = "<group>"; };
-		618320E627F4F84D2627ADD6B7A1F959 /* JCKJsonToObjectTransformer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JCKJsonToObjectTransformer.m; path = JsonCodersKit/Classes/JCKJsonToObjectTransformer.m; sourceTree = "<group>"; };
+		4FE06B9B85828D50A7147E85B47C80AD /* JCKJsonToObjectTransformer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JCKJsonToObjectTransformer.m; path = JsonCodersKit/Classes/JCKJsonToObjectTransformer.m; sourceTree = "<group>"; };
 		62024F162C02177BB81E04055072FC07 /* Pods-JsonCodersKit_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JsonCodersKit_Example-dummy.m"; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		666C0AE47F5FE0025F64C4FA21065577 /* CollectionMapping.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CollectionMapping.h; path = JsonCodersKit/Classes/CollectionMapping.h; sourceTree = "<group>"; };
 		6945F3F0ADE3996C03B9FA2FCA29BC24 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		69FC3B6B57B0CF93827B278DA6E01A00 /* JCKJsonDecoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JCKJsonDecoder.h; path = JsonCodersKit/Classes/JCKJsonDecoder.h; sourceTree = "<group>"; };
-		6AB4ABC2D3F88E5658EDE02BC15F5D1D /* JCKObjectToJsonTransformer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JCKObjectToJsonTransformer.h; path = JsonCodersKit/Classes/JCKObjectToJsonTransformer.h; sourceTree = "<group>"; };
 		6B2CB1BEAAE44973D718EDAD9ADBE4D5 /* JsonCodersKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JsonCodersKit.framework; path = JsonCodersKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6BBF1D0E6F861C158CDF109171F36487 /* JsonCodersKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JsonCodersKit.xcconfig; sourceTree = "<group>"; };
-		70743F7B91F3CD96C47953DB22205BD8 /* JCKCompositeTransformer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JCKCompositeTransformer.h; path = JsonCodersKit/Classes/JCKCompositeTransformer.h; sourceTree = "<group>"; };
+		75DD0794C8E7890FF28E4F261CB3AD64 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CE47F3677B69315BA25CD30603BD1A8 /* JCKObjectToJsonTransformer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JCKObjectToJsonTransformer.h; path = JsonCodersKit/Classes/JCKObjectToJsonTransformer.h; sourceTree = "<group>"; };
 		83723DDC8A9B8E3527C554FE6EFD8153 /* Pods-JsonCodersKit_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JsonCodersKit_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		8B57D3749F7FE487FE1B89A6385AA523 /* Pods-JsonCodersKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JsonCodersKit_Example.release.xcconfig"; sourceTree = "<group>"; };
+		8D0B07C55A5F891D1E3D8914F3A22746 /* NSCoder+JCKAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSCoder+JCKAdditions.h"; path = "JsonCodersKit/Classes/NSCoder+JCKAdditions.h"; sourceTree = "<group>"; };
 		92D0B9FA09E5073E55427ABD9F716E7A /* Pods-JsonCodersKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JsonCodersKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		93AE231AFD4327E01DE1825D19F87FF7 /* Pods-JsonCodersKit_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JsonCodersKit_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		95E5DB6BE1B061A87A95FBB80196131E /* JsonCodersKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JsonCodersKit-dummy.m"; sourceTree = "<group>"; };
+		98922C83A8E2E88E3614DDB4C3BE9F17 /* JsonCodersKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JsonCodersKit-prefix.pch"; sourceTree = "<group>"; };
 		9E55DD61587020BD3FF1E50DF4D1C29E /* Pods-JsonCodersKit_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-JsonCodersKit_Example.modulemap"; sourceTree = "<group>"; };
 		A2367953AD2DF8488BDF61874B0D6BB4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A5B7BECE460D1365DF4E5380001B418D /* JsonCodersKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = JsonCodersKit.modulemap; sourceTree = "<group>"; };
+		A473982CE8DF60F078901CEF7A5D9A2D /* JCKJsonToObjectTransformer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JCKJsonToObjectTransformer.h; path = JsonCodersKit/Classes/JCKJsonToObjectTransformer.h; sourceTree = "<group>"; };
 		A5C063ABE957EE7FB97393DCDD094EB3 /* Pods-JsonCodersKit_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JsonCodersKit_Example-frameworks.sh"; sourceTree = "<group>"; };
+		A7D014F03CBD94E05CEDC4F1830746DA /* JCKCompositeTransformer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JCKCompositeTransformer.h; path = JsonCodersKit/Classes/JCKCompositeTransformer.h; sourceTree = "<group>"; };
+		AEB0ED6823D37563246E24565C24E250 /* JsonCodersKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = JsonCodersKit.modulemap; sourceTree = "<group>"; };
 		B07F2AD66C350216F84AAF3207BA21F7 /* Pods-JsonCodersKit_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JsonCodersKit_Tests-umbrella.h"; sourceTree = "<group>"; };
-		B2E7CCDB8B4ECD58E2AD450881A01727 /* JsonCodersKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JsonCodersKit.h; path = JsonCodersKit/Classes/JsonCodersKit.h; sourceTree = "<group>"; };
-		B7DF90B8EFD8C8C1DBCE2E33985B86DA /* JCKJsonDecoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JCKJsonDecoder.m; path = JsonCodersKit/Classes/JCKJsonDecoder.m; sourceTree = "<group>"; };
-		BC53F48DD5E2FB1890616128BAEC0482 /* NSCoder+JCKAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSCoder+JCKAdditions.m"; path = "JsonCodersKit/Classes/NSCoder+JCKAdditions.m"; sourceTree = "<group>"; };
+		BC25D4FD1DCCE9CC9E58841662382667 /* NSNull+NumericExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSNull+NumericExtension.m"; path = "JsonCodersKit/Classes/NSNull+NumericExtension.m"; sourceTree = "<group>"; };
+		BE7F2DCD6D943B0A51416D9E5FEDFD37 /* NSObject+DirectCoding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+DirectCoding.h"; path = "JsonCodersKit/Classes/NSObject+DirectCoding.h"; sourceTree = "<group>"; };
 		C23933A180BF72303A4E7682F393F24D /* Pods-JsonCodersKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JsonCodersKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		C3B62C65E4D30082A49CFE68C4B99132 /* JsonCodersKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JsonCodersKit.xcconfig; sourceTree = "<group>"; };
 		C9E9A7F2C20D0CC659F752E39D49B98E /* Pods_JsonCodersKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_JsonCodersKit_Tests.framework; path = "Pods-JsonCodersKit_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CDDDA31EBCB152840E61FCF3F8CCDAB9 /* NSObject+JsonCompliant.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+JsonCompliant.h"; path = "JsonCodersKit/Classes/NSObject+JsonCompliant.h"; sourceTree = "<group>"; };
 		CE38D14A7AD93CA717838090337E4A67 /* Pods-JsonCodersKit_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JsonCodersKit_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		D68692D8049799836B4730C5385E82FB /* Pods-JsonCodersKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JsonCodersKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		D9F95490A69D9042E3D613FDA3247233 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DAF9D0393F75C08FE37B13E6E36CADE3 /* JCKJsonEncoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JCKJsonEncoder.m; path = JsonCodersKit/Classes/JCKJsonEncoder.m; sourceTree = "<group>"; };
-		DFEA658B3C5CFC1FD5380F6FE3CEC3B7 /* JCKJsonToObjectTransformer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JCKJsonToObjectTransformer.h; path = JsonCodersKit/Classes/JCKJsonToObjectTransformer.h; sourceTree = "<group>"; };
-		ED179A30D2354326A35987E353874185 /* NSNull+NumericExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSNull+NumericExtension.h"; path = "JsonCodersKit/Classes/NSNull+NumericExtension.h"; sourceTree = "<group>"; };
+		D873B03BB4BF21E0C2C04B01415334DC /* JsonCodersKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JsonCodersKit-dummy.m"; sourceTree = "<group>"; };
+		DCF29B867B6DE087174CE4FE28D891C2 /* JCKCompositeTransformer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JCKCompositeTransformer.m; path = JsonCodersKit/Classes/JCKCompositeTransformer.m; sourceTree = "<group>"; };
+		EB03880711346592F998D3FCEB6A1827 /* NSCoder+JCKAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSCoder+JCKAdditions.m"; path = "JsonCodersKit/Classes/NSCoder+JCKAdditions.m"; sourceTree = "<group>"; };
+		EECA7F5D4DC835C7C02BD972B46DC681 /* JCKObjectToJsonTransformer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JCKObjectToJsonTransformer.m; path = JsonCodersKit/Classes/JCKObjectToJsonTransformer.m; sourceTree = "<group>"; };
 		F0129E2B2688B237814B4946F87540E7 /* Pods_JsonCodersKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_JsonCodersKit_Example.framework; path = "Pods-JsonCodersKit_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7B24D9685FCB7EC487A0DE53650272C /* Pods-JsonCodersKit_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JsonCodersKit_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,38 +126,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		15E3231CF6E24343E23147B481B2B33A /* JsonCodersKit */ = {
-			isa = PBXGroup;
-			children = (
-				666C0AE47F5FE0025F64C4FA21065577 /* CollectionMapping.h */,
-				3C532BC4D484F16AC8B0268EAD768D49 /* CollectionMapping.m */,
-				70743F7B91F3CD96C47953DB22205BD8 /* JCKCompositeTransformer.h */,
-				1F9E014022412FE37083ACFEEDBC13B6 /* JCKCompositeTransformer.m */,
-				69FC3B6B57B0CF93827B278DA6E01A00 /* JCKJsonDecoder.h */,
-				B7DF90B8EFD8C8C1DBCE2E33985B86DA /* JCKJsonDecoder.m */,
-				4346AB90976C65CDF02A2D17A68FF2D1 /* JCKJsonEncoder.h */,
-				DAF9D0393F75C08FE37B13E6E36CADE3 /* JCKJsonEncoder.m */,
-				DFEA658B3C5CFC1FD5380F6FE3CEC3B7 /* JCKJsonToObjectTransformer.h */,
-				618320E627F4F84D2627ADD6B7A1F959 /* JCKJsonToObjectTransformer.m */,
-				6AB4ABC2D3F88E5658EDE02BC15F5D1D /* JCKObjectToJsonTransformer.h */,
-				0392D89176AF874DF5715C1831E7CEFA /* JCKObjectToJsonTransformer.m */,
-				B2E7CCDB8B4ECD58E2AD450881A01727 /* JsonCodersKit.h */,
-				12D8AB2FBC6098DA237133BDD5B2DAF0 /* NSCoder+JCKAdditions.h */,
-				BC53F48DD5E2FB1890616128BAEC0482 /* NSCoder+JCKAdditions.m */,
-				ED179A30D2354326A35987E353874185 /* NSNull+NumericExtension.h */,
-				070C464D32FC2D747E8E506389859895 /* NSNull+NumericExtension.m */,
-				CDDDA31EBCB152840E61FCF3F8CCDAB9 /* NSObject+JsonCompliant.h */,
-				21B4CE99AB8BD388D40278B93A2A599E /* NSObject+JsonCompliant.m */,
-				9EEC5C013589FA3ED5EE73CC85EA5C71 /* Support Files */,
-			);
-			name = JsonCodersKit;
-			path = ../..;
-			sourceTree = "<group>";
-		};
 		2D76ACD19DF5D616D6D16ECDD1930CEF /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				15E3231CF6E24343E23147B481B2B33A /* JsonCodersKit */,
+				CBA8D546B43AAAC0E1E9F6BA45136DA7 /* JsonCodersKit */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
@@ -218,19 +190,6 @@
 			path = "Target Support Files/Pods-JsonCodersKit_Tests";
 			sourceTree = "<group>";
 		};
-		9EEC5C013589FA3ED5EE73CC85EA5C71 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				D9F95490A69D9042E3D613FDA3247233 /* Info.plist */,
-				A5B7BECE460D1365DF4E5380001B418D /* JsonCodersKit.modulemap */,
-				6BBF1D0E6F861C158CDF109171F36487 /* JsonCodersKit.xcconfig */,
-				95E5DB6BE1B061A87A95FBB80196131E /* JsonCodersKit-dummy.m */,
-				1B038CDB5134366159CAB6D9C24124CF /* JsonCodersKit-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/JsonCodersKit";
-			sourceTree = "<group>";
-		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,6 +208,34 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		CBA8D546B43AAAC0E1E9F6BA45136DA7 /* JsonCodersKit */ = {
+			isa = PBXGroup;
+			children = (
+				2E54BBD01B155C9C4751F7721948EF0B /* CollectionMapping.h */,
+				31E68303EABC42313CBE42A3666239A7 /* CollectionMapping.m */,
+				A7D014F03CBD94E05CEDC4F1830746DA /* JCKCompositeTransformer.h */,
+				DCF29B867B6DE087174CE4FE28D891C2 /* JCKCompositeTransformer.m */,
+				2E6C2F1388B99BBE14AAEAF1DEF88216 /* JCKJsonDecoder.h */,
+				393B170226C940BB5817A4E84FBB9EEA /* JCKJsonDecoder.m */,
+				0F56E8314D9F655022D03084C345B038 /* JCKJsonEncoder.h */,
+				3B6BFC662D8ACC1856DD08693E250F37 /* JCKJsonEncoder.m */,
+				A473982CE8DF60F078901CEF7A5D9A2D /* JCKJsonToObjectTransformer.h */,
+				4FE06B9B85828D50A7147E85B47C80AD /* JCKJsonToObjectTransformer.m */,
+				7CE47F3677B69315BA25CD30603BD1A8 /* JCKObjectToJsonTransformer.h */,
+				EECA7F5D4DC835C7C02BD972B46DC681 /* JCKObjectToJsonTransformer.m */,
+				23AE9F4A2D963F315F9C366956379383 /* JsonCodersKit.h */,
+				8D0B07C55A5F891D1E3D8914F3A22746 /* NSCoder+JCKAdditions.h */,
+				EB03880711346592F998D3FCEB6A1827 /* NSCoder+JCKAdditions.m */,
+				0B5EACE3E2AF5F418AF20469E2C6780F /* NSNull+NumericExtension.h */,
+				BC25D4FD1DCCE9CC9E58841662382667 /* NSNull+NumericExtension.m */,
+				BE7F2DCD6D943B0A51416D9E5FEDFD37 /* NSObject+DirectCoding.h */,
+				228FA57BE351D0423A6963E579273C07 /* NSObject+DirectCoding.m */,
+				D62119B1C0FFF2B9BEDC3B3AC7FE12AD /* Support Files */,
+			);
+			name = JsonCodersKit;
+			path = ../..;
+			sourceTree = "<group>";
+		};
 		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,23 +244,36 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+		D62119B1C0FFF2B9BEDC3B3AC7FE12AD /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				75DD0794C8E7890FF28E4F261CB3AD64 /* Info.plist */,
+				AEB0ED6823D37563246E24565C24E250 /* JsonCodersKit.modulemap */,
+				C3B62C65E4D30082A49CFE68C4B99132 /* JsonCodersKit.xcconfig */,
+				D873B03BB4BF21E0C2C04B01415334DC /* JsonCodersKit-dummy.m */,
+				98922C83A8E2E88E3614DDB4C3BE9F17 /* JsonCodersKit-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/JsonCodersKit";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		4DBB00287102C962E32140CE8C53D759 /* Headers */ = {
+		D23A14CDE765F7D8E5C0643F91BC8DD6 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1458716D1AA154D73E039963157AE0F /* CollectionMapping.h in Headers */,
-				645157DBD2EDCA33ED4809AF6FFF2504 /* JCKCompositeTransformer.h in Headers */,
-				268244B03F7E9D117BA3DF159888C583 /* JCKJsonDecoder.h in Headers */,
-				1B73D510C9134642FDBE938555893C3A /* JCKJsonEncoder.h in Headers */,
-				9F6B16B4C82393F5F65800EBE7C41B10 /* JCKJsonToObjectTransformer.h in Headers */,
-				E2C60CD27AD8B77F1D7AC6848B617DDB /* JCKObjectToJsonTransformer.h in Headers */,
-				DE807093A4379E896D8E7A84B4CF2B11 /* JsonCodersKit.h in Headers */,
-				EEE8824E9AA37C66A7DDAA69463DDF19 /* NSCoder+JCKAdditions.h in Headers */,
-				26398244B84BC40226B9DDF76DF886D9 /* NSNull+NumericExtension.h in Headers */,
-				A8CE7FC2D2EA317616ABAAB189244F1B /* NSObject+JsonCompliant.h in Headers */,
+				0C32FB974706460093475672BBDB5074 /* CollectionMapping.h in Headers */,
+				A092CD96B9E38C77AF897706A273EEE4 /* JCKCompositeTransformer.h in Headers */,
+				8074472C14F963677A842857DF621C12 /* JCKJsonDecoder.h in Headers */,
+				4E3D46CE31E69EB1F349EFA675F1E08A /* JCKJsonEncoder.h in Headers */,
+				38AE035BD8CFDE1347C3D0E2708F71CD /* JCKJsonToObjectTransformer.h in Headers */,
+				001CE626FEC426702C04022EA4FCF7E9 /* JCKObjectToJsonTransformer.h in Headers */,
+				5C74431C79C06C7F7671C768FE3F4A85 /* JsonCodersKit.h in Headers */,
+				CC4B5E910257120CF0735216F7636C0E /* NSCoder+JCKAdditions.h in Headers */,
+				2D8E6282024CC8D0D20562F053D4E3CD /* NSNull+NumericExtension.h in Headers */,
+				2B4E97F6D25BABB8F3B0090B62715624 /* NSObject+DirectCoding.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,9 +335,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DAF4F351B6761D9CC5E0FF4C38003E85 /* Build configuration list for PBXNativeTarget "JsonCodersKit" */;
 			buildPhases = (
-				4155FBCFF842C690AC22FA461476E610 /* Sources */,
+				8C75037EE4C7E56E85962548694D8574 /* Sources */,
 				8D2115F277FF76AAAAEC045A9C08C086 /* Frameworks */,
-				4DBB00287102C962E32140CE8C53D759 /* Headers */,
+				D23A14CDE765F7D8E5C0643F91BC8DD6 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -377,20 +377,20 @@
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		4155FBCFF842C690AC22FA461476E610 /* Sources */ = {
+		8C75037EE4C7E56E85962548694D8574 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1EA0765522BD0718E501ABA739255AB /* CollectionMapping.m in Sources */,
-				FB2744A2C65BE96401B6E59EEF10F0B9 /* JCKCompositeTransformer.m in Sources */,
-				3F67A7E68F0019C0B4EFFA6EB9BAB5E9 /* JCKJsonDecoder.m in Sources */,
-				53EC0168AB3831B212AED5B3CB86F768 /* JCKJsonEncoder.m in Sources */,
-				287A7E0276B7B9FB78DCB1EE2D5DAAA3 /* JCKJsonToObjectTransformer.m in Sources */,
-				6179DC8505C442E7889851C1E8BA3E51 /* JCKObjectToJsonTransformer.m in Sources */,
-				3F6065070F4EA00AB9ADFABB710E5D80 /* JsonCodersKit-dummy.m in Sources */,
-				0C0CF57638E43F7A8DC0A2A72927B563 /* NSCoder+JCKAdditions.m in Sources */,
-				0766230C083392C38FB458AC43978F85 /* NSNull+NumericExtension.m in Sources */,
-				22BE003D1ACA76BB808018AF22B5644E /* NSObject+JsonCompliant.m in Sources */,
+				BCA9D739842B23CA604F2A3B38516C70 /* CollectionMapping.m in Sources */,
+				4F20BB88D98FA2E8FDB10FF1963CE518 /* JCKCompositeTransformer.m in Sources */,
+				DA43DCEAA0BDF2B0D3649C1BB1C09B9C /* JCKJsonDecoder.m in Sources */,
+				5FA17F51071E27EE6077CB146D4E18DE /* JCKJsonEncoder.m in Sources */,
+				C8238DA7FDC61A9E1156112798645FE7 /* JCKJsonToObjectTransformer.m in Sources */,
+				ABC7B912AB4BB8742573565554068358 /* JCKObjectToJsonTransformer.m in Sources */,
+				DD50624C982864C6FF90FE74416C1127 /* JsonCodersKit-dummy.m in Sources */,
+				494521C46D4EA6CAF04C17AF8440AFF0 /* NSCoder+JCKAdditions.m in Sources */,
+				E387DFD6330CBD369C0C874209D76B43 /* NSNull+NumericExtension.m in Sources */,
+				FE58D09CB1B85504A7EA44120E52AD56 /* NSObject+DirectCoding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,7 +456,7 @@
 		};
 		16323F76D1D83429E130E1D9313B43D3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6BBF1D0E6F861C158CDF109171F36487 /* JsonCodersKit.xcconfig */;
+			baseConfigurationReference = C3B62C65E4D30082A49CFE68C4B99132 /* JsonCodersKit.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -579,7 +579,7 @@
 		};
 		512ED48782E9559DB94D32D914BFD723 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6BBF1D0E6F861C158CDF109171F36487 /* JsonCodersKit.xcconfig */;
+			baseConfigurationReference = C3B62C65E4D30082A49CFE68C4B99132 /* JsonCodersKit.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";

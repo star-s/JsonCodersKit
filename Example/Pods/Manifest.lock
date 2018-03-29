@@ -1,5 +1,5 @@
 PODS:
-  - JsonCodersKit (0.5.3)
+  - JsonCodersKit (0.5.4)
 
 DEPENDENCIES:
   - JsonCodersKit (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  JsonCodersKit: 99c2ccdfa5884c7ac64dd8efbaaeae9eebf19b21
+  JsonCodersKit: 4bc19856fefd49ccd1a50c7861709de8c62377a0
 
 PODFILE CHECKSUM: 7a0a8f581bea258e94d809ba5230de82f953cd62
 

@@ -9,15 +9,11 @@
 #import "JCKObjectToJsonTransformer.h"
 #import "JCKJsonEncoder.h"
 #import "CollectionMapping.h"
+#import "NSObject+DirectCoding.h"
 
 NSValueTransformerName const JCKObjectToJsonTransformerName = @"JCKObjectToJsonTransformer";
 
 @implementation JCKObjectToJsonTransformer
-
-+ (Class)transformedValueClass
-{
-    return [NSDictionary class];
-}
 
 + (BOOL)allowsReverseTransformation
 {
@@ -28,14 +24,14 @@ NSValueTransformerName const JCKObjectToJsonTransformerName = @"JCKObjectToJsonT
 {
     id result = nil;
     
-    if ([NSJSONSerialization isValidJSONObject: value]) {
+    if ([value jck_supportDirectEncodingToJsonValue]) {
         //
-        result = value;
+        result = [value jck_encodeToJsonValue];
         
     } else if ([value isKindOfClass: [NSArray class]]) {
         //
         result = [value transformedArray: self];
-        
+
     } else if ([value conformsToProtocol: @protocol(NSCoding)]) {
         //
         JCKJsonEncoder *coder = [[JCKJsonEncoder alloc] init];

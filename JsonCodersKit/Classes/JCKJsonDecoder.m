@@ -7,7 +7,7 @@
 //
 
 #import "JCKJsonDecoder.h"
-#import "NSObject+JsonCompliant.h"
+#import "NSObject+DirectCoding.h"
 #import "CollectionMapping.h"
 #import "NSNull+NumericExtension.h"
 
@@ -93,7 +93,7 @@ static BOOL isNullValue = NO;
 {
     id result = nil;
     
-    if ([aClass jck_isJsonCompliant]) {
+    if ([aClass jck_supportDirectDecodingFromJsonValue]) {
         //
         id rawValue = [self.JSONObject objectForKey: key];
         result = [aClass jck_decodeFromJsonValue: rawValue];
@@ -125,7 +125,7 @@ static BOOL isNullValue = NO;
         //
         id (^decodeObjectBlock)(id anObject) = nil;
         
-        if ([aClass jck_isJsonCompliant]) {
+        if ([aClass jck_supportDirectDecodingFromJsonValue]) {
             //
             decodeObjectBlock = ^(id anObject){
                 return [aClass jck_decodeFromJsonValue: anObject];

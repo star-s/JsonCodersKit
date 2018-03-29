@@ -10,6 +10,10 @@
 
 @interface JCKJsonToObjectTransformer : NSValueTransformer
 
+@property (nonatomic, readonly) Class transformedValueClass;
+
+- (instancetype)initWithTransformedValueClass:(Class)aClass NS_DESIGNATED_INITIALIZER;
+
 @end
 
 #define JCKStringize_helper(x) #x
