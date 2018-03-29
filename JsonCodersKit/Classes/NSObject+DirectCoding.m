@@ -52,6 +52,13 @@
     return YES;
 }
 
+#pragma mark - JCKDirectJsonEncoding
+
+- (BOOL)jck_supportDirectEncodingToJsonValue
+{
+    return YES;
+}
+
 @end
 
 @implementation NSNumber (DirectCoding)
@@ -63,6 +70,13 @@
     return YES;
 }
 
+#pragma mark - JCKDirectJsonEncoding
+
+- (BOOL)jck_supportDirectEncodingToJsonValue
+{
+    return YES;
+}
+
 @end
 
 @implementation NSNull (DirectCoding)
@@ -70,6 +84,13 @@
 #pragma mark - JCKDirectJsonDecoding
 
 + (BOOL)jck_supportDirectDecodingFromJsonValue
+{
+    return YES;
+}
+
+#pragma mark - JCKDirectJsonEncoding
+
+- (BOOL)jck_supportDirectEncodingToJsonValue
 {
     return YES;
 }
