@@ -8,12 +8,18 @@
 
 #import "NSDate+DirectCoding.h"
 
-static __kindof NSFormatter *formatter = nil;
+static NSFormatter *sharedFormatter = nil;
 
+static NSString * const syncToken = @"syncToken";
 
 static NSString *NSStringFromDate(NSDate *date) {
     NSString *result = nil;
     
+    __kindof NSFormatter *formatter = nil;
+    
+    @synchronized(syncToken) {
+        formatter = sharedFormatter;
+    }
     if ([formatter respondsToSelector: @selector(stringFromDate:)]) {
         result = [formatter stringFromDate: date];
     } else {
@@ -25,6 +31,11 @@ static NSString *NSStringFromDate(NSDate *date) {
 static NSDate *NSDateFromString(NSString *string) {
     NSDate *result = nil;
     
+    __kindof NSFormatter *formatter = nil;
+    
+    @synchronized(syncToken) {
+        formatter = sharedFormatter;
+    }
     if ([formatter respondsToSelector: @selector(dateFromString:)]) {
         result = [formatter dateFromString: string];
     } else {
@@ -37,8 +48,8 @@ static NSDate *NSDateFromString(NSString *string) {
 
 + (void)setJsonCodingFormatter:(NSFormatter *)codingFormatter
 {
-    @synchronized(formatter) {
-        formatter = codingFormatter;
+    @synchronized(syncToken) {
+        sharedFormatter = codingFormatter;
     }
 }
 
@@ -46,7 +57,9 @@ static NSDate *NSDateFromString(NSString *string) {
 
 + (BOOL)jck_supportDirectDecodingFromJsonValue
 {
-    return formatter != nil;
+    @synchronized(syncToken) {
+        return sharedFormatter != nil;
+    }
 }
 
 + (id)jck_decodeFromJsonValue:(id)value;
@@ -62,7 +75,9 @@ static NSDate *NSDateFromString(NSString *string) {
 
 - (BOOL)jck_supportDirectEncodingToJsonValue
 {
-    return formatter != nil;
+    @synchronized(syncToken) {
+        return sharedFormatter != nil;
+    }
 }
 
 - (id)jck_encodeToJsonValue
