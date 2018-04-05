@@ -11,13 +11,13 @@
 #import "CollectionMapping.h"
 #import "NSNull+NumericExtension.h"
 
-static BOOL isNullValue = NO;
+static BOOL nullIsTheValue = NO;
 
 @implementation JCKJsonDecoder
 
 + (void)setDecodeNullAsValue:(BOOL)nullValue
 {
-    isNullValue = nullValue;
+    nullIsTheValue = nullValue;
 }
 
 - (instancetype)initWithJSONObject:(NSDictionary *)obj
@@ -37,7 +37,7 @@ static BOOL isNullValue = NO;
 
 - (BOOL)containsValueForKey:(NSString *)key
 {
-    if (isNullValue) {
+    if (nullIsTheValue) {
         return [self.JSONObject.allKeys containsObject: key];
     } else {
         return [self decodeObjectForKey: key] != nil;
@@ -46,7 +46,7 @@ static BOOL isNullValue = NO;
 
 - (id)decodeObjectForKey:(NSString *)key
 {
-    if (isNullValue) {
+    if (nullIsTheValue) {
         return [self.JSONObject objectForKey: key];
     } else {
         id value = [self.JSONObject objectForKey: key];
