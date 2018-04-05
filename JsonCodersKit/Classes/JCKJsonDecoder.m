@@ -11,13 +11,13 @@
 #import "CollectionMapping.h"
 #import "NSNull+NumericExtension.h"
 
-static BOOL isNullValue = NO;
+static BOOL nullIsTheValue = NO;
 
 @implementation JCKJsonDecoder
 
 + (void)setDecodeNullAsValue:(BOOL)nullValue
 {
-    isNullValue = nullValue;
+    nullIsTheValue = nullValue;
 }
 
 - (instancetype)initWithJSONObject:(NSDictionary *)obj
@@ -37,7 +37,7 @@ static BOOL isNullValue = NO;
 
 - (BOOL)containsValueForKey:(NSString *)key
 {
-    if (isNullValue) {
+    if (nullIsTheValue) {
         return [self.JSONObject.allKeys containsObject: key];
     } else {
         return [self decodeObjectForKey: key] != nil;
@@ -46,7 +46,7 @@ static BOOL isNullValue = NO;
 
 - (id)decodeObjectForKey:(NSString *)key
 {
-    if (isNullValue) {
+    if (nullIsTheValue) {
         return [self.JSONObject objectForKey: key];
     } else {
         id value = [self.JSONObject objectForKey: key];
@@ -91,24 +91,7 @@ static BOOL isNullValue = NO;
 
 - (id)decodeObjectOfClass:(Class)aClass forKey:(NSString *)key
 {
-    id result = nil;
-    
-    if ([aClass jck_supportDirectDecodingFromJsonValue]) {
-        //
-        id rawValue = [self.JSONObject objectForKey: key];
-        result = [aClass jck_decodeFromJsonValue: rawValue];
-        
-    } else {
-        //
-        id rawValue = [self decodeObjectForKey: key];
-        
-        if ([rawValue isKindOfClass: [NSDictionary class]]) {
-            //
-            JCKJsonDecoder *decoder = [[self.class alloc] initWithJSONObject: rawValue];
-            result = [decoder decodeTopLevelObjectOfClass: aClass];
-        }
-    }
-    return result;
+    return [self convertRawValue: self.JSONObject[key] toObjectOfClass: aClass];
 }
 
 - (id)decodeTopLevelObjectOfClass:(Class)aClass
@@ -119,28 +102,36 @@ static BOOL isNullValue = NO;
 
 - (NSArray *)decodeArrayObjectsOfClass:(Class)aClass forKey:(NSString *)key
 {
-    NSArray *result = [self decodeObjectForKey: key];
+    NSArray *result = nil;
     
-    if ([result isKindOfClass: [NSArray class]]) {
-        //
-        id (^decodeObjectBlock)(id anObject) = nil;
-        
-        if ([aClass jck_supportDirectDecodingFromJsonValue]) {
-            //
-            decodeObjectBlock = ^(id anObject){
-                return [aClass jck_decodeFromJsonValue: anObject];
-            };
-        } else {
-            //
-            decodeObjectBlock = ^(id anObject){
-                JCKJsonDecoder *decoder = [[self.class alloc] initWithJSONObject: anObject];
-                return [decoder decodeTopLevelObjectOfClass: aClass];
-            };
-        }
-        result = [result mapWithBlock: decodeObjectBlock];
-        
+    id rawValue = self.JSONObject[key];
+    
+    if ([rawValue isKindOfClass: [NSArray class]]) {
+        result = [rawValue mapWithBlock: ^(id anObject){
+            return [self convertRawValue: anObject toObjectOfClass: aClass];
+        }];
+    }
+    return result;
+}
+
+- (id)convertRawValue:(id)rawValue toObjectOfClass:(Class)aClass
+{
+    if (rawValue == nil) {
+        return nil;
+    }
+    id result = nil;
+    
+    if ([rawValue isKindOfClass: aClass]) { // No decoding needed
+        result = rawValue;
+    } else if ([aClass jck_supportDirectDecodingFromJsonValue]) { // Decode simple classes (NSURL, NSUUID, ...)
+        result = [aClass jck_decodeFromJsonValue: rawValue];
+    } else if ([aClass conformsToProtocol: @protocol(NSCoding)] && [rawValue isKindOfClass: [NSDictionary class]]) { // Decode complex classes
+        JCKJsonDecoder *decoder = [[self.class alloc] initWithJSONObject: rawValue];
+        result = [decoder decodeTopLevelObjectOfClass: aClass];
+#if DEBUG
     } else {
-        result = nil;
+        NSLog(@"%@ - Can't convert value: %@ to class: %@", self, rawValue, NSStringFromClass(aClass));
+#endif
     }
     return result;
 }
