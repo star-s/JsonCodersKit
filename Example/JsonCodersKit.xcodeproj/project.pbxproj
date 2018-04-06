@@ -26,6 +26,7 @@
 		A574AC7C2060F8E1000A16C2 /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = A574AC7A2060F8E1000A16C2 /* UIColor+HexString.m */; };
 		A574AC7F2060FAA9000A16C2 /* NSDate+DirectCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = A574AC7E2060FAA9000A16C2 /* NSDate+DirectCoding.m */; };
 		A594FB1E207777D90067F88B /* NSData+DirectCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = A594FB1D207777D90067F88B /* NSData+DirectCoding.m */; };
+		A594FB2120777A260067F88B /* NSData+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = A594FB2020777A260067F88B /* NSData+HexString.m */; };
 		B26D3E0639440D27DDA43BFB /* Pods_JsonCodersKit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23814B02703DC53B87945E1A /* Pods_JsonCodersKit_Tests.framework */; };
 		EC0CF7067748C03DE89A1AC1 /* Pods_JsonCodersKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 767C22CAA0352F25438DC5F4 /* Pods_JsonCodersKit_Example.framework */; };
 /* End PBXBuildFile section */
@@ -78,6 +79,8 @@
 		A574AC7E2060FAA9000A16C2 /* NSDate+DirectCoding.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DirectCoding.m"; sourceTree = "<group>"; };
 		A594FB1C207777D90067F88B /* NSData+DirectCoding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+DirectCoding.h"; sourceTree = "<group>"; };
 		A594FB1D207777D90067F88B /* NSData+DirectCoding.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+DirectCoding.m"; sourceTree = "<group>"; };
+		A594FB1F20777A260067F88B /* NSData+HexString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+HexString.h"; sourceTree = "<group>"; };
+		A594FB2020777A260067F88B /* NSData+HexString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+HexString.m"; sourceTree = "<group>"; };
 		E9A5649436743EF46516CDD4 /* Pods-JsonCodersKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JsonCodersKit_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JsonCodersKit_Tests/Pods-JsonCodersKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,6 +165,8 @@
 				6003F5A6195388D20070C39A /* JCKViewController.m */,
 				A594FB1C207777D90067F88B /* NSData+DirectCoding.h */,
 				A594FB1D207777D90067F88B /* NSData+DirectCoding.m */,
+				A594FB1F20777A260067F88B /* NSData+HexString.h */,
+				A594FB2020777A260067F88B /* NSData+HexString.m */,
 				A574AC7D2060FAA9000A16C2 /* NSDate+DirectCoding.h */,
 				A574AC7E2060FAA9000A16C2 /* NSDate+DirectCoding.m */,
 				A574AC772060F784000A16C2 /* UIColor+DirectCoding.h */,
@@ -430,6 +435,7 @@
 				A574AC7F2060FAA9000A16C2 /* NSDate+DirectCoding.m in Sources */,
 				6003F5A7195388D20070C39A /* JCKViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				A594FB2120777A260067F88B /* NSData+HexString.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
