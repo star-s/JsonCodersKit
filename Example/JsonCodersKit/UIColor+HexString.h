@@ -10,8 +10,6 @@
 
 @interface UIColor (HexString)
 
-+ (void)addAlphaToHexStringByDefault:(BOOL)value;
-
 + (UIColor *)colorWithHexString:(NSString *)hexString;
 
 - (NSString *)hexString;

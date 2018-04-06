@@ -12,13 +12,6 @@
 
 @implementation UIColor (HexString)
 
-static BOOL exportAlpha = NO;
-
-+ (void)addAlphaToHexStringByDefault:(BOOL)value
-{
-    exportAlpha = value;
-}
-
 + (UIColor *)colorWithHexString:(NSString *)hexString
 {
     NSString *colorString = [[hexString stringByReplacingOccurrencesOfString: @"#" withString: @""] uppercaseString];
@@ -68,7 +61,7 @@ static BOOL exportAlpha = NO;
 
 - (NSString *)hexString
 {
-    return [self hexStringWithAlpha: exportAlpha];
+    return [self hexStringWithAlpha: NO];
 }
 
 - (NSString *)hexStringWithAlpha:(BOOL)exportAlpha

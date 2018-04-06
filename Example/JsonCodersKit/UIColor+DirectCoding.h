@@ -11,4 +11,6 @@
 
 @interface UIColor (DirectCoding) <JCKDirectJsonDecoding, JCKDirectJsonEncoding>
 
++ (void)addAlphaWhenCodingToJson:(BOOL)value;
+
 @end

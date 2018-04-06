@@ -11,6 +11,13 @@
 
 @implementation UIColor (DirectCoding)
 
+static BOOL encodeAlpha = NO;
+
++ (void)addAlphaWhenCodingToJson:(BOOL)value
+{
+    encodeAlpha = value;
+}
+
 #pragma mark - JCKDirectJsonDecoding
 
 + (BOOL)jck_supportDirectDecodingFromJsonValue
@@ -36,7 +43,7 @@
 
 - (id)jck_encodeToJsonValue
 {
-    return self.hexString;
+    return [self hexStringWithAlpha: encodeAlpha];
 }
 
 @end
