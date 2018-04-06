@@ -116,15 +116,15 @@ static BOOL nullIsTheValue = NO;
 
 - (id)convertRawValue:(id)rawValue toObjectOfClass:(Class)aClass
 {
-    if (rawValue == nil) {
-        return nil;
+    if (!rawValue || [rawValue isKindOfClass: aClass]) { // No decoding needed
+        return rawValue;
     }
     id result = nil;
     
-    if ([rawValue isKindOfClass: aClass]) { // No decoding needed
-        result = rawValue;
-    } else if ([aClass jck_supportDirectDecodingFromJsonValue]) { // Decode simple classes (NSURL, NSUUID, ...)
-        result = [aClass jck_decodeFromJsonValue: rawValue];
+    NSValueTransformer *helper = [aClass jck_directCodingHelper];
+    
+    if (helper) { // Decode simple classes (NSURL, NSUUID, ...)
+        result = [helper transformedValue: rawValue];
     } else if ([aClass conformsToProtocol: @protocol(NSCoding)] && [rawValue isKindOfClass: [NSDictionary class]]) { // Decode complex classes
         JCKJsonDecoder *decoder = [[self.class alloc] initWithJSONObject: rawValue];
         result = [decoder decodeTopLevelObjectOfClass: aClass];

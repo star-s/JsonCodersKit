@@ -30,6 +30,10 @@
     return result;
 }
 
+@end
+
+@implementation NSCoder (JCKAdditions_deprecated)
+
 - (nullable NSString *)decodeStringForKey:(NSString *)key
 {
     return [self decodeObjectOfClass: [NSString class] forKey: key];
@@ -61,34 +65,3 @@
 }
 
 @end
-
-@implementation NSCoder (JCKAdditions_deprecated)
-
-- (nullable NSURL *)decodeURLFromStringForKey:(NSString *)key
-{
-    NSString *url = [self decodeStringForKey: key];
-    return url ? [NSURL URLWithString: url] : nil;
-}
-
-- (nullable NSUUID *)decodeUUIDFromStringForKey:(NSString *)key
-{
-    NSString *uuid = [self decodeStringForKey: key];
-    return uuid ? [[NSUUID alloc] initWithUUIDString: uuid] : nil;
-}
-
-- (void)encodeURLAsString:(NSURL *)url forKey:(NSString *)key
-{
-    if (url) {
-        [self encodeObject: url.absoluteString forKey: key];
-    }
-}
-
-- (void)encodeUUIDAsString:(NSUUID *)uuid forKey:(NSString *)key
-{
-    if (uuid) {
-        [self encodeObject: uuid.UUIDString forKey: key];
-    }
-}
-
-@end
-

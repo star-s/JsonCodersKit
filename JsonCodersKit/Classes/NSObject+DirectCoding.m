@@ -6,157 +6,108 @@
 //
 
 #import "NSObject+DirectCoding.h"
+#import <objc/runtime.h>
 
 @implementation NSObject (DirectCoding)
 
-#pragma mark - JCKDirectJsonDecoding
+static void * kHelperKey = &kHelperKey;
 
-+ (BOOL)jck_supportDirectDecodingFromJsonValue
++ (NSValueTransformer *)jck_directCodingHelper
 {
-    return NO;
+    id result = objc_getAssociatedObject(self, kHelperKey);
+    return result ? result : [[self superclass] jck_directCodingHelper];
 }
 
-+ (id)jck_decodeFromJsonValue:(id)value
++ (void)setJck_directCodingHelper:(NSValueTransformer *)helper
 {
-    if ([self jck_supportDirectDecodingFromJsonValue] && [value isKindOfClass: self]) {
-        return value;
-    } else {
-        return nil;
-    }
+    objc_setAssociatedObject(self, kHelperKey, helper, OBJC_ASSOCIATION_RETAIN);
 }
 
-#pragma mark - JCKDirectJsonEncoding
-
-- (BOOL)jck_supportDirectEncodingToJsonValue
+- (BOOL)jck_isValidJSONObject
 {
-    return [NSJSONSerialization isValidJSONObject: self];
-}
-
-- (id)jck_encodeToJsonValue
-{
-    if ([self jck_supportDirectEncodingToJsonValue]) {
-        return self;
-    } else {
-        return nil;
-    }
+    static NSArray *simpleJsonClasses = nil;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        simpleJsonClasses = @[[NSString class], [NSNumber class], [NSNull class]];
+    });
+    return [simpleJsonClasses containsObject: [self class]] || [NSJSONSerialization isValidJSONObject: self];
 }
 
 @end
 
 @implementation NSString (DirectCoding)
 
-#pragma mark - JCKDirectJsonDecoding
-
-+ (BOOL)jck_supportDirectDecodingFromJsonValue
++ (void)load
 {
-    return YES;
-}
-
-#pragma mark - JCKDirectJsonEncoding
-
-- (BOOL)jck_supportDirectEncodingToJsonValue
-{
-    return YES;
+    [self setJck_directCodingHelper: [[NSValueTransformer alloc] init]];
 }
 
 @end
 
 @implementation NSNumber (DirectCoding)
 
-#pragma mark - JCKDirectJsonDecoding
-
-+ (BOOL)jck_supportDirectDecodingFromJsonValue
++ (void)load
 {
-    return YES;
-}
-
-#pragma mark - JCKDirectJsonEncoding
-
-- (BOOL)jck_supportDirectEncodingToJsonValue
-{
-    return YES;
+    [self setJck_directCodingHelper: [[NSValueTransformer alloc] init]];
 }
 
 @end
 
 @implementation NSNull (DirectCoding)
 
-#pragma mark - JCKDirectJsonDecoding
-
-+ (BOOL)jck_supportDirectDecodingFromJsonValue
++ (void)load
 {
-    return YES;
-}
-
-#pragma mark - JCKDirectJsonEncoding
-
-- (BOOL)jck_supportDirectEncodingToJsonValue
-{
-    return YES;
+    [self setJck_directCodingHelper: [[NSValueTransformer alloc] init]];
 }
 
 @end
 
+#import "JCKDirectCodingHelpers.h"
+
 @implementation NSURL (DirectCoding)
 
-#pragma mark - JCKDirectJsonDecoding
-
-+ (BOOL)jck_supportDirectDecodingFromJsonValue
++ (void)load
 {
-    return YES;
-}
-
-+ (id)jck_decodeFromJsonValue:(id)value;
-{
-    if ([value isKindOfClass: [NSString class]]) {
-        return [self URLWithString: value];
-    } else {
-        return nil;
-    }
-}
-
-#pragma mark - JCKDirectJsonEncoding
-
-- (BOOL)jck_supportDirectEncodingToJsonValue
-{
-    return YES;
-}
-
-- (id)jck_encodeToJsonValue
-{
-    return self.absoluteString;
+    [self setJck_directCodingHelper: [NSValueTransformer valueTransformerForName: JCKStringToURLTransformerName]];
 }
 
 @end
 
 @implementation NSUUID (DirectCoding)
 
-#pragma mark - JCKDirectJsonDecoding
-
-+ (BOOL)jck_supportDirectDecodingFromJsonValue
++ (void)load
 {
-    return YES;
+    [self setJck_directCodingHelper: [NSValueTransformer valueTransformerForName: JCKStringToUUIDTransformerName]];
 }
 
-+ (id)jck_decodeFromJsonValue:(id)value;
+@end
+
+@implementation NSData (DirectCoding)
+
++ (void)load
 {
-    if ([value isKindOfClass: [NSString class]]) {
-        return [[self alloc] initWithUUIDString: value];
-    } else {
-        return nil;
-    }
+    [self setJck_directCodingHelper: [NSValueTransformer valueTransformerForName: JCKStringToDataTransformerName]];
 }
 
-#pragma mark - JCKDirectJsonEncoding
+@end
 
-- (BOOL)jck_supportDirectEncodingToJsonValue
+@implementation NSDate (DirectCoding)
+
++ (void)load
 {
-    return YES;
+    [self setJck_directCodingHelper: [NSValueTransformer valueTransformerForName: JCKStringToDateTransformerName]];
 }
 
-- (id)jck_encodeToJsonValue
+@end
+
+#import "Color+HexString.h"
+
+@implementation JCKColor (DirectCoding)
+
++ (void)load
 {
-    return self.UUIDString;
+    [self setJck_directCodingHelper: [NSValueTransformer valueTransformerForName: JCKStringToColorTransformerName]];
 }
 
 @end

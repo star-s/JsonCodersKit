@@ -55,8 +55,6 @@
         } else {
             [NSException raise: NSInvalidArgumentException format: @"It's not valid JSON object %@", objectForCoding];
         }
-    } else if ([[objectForCoding class] jck_supportDirectDecodingFromJsonValue]) {
-        [NSException raise: NSInvalidArgumentException format: @"Can't encode JSON primitive class %@", NSStringFromClass([objectForCoding class])];
     } else {
         [objectForCoding encodeWithCoder: self];
     }
@@ -105,20 +103,21 @@
 
 - (id)jsonObjectFromObject:(id)object
 {
-    id encodedObject = nil;
-    
-    if ([object jck_supportDirectEncodingToJsonValue]) {
-        
-        encodedObject = [object jck_encodeToJsonValue];
-        
-    } else if ([object isKindOfClass: [NSArray class]]) {
-        
-        encodedObject = [(NSArray *)object mapWithBlock: ^(id anObject) {
+    if (!object || [object jck_isValidJSONObject]) {
+        return object;
+    }
+    if ([object isKindOfClass: [NSArray class]]) {
+        return [(NSArray *)object mapWithBlock: ^(id anObject) {
             return [self jsonObjectFromObject: anObject];
         }];
-        
+    }
+    id encodedObject = nil;
+    
+    NSValueTransformer *helper = [[object class] jck_directCodingHelper];
+    
+    if (helper) {
+        encodedObject = [helper reverseTransformedValue: object];
     } else {
-        
         JCKJsonEncoder *coder = [[self.class alloc] init];
         [coder encodeRootObject: object];
         encodedObject = coder.encodedJSONObject;

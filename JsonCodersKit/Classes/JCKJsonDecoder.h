@@ -16,7 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, readonly) NSDictionary *JSONObject;
 
-- (instancetype)initWithJSONObject:(NSDictionary *)obj;
+- (instancetype)init NS_UNAVAILABLE;
+
+- (instancetype)initWithJSONObject:(NSDictionary *)obj NS_DESIGNATED_INITIALIZER;
 
 - (nullable id)decodeTopLevelObjectOfClass:(Class)aClass;
 

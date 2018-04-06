@@ -7,22 +7,10 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol JCKDirectJsonDecoding <NSObject>
+@interface NSObject (DirectCoding)
 
-+ (BOOL)jck_supportDirectDecodingFromJsonValue;
+@property (class, nullable) NSValueTransformer *jck_directCodingHelper;
 
-+ (id)jck_decodeFromJsonValue:(id)value;
-
-@end
-
-@protocol JCKDirectJsonEncoding <NSObject>
-
-- (BOOL)jck_supportDirectEncodingToJsonValue;
-
-- (id)jck_encodeToJsonValue;
-
-@end
-
-@interface NSObject (DirectCoding) <JCKDirectJsonDecoding, JCKDirectJsonEncoding>
+- (BOOL)jck_isValidJSONObject;
 
 @end
