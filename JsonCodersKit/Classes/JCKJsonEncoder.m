@@ -55,8 +55,6 @@
         } else {
             [NSException raise: NSInvalidArgumentException format: @"It's not valid JSON object %@", objectForCoding];
         }
-    } else if ([[objectForCoding class] jck_supportDirectDecodingFromJsonValue]) {
-        [NSException raise: NSInvalidArgumentException format: @"Can't encode JSON primitive class %@", NSStringFromClass([objectForCoding class])];
     } else {
         [objectForCoding encodeWithCoder: self];
     }

@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong, readonly) NSDictionary *encodedJSONObject;
 
-- (instancetype)initWithMutableDictionary:(NSMutableDictionary *)dictionary;
+- (instancetype)initWithMutableDictionary:(NSMutableDictionary *)dictionary NS_DESIGNATED_INITIALIZER;
 
 - (void)encodeRootObject:(id <NSCoding>)rootObject;
 
