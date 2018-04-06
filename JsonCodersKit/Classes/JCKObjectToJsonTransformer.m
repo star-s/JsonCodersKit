@@ -22,23 +22,25 @@ NSValueTransformerName const JCKObjectToJsonTransformerName = @"JCKObjectToJsonT
 
 - (id)transformedValue:(id)value
 {
-    id result = nil;
-    
-    if ([value jck_supportDirectEncodingToJsonValue]) {
-        //
-        result = [value jck_encodeToJsonValue];
-        
-    } else if ([value isKindOfClass: [NSArray class]]) {
-        //
-        result = [value transformedArray: self];
-
-    } else if ([value conformsToProtocol: @protocol(NSCoding)]) {
-        //
-        JCKJsonEncoder *coder = [[JCKJsonEncoder alloc] init];
-        [coder encodeRootObject: value];
-        result = coder.encodedJSONObject;
+    if ([value jck_isValidJSONObject]) {
+        return value;
     }
-    return result;
+    if ([value isKindOfClass: [NSArray class]]) {
+        return [value transformedArray: self];
+    } else {
+        id result = nil;
+        
+        NSValueTransformer *helper = [[value class] jck_directCodingHelper];
+        
+        if (helper) {
+            result = [helper reverseTransformedValue: value];
+        } else if ([value conformsToProtocol: @protocol(NSCoding)]) {
+            JCKJsonEncoder *coder = [[JCKJsonEncoder alloc] init];
+            [coder encodeRootObject: value];
+            result = coder.encodedJSONObject;
+        }
+        return result;
+    }
 }
 
 @end

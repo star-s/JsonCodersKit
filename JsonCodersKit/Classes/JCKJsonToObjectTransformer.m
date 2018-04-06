@@ -36,44 +36,38 @@
 
 - (id)transformedValue:(id)value
 {
-    id result = nil;
-    
-    if ([value isKindOfClass: [NSArray class]]) {
-        //
-        result = [value transformedArray: self];
-        
-    } else if ([self isValidJSONObject: value]) {
-        // Forward transformation Json -> Obj
-        if ([value isKindOfClass: self.transformedValueClass]) {
-            result = value;
-        } else if ([self.transformedValueClass jck_supportDirectDecodingFromJsonValue]) {
-            result = [self.transformedValueClass jck_decodeFromJsonValue: value];
-        } else if ([value isKindOfClass: [NSDictionary class]]) {
-            JCKJsonDecoder *coder = [[JCKJsonDecoder alloc] initWithJSONObject: value];
-            result = [coder decodeTopLevelObjectOfClass: self.transformedValueClass];
-        }
-    } else if ([value isKindOfClass: self.transformedValueClass]) {
-        // Reverse transformation Obj -> Json
-        if ([value jck_supportDirectEncodingToJsonValue]) {
-            result = [value jck_encodeToJsonValue];
-        } else {
-            JCKJsonEncoder *coder = [[JCKJsonEncoder alloc] init];
-            [coder encodeRootObject: value];
-            result = [coder encodedJSONObject];
-        }
+    if ([value isKindOfClass: self.transformedValueClass]) {
+        return value;
     }
-    return result;
-}
-
-- (BOOL)isValidJSONObject:(id)obj
-{
-    static NSArray *simpleJsonClasses = nil;
-    
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        simpleJsonClasses = @[[NSString class], [NSNumber class], [NSNull class]];
-    });
-    return [simpleJsonClasses containsObject: [obj class]] || [NSJSONSerialization isValidJSONObject: obj];
+    if ([value isKindOfClass: [NSArray class]]) {
+        return [value transformedArray: self];
+    } else {
+        id result = nil;
+        
+        NSValueTransformer *helper = [self.transformedValueClass jck_directCodingHelper];
+        
+        if ([value jck_isValidJSONObject]) {
+            // Forward transformation Json -> Obj
+            if ([value isKindOfClass: self.transformedValueClass]) {
+                result = value;
+            } else if (helper) {
+                result = [helper transformedValue: value];
+            } else if ([value isKindOfClass: [NSDictionary class]]) {
+                JCKJsonDecoder *coder = [[JCKJsonDecoder alloc] initWithJSONObject: value];
+                result = [coder decodeTopLevelObjectOfClass: self.transformedValueClass];
+            }
+        } else if ([value isKindOfClass: self.transformedValueClass]) {
+            // Reverse transformation Obj -> Json
+            if (helper) {
+                result = [helper reverseTransformedValue: value];
+            } else {
+                JCKJsonEncoder *coder = [[JCKJsonEncoder alloc] init];
+                [coder encodeRootObject: value];
+                result = [coder encodedJSONObject];
+            }
+        }
+        return result;
+    }
 }
 
 @end

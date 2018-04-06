@@ -1,6 +1,6 @@
 {
   "name": "JsonCodersKit",
-  "version": "0.5.5",
+  "version": "0.6.0",
   "summary": "Library for encode objects to JSON compliant NSDictionary and vice versa",
   "description": "NSCoder subclasses for decode/encode objects conforming NSCoding protocol to JSON compliant NSDictionary",
   "homepage": "https://github.com/star-s/JsonCodersKit",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/star-s/JsonCodersKit.git",
-    "tag": "0.5.5"
+    "tag": "0.6.0"
   },
   "platforms": {
     "ios": "8.0",
