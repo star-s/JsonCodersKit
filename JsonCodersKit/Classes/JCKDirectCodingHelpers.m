@@ -197,7 +197,7 @@ NSValueTransformerName const JCKStringToColorTransformerName = @"JCKStringToColo
 
 - (JCKColor *)valueFromString:(NSString *)string
 {
-    return [JCKColor jck_colorWithHexString: string];
+    return string.length > 0 ? [JCKColor jck_colorWithHexString: string] : nil;
 }
 
 - (NSString *)stringFromValue:(JCKColor *)value
