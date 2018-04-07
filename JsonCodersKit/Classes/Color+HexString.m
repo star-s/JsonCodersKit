@@ -64,7 +64,13 @@
     
     CGFloat red, green, blue, alpha;
     
-    if ([self getRed: &red green: &green blue: &blue alpha: &alpha]) {
+#if TARGET_OS_MAC && !TARGET_OS_IPHONE
+    BOOL colorsAreObtained = YES;
+    [self getRed: &red green: &green blue: &blue alpha: &alpha];
+#else
+    BOOL colorsAreObtained = [self getRed: &red green: &green blue: &blue alpha: &alpha];
+#endif
+    if (colorsAreObtained) {
         //
         result = @"#";
         
