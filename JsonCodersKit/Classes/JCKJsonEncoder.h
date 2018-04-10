@@ -16,4 +16,6 @@
 
 - (void)encodeRootObject:(id <NSCoding>)rootObject;
 
++ (void)setEncodeNilValue:(BOOL)encodeNil;
+
 @end
