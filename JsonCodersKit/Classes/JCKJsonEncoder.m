@@ -18,6 +18,13 @@
 
 @implementation JCKJsonEncoder
 
+static BOOL encodeNilValue = NO;
+
++ (void)setEncodeNilValue:(BOOL)encodeNil
+{
+    encodeNilValue = encodeNil;
+}
+
 - (instancetype)init
 {
     return [self initWithMutableDictionary: [NSMutableDictionary dictionary]];
@@ -62,8 +69,10 @@
 
 - (void)encodeObject:(nullable id)objv forKey:(NSString *)key
 {
-    objv = objv ? objv : [NSNull null];
-    [self.dictionary setObject: [self jsonObjectFromObject: objv] forKey: key];
+    if (encodeNilValue) {
+        objv = objv ? objv : [NSNull null];
+    }
+    self.dictionary[key] = [self jsonObjectFromObject: objv];
 }
 
 - (void)encodeBool:(BOOL)boolv forKey:(NSString *)key

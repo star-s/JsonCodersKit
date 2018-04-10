@@ -13,7 +13,7 @@
 {
     if ([value isKindOfClass: [NSString class]]) {
         return [self valueFromString: value];
-    } else if ([[value class] isKindOfClass: [self.class transformedValueClass]]) {
+    } else if ([[value class] isSubclassOfClass: [self.class transformedValueClass]]) {
         return [self stringFromValue: value];
     }
     return nil;
