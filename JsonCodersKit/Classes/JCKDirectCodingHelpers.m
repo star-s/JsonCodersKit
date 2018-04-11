@@ -89,7 +89,7 @@ NSValueTransformerName const JCKStringToDateTransformerName = @"JCKStringToDateT
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     
     [formatter setLocale: [[NSLocale alloc] initWithLocaleIdentifier: @"en_US_POSIX"]];
-    [formatter setDateFormat: @"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"];
+    [formatter setDateFormat: @"yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSSZZZZZ"];
     [formatter setTimeZone: [NSTimeZone timeZoneForSecondsFromGMT: 0]];
     
     return [self initWithFormatter: formatter];
