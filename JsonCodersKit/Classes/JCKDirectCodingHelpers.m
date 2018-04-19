@@ -86,13 +86,17 @@ NSValueTransformerName const JCKStringToDateTransformerName = @"JCKStringToDateT
 
 - (instancetype)init
 {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    
-    [formatter setLocale: [[NSLocale alloc] initWithLocaleIdentifier: @"en_US_POSIX"]];
-    [formatter setDateFormat: @"yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSSZZZZZ"];
-    [formatter setTimeZone: [NSTimeZone timeZoneForSecondsFromGMT: 0]];
-    
-    return [self initWithFormatter: formatter];
+    if (@available(iOS 10.0, macOS 10.12, tvOS 10.0, watchOS 3.0)) {
+        return [self initWithFormatter: [[NSISO8601DateFormatter alloc] init]];
+    } else {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        
+        formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier: @"en_US_POSIX"];
+        formatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssXXXXX";
+        formatter.timeZone = [NSTimeZone timeZoneForSecondsFromGMT: 0];
+        
+        return [self initWithFormatter: formatter];
+    }
 }
 
 - (instancetype)initWithFormatter:(NSFormatter *)formatter
