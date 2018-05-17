@@ -10,6 +10,29 @@
 #import "NSObject+DirectCoding.h"
 #import "CollectionMapping.h"
 #import "NSNull+NumericExtension.h"
+#import <objc/runtime.h>
+
+@implementation NSObject (DecodingHelper)
+
+static void * kHelperKey = &kHelperKey;
+
++ (void)load
+{
+    // TODO: setup default helper
+}
+
++ (id <JCKJsonDecoderDelegate>)jck_decodingHelper
+{
+    id result = objc_getAssociatedObject(self, kHelperKey);
+    return result ? result : [[self superclass] jck_decodingHelper];
+}
+
++ (void)setJck_decodingHelper:(id<JCKJsonDecoderDelegate>)helper
+{
+    objc_setAssociatedObject(self, kHelperKey, helper, OBJC_ASSOCIATION_RETAIN);
+}
+
+@end
 
 static BOOL nullIsTheValue = NO;
 
@@ -96,6 +119,9 @@ static BOOL nullIsTheValue = NO;
 
 - (id)decodeTopLevelObjectOfClass:(Class)aClass
 {
+    if (!self.delegate) {
+        self.delegate = [aClass jck_decodingHelper];
+    }
     id decodedObject = [[aClass alloc] initWithCoder: self];
     return [decodedObject awakeAfterUsingCoder: self];
 }
@@ -121,17 +147,22 @@ static BOOL nullIsTheValue = NO;
     }
     id result = nil;
     
-    NSValueTransformer *helper = [aClass jck_directCodingHelper];
-    
-    if (helper) { // Decode simple classes (NSURL, NSUUID, ...)
-        result = [helper transformedValue: rawValue];
-    } else if ([aClass conformsToProtocol: @protocol(NSCoding)] && [rawValue isKindOfClass: [NSDictionary class]]) { // Decode complex classes
-        JCKJsonDecoder *decoder = [[self.class alloc] initWithJSONObject: rawValue];
-        result = [decoder decodeTopLevelObjectOfClass: aClass];
-#if DEBUG
+    if (self.delegate) {
+        result = [self.delegate decoder: self convertValue: rawValue toObjectOfClass: aClass];
     } else {
-        NSLog(@"%@ - Can't convert value: %@ to class: %@", self, rawValue, NSStringFromClass(aClass));
+        //
+        NSValueTransformer *helper = [aClass jck_directCodingHelper];
+        
+        if (helper) { // Decode simple classes (NSURL, NSUUID, ...)
+            result = [helper transformedValue: rawValue];
+        } else if ([aClass conformsToProtocol: @protocol(NSCoding)] && [rawValue isKindOfClass: [NSDictionary class]]) { // Decode complex classes
+            JCKJsonDecoder *decoder = [[self.class alloc] initWithJSONObject: rawValue];
+            result = [decoder decodeTopLevelObjectOfClass: aClass];
+#if DEBUG
+        } else {
+            NSLog(@"%@ - Can't convert value: %@ to class: %@", self, rawValue, NSStringFromClass(aClass));
 #endif
+        }
     }
     return result;
 }

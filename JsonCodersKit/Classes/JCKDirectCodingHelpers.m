@@ -86,7 +86,7 @@ NSValueTransformerName const JCKStringToDateTransformerName = @"JCKStringToDateT
 
 - (instancetype)init
 {
-    if (@available(iOS 10.0, macOS 10.12, tvOS 10.0, watchOS 3.0)) {
+    if (@available(iOS 10.0, macOS 10.12, tvOS 10.0, watchOS 3.0, *)) {
         return [self initWithFormatter: [[NSISO8601DateFormatter alloc] init]];
     } else {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];

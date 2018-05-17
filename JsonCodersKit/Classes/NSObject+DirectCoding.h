@@ -9,7 +9,7 @@
 
 @interface NSObject (DirectCoding)
 
-@property (class, nullable) NSValueTransformer *jck_directCodingHelper;
+@property (class, nullable) NSValueTransformer *jck_directCodingHelper DEPRECATED_MSG_ATTRIBUTE("Don't use this");
 
 - (BOOL)jck_isValidJSONObject;
 
