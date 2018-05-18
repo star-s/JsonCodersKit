@@ -84,7 +84,8 @@ NSValueTransformerName const JCKStringToUUIDTransformerName = @"JCKStringToUUIDT
 
 - (NSString *)stringFromValue:(NSUUID *)value
 {
-    return self.convertToLowercaseString ? value.UUIDString.lowercaseString : value.UUIDString;
+    NSString *result = value.UUIDString;
+    return self.convertToLowercaseString ? result.lowercaseString : result;
 }
 
 @end
