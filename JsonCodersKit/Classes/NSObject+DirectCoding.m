@@ -71,11 +71,45 @@ static void * kHelperKey = &kHelperKey;
 
 @end
 
+@interface JCKNumberCodingHelper : NSValueTransformer
+@end
+
+@implementation JCKNumberCodingHelper
+
++ (Class)transformedValueClass
+{
+    return [NSNumber class];
+}
+
+- (NSNumber *)transformedValue:(id)value
+{
+    if ([value isKindOfClass: [NSNull class]]) {
+        return nil;
+    }
+    if ([value isKindOfClass: [self.class transformedValueClass]]) {
+        return value;
+    }
+    return nil;
+}
+
+- (id)reverseTransformedValue:(id)value
+{
+    if ([value isKindOfClass: [NSNull class]]) {
+        return nil;
+    }
+    if ([value isKindOfClass: [self.class transformedValueClass]]) {
+        return [value stringValue];
+    }
+    return nil;
+}
+
+@end
+
 @implementation NSNumber (DirectCoding)
 
 + (void)load
 {
-    [self setJck_directCodingHelper: [[NSValueTransformer alloc] init]]; // FIXME: check NSNull !!!
+    [self setJck_directCodingHelper: [[JCKNumberCodingHelper alloc] init]];
 }
 
 @end
