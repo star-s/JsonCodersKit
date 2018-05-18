@@ -63,6 +63,20 @@ NSValueTransformerName const JCKStringToUUIDTransformerName = @"JCKStringToUUIDT
     return [NSUUID class];
 }
 
+- (instancetype)init
+{
+    return [self initWithConversionToLowercaseString: NO];
+}
+
+- (instancetype)initWithConversionToLowercaseString:(BOOL)convert
+{
+    self = [super init];
+    if (self) {
+        _convertToLowercaseString = convert;
+    }
+    return self;
+}
+
 - (NSUUID *)valueFromString:(NSString *)string
 {
     return [[NSUUID alloc] initWithUUIDString: string];
@@ -70,7 +84,7 @@ NSValueTransformerName const JCKStringToUUIDTransformerName = @"JCKStringToUUIDT
 
 - (NSString *)stringFromValue:(NSUUID *)value
 {
-    return value.UUIDString;
+    return self.convertToLowercaseString ? value.UUIDString.lowercaseString : value.UUIDString;
 }
 
 @end

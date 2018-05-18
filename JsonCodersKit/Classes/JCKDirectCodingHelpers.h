@@ -22,6 +22,11 @@ FOUNDATION_EXPORT NSValueTransformerName const JCKStringToURLTransformerName;
 FOUNDATION_EXPORT NSValueTransformerName const JCKStringToUUIDTransformerName;
 
 @interface JCKStringToUUIDTransformer : JCKStringTransformer
+
+@property (nonatomic, readonly) BOOL convertToLowercaseString;
+
+- (instancetype)initWithConversionToLowercaseString:(BOOL)convert;
+
 @end
 
 FOUNDATION_EXPORT NSValueTransformerName const JCKStringToDateTransformerName;
