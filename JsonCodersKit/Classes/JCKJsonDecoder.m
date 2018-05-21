@@ -12,13 +12,15 @@
 #import "NSNull+NumericExtension.h"
 #import <objc/runtime.h>
 
+#import "JCKDefaultDecodingHelper.h"
+
 @implementation NSObject (DecodingHelper)
 
 static void * kHelperKey = &kHelperKey;
 
 + (void)load
 {
-    // TODO: setup default helper
+    self.jck_decodingHelper = [[JCKDefaultDecodingHelper alloc] init];
 }
 
 + (id <JCKJsonDecoderDelegate>)jck_decodingHelper

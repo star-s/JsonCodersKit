@@ -11,13 +11,15 @@
 #import "CollectionMapping.h"
 #import <objc/runtime.h>
 
+#import "JCKDefaultEncodingHelper.h"
+
 @implementation NSObject (EncodingHelper)
 
 static void * kHelperKey = &kHelperKey;
 
 + (void)load
 {
-    // TODO: setup default helper
+    self.jck_encodingHelper = [[JCKDefaultEncodingHelper alloc] init];
 }
 
 + (id <JCKJsonEncoderDelegate>)jck_encodingHelper
