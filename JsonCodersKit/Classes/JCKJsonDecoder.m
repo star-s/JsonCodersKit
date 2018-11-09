@@ -8,16 +8,8 @@
 
 #import "JCKJsonDecoder.h"
 #import "CollectionMapping.h"
-#import "NSNull+NumericExtension.h"
-
-static BOOL nullIsTheValue = NO;
 
 @implementation JCKJsonDecoder
-
-+ (void)setDecodeNullAsValue:(BOOL)nullValue
-{
-    nullIsTheValue = nullValue;
-}
 
 - (instancetype)initWithJSONObject:(NSDictionary *)obj
 {
@@ -36,21 +28,13 @@ static BOOL nullIsTheValue = NO;
 
 - (BOOL)containsValueForKey:(NSString *)key
 {
-    if (nullIsTheValue) {
-        return [self.JSONObject.allKeys containsObject: key];
-    } else {
-        return [self decodeObjectForKey: key] != nil;
-    }
+    return [self.JSONObject.allKeys containsObject: key];
 }
 
 - (id)decodeObjectForKey:(NSString *)key
 {
-    if (nullIsTheValue) {
-        return [self.JSONObject objectForKey: key];
-    } else {
-        id value = [self.JSONObject objectForKey: key];
-        return [value isEqual: [NSNull null]] ? nil : value;
-    }
+    id value = [self.JSONObject objectForKey: key];
+    return [value isEqual: [NSNull null]] ? nil : value;
 }
 
 - (BOOL)decodeBoolForKey:(NSString *)key
@@ -169,7 +153,7 @@ static BOOL nullIsTheValue = NO;
 + (nullable NSValueTransformer *)transformerForClass:(Class)aClass
 {
     NSString *key = NSStringFromClass(aClass);
-    NSValueTransformer *result = [self.transformersMap objectForKey: key];
+    id result = [self.transformersMap objectForKey: key];
     if (!result) {
         static NSDictionary *defaultTransformers = nil;
         static dispatch_once_t onceToken;

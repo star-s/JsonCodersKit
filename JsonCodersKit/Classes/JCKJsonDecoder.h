@@ -20,8 +20,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (nullable id)decodeTopLevelObjectOfClass:(Class)aClass;
 
-+ (void)setDecodeNullAsValue:(BOOL)nullValue;
-
 @end
 
 @interface JCKJsonDecoder (Transformers)

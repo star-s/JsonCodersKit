@@ -143,10 +143,12 @@ static BOOL encodeNilValue = NO;
 + (NSArray <Class> *)classHierarchyFor:(Class)aClass
 {
     NSMutableArray <Class> *classes = [NSMutableArray array];
-    do {
-        [classes addObject: aClass];
-        aClass = [aClass superclass];
-    } while (aClass);
+    if (aClass) {
+        do {
+            [classes addObject: aClass];
+            aClass = [aClass superclass];
+        } while (aClass);
+    }
     return [classes copy];
 }
 
