@@ -8,17 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@class JCKJsonEncoder;
-
-@protocol JCKJsonEncoderDelegate <NSObject>
-
-- (id)encoder:(JCKJsonEncoder *)coder encodeJsonObjectFromValue:(id)value;
-
-@end
+NS_ASSUME_NONNULL_BEGIN
 
 @interface JCKJsonEncoder : NSCoder
-
-@property (nonatomic, weak) id <JCKJsonEncoderDelegate> delegate;
 
 @property (nonatomic, strong, readonly) NSDictionary *encodedJSONObject;
 
@@ -30,8 +22,14 @@
 
 @end
 
-@interface NSObject (EncodingHelper)
+@interface JCKJsonEncoder (Transformers)
 
-@property (class, nullable) id <JCKJsonEncoderDelegate> jck_encodingHelper;
+//+ (void)setTransformer:(nullable id)transformerOrName forClass:(Class)aClass;
+
++ (nullable NSValueTransformer *)transformerForClass:(Class)aClass;
+
++ (nullable NSValueTransformer *)reversedTransformerForClass:(Class)aClass;
 
 @end
+
+NS_ASSUME_NONNULL_END

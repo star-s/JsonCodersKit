@@ -7,34 +7,8 @@
 //
 
 #import "JCKJsonDecoder.h"
-#import "NSObject+DirectCoding.h"
 #import "CollectionMapping.h"
 #import "NSNull+NumericExtension.h"
-#import <objc/runtime.h>
-
-#import "JCKDefaultDecodingHelper.h"
-
-@implementation NSObject (DecodingHelper)
-
-static void * kHelperKey = &kHelperKey;
-
-+ (void)load
-{
-    self.jck_decodingHelper = [[JCKDefaultDecodingHelper alloc] init];
-}
-
-+ (id <JCKJsonDecoderDelegate>)jck_decodingHelper
-{
-    id result = objc_getAssociatedObject(self, kHelperKey);
-    return result ? result : [[self superclass] jck_decodingHelper];
-}
-
-+ (void)setJck_decodingHelper:(id<JCKJsonDecoderDelegate>)helper
-{
-    objc_setAssociatedObject(self, kHelperKey, helper, OBJC_ASSOCIATION_RETAIN);
-}
-
-@end
 
 static BOOL nullIsTheValue = NO;
 
@@ -121,9 +95,6 @@ static BOOL nullIsTheValue = NO;
 
 - (id)decodeTopLevelObjectOfClass:(Class)aClass
 {
-    if (!self.delegate) {
-        self.delegate = [aClass jck_decodingHelper];
-    }
     id decodedObject = [[aClass alloc] initWithCoder: self];
     return [decodedObject awakeAfterUsingCoder: self];
 }
@@ -144,29 +115,82 @@ static BOOL nullIsTheValue = NO;
 
 - (id)convertRawValue:(id)rawValue toObjectOfClass:(Class)aClass
 {
-    if (!rawValue || [rawValue isKindOfClass: aClass]) { // No decoding needed
+    if (!rawValue || [rawValue isKindOfClass: aClass]) { // No decoding needed ???
         return rawValue;
     }
     id result = nil;
     
-    if (self.delegate) {
-        result = [self.delegate decoder: self convertValue: rawValue toObjectOfClass: aClass];
-    } else {
-        //
-        NSValueTransformer *helper = [aClass jck_directCodingHelper];
-        
-        if (helper) { // Decode simple classes (NSURL, NSUUID, ...)
-            result = [helper transformedValue: rawValue];
-        } else if ([aClass conformsToProtocol: @protocol(NSCoding)] && [rawValue isKindOfClass: [NSDictionary class]]) { // Decode complex classes
-            JCKJsonDecoder *decoder = [[self.class alloc] initWithJSONObject: rawValue];
-            result = [decoder decodeTopLevelObjectOfClass: aClass];
+    NSValueTransformer *helper = [self.class transformerForClass: aClass];
+    
+    if (helper) { // Decode simple classes (NSURL, NSUUID, ...)
+        result = [helper transformedValue: rawValue];
+    } else if ([aClass conformsToProtocol: @protocol(NSCoding)] && [rawValue isKindOfClass: [NSDictionary class]]) { // Decode complex classes
+        JCKJsonDecoder *decoder = [[self.class alloc] initWithJSONObject: rawValue];
+        result = [decoder decodeTopLevelObjectOfClass: aClass];
 #if DEBUG
-        } else {
-            NSLog(@"%@ - Can't convert value: %@ to class: %@", self, rawValue, NSStringFromClass(aClass));
+    } else {
+        NSLog(@"%@ - Can't convert value: %@ to class: %@", self, rawValue, NSStringFromClass(aClass));
 #endif
-        }
     }
     return result;
+}
+
+@end
+
+#import <objc/runtime.h>
+#import "JCKDirectCodingHelpers.h"
+
+@implementation JCKJsonDecoder (Transformers)
+
++ (NSMapTable *)transformersMap
+{
+    @synchronized (self) {
+        NSMapTable *result = objc_getAssociatedObject(self, _cmd);
+        if (!result) {
+            result = [NSMapTable strongToStrongObjectsMapTable];
+            objc_setAssociatedObject(self, _cmd, result, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        }
+        return result;
+    }
+}
+
++ (void)setTransformer:(id)obj forClass:(Class)aClass
+{
+    NSString *key = NSStringFromClass(aClass);
+    NSMapTable *map = self.transformersMap;
+    if (obj) {
+        NSAssert([obj isKindOfClass: [NSString class]] || [obj isKindOfClass: [NSValueTransformer class]], @"%@ is not NSString or NSValueTransformer", obj);
+        [map setObject: obj forKey: key];
+    } else {
+        [map removeObjectForKey: key];
+    }
+}
+
++ (nullable NSValueTransformer *)transformerForClass:(Class)aClass
+{
+    NSString *key = NSStringFromClass(aClass);
+    NSValueTransformer *result = [self.transformersMap objectForKey: key];
+    if (!result) {
+        static NSDictionary *defaultTransformers = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            defaultTransformers = @{
+                                    @"NSString"     : JCKStringFromJsonTransformerName,
+                                    @"NSNull"       : JCKNullFromJsonTransformerName,
+                                    @"NSNumber"     : JCKNumberFromJsonTransformerName,
+                                    @"NSDictionary" : JCKDictionaryFromJsonTransformerName,
+                                    @"NSArray"      : JCKArrayFromJsonTransformerName,
+                                    @"NSURL"        : JCKURLFromJsonTransformerName,
+                                    @"NSUUID"       : JCKUUIDFromJsonTransformerName,
+                                    @"NSDate"       : JCKDateFromJsonTransformerName,
+                                    @"NSData"       : JCKDataFromJsonTransformerName,
+                                    @"UIColor"      : JCKColorFromJsonTransformerName,
+                                    @"NSColor"      : JCKColorFromJsonTransformerName
+                                    };
+        });
+        result = defaultTransformers[key];
+    }
+    return [result isKindOfClass: [NSString class]] ? [NSValueTransformer valueTransformerForName: result] : result;
 }
 
 @end

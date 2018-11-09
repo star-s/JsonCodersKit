@@ -7,21 +7,43 @@
 
 #import <Foundation/Foundation.h>
 
-@interface JCKStringTransformer : NSValueTransformer
+#pragma mark - JSON values without coding
 
-- (id)valueFromString:(NSString *)string;
-- (NSString *)stringFromValue:(id)value;
+extern NSValueTransformerName const JCKStringFromJsonTransformerName;
 
+@interface JCKStringFromJsonTransformer : NSValueTransformer
 @end
 
-FOUNDATION_EXPORT NSValueTransformerName const JCKStringToURLTransformerName;
+extern NSValueTransformerName const JCKNullFromJsonTransformerName;
 
-@interface JCKStringToURLTransformer : JCKStringTransformer
+@interface JCKNullFromJsonTransformer : NSValueTransformer
 @end
 
-FOUNDATION_EXPORT NSValueTransformerName const JCKStringToUUIDTransformerName;
+extern NSValueTransformerName const JCKNumberFromJsonTransformerName;
 
-@interface JCKStringToUUIDTransformer : JCKStringTransformer
+@interface JCKNumberFromJsonTransformer : NSValueTransformer
+@end
+
+extern NSValueTransformerName const JCKDictionaryFromJsonTransformerName;
+
+@interface JCKDictionaryFromJsonTransformer : NSValueTransformer
+@end
+
+extern NSValueTransformerName const JCKArrayFromJsonTransformerName;
+
+@interface JCKArrayFromJsonTransformer : NSValueTransformer
+@end
+
+#pragma mark - JSON values with coding
+
+extern NSValueTransformerName const JCKURLFromJsonTransformerName;
+
+@interface JCKURLFromJsonTransformer : NSValueTransformer
+@end
+
+extern NSValueTransformerName const JCKUUIDFromJsonTransformerName;
+
+@interface JCKUUIDFromJsonTransformer : NSValueTransformer
 
 @property (nonatomic, readonly) BOOL convertToLowercaseString;
 
@@ -29,33 +51,38 @@ FOUNDATION_EXPORT NSValueTransformerName const JCKStringToUUIDTransformerName;
 
 @end
 
-FOUNDATION_EXPORT NSValueTransformerName const JCKStringToDateTransformerName;
+extern NSValueTransformerName const JCKDateFromJsonTransformerName;
 
-@interface JCKStringToDateTransformer : JCKStringTransformer
+@interface JCKDateFromJsonTransformer : NSValueTransformer
 
 @property (nonatomic, readonly) NSFormatter *formatter;
 
-- (instancetype)initWithFormatter:(NSFormatter *)formatter NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithFormatter:(NSFormatter *)formatter;
 
 @end
 
-FOUNDATION_EXPORT NSValueTransformerName const JCKStringToDataTransformerName;
+extern NSValueTransformerName const JCKUnixDateFromJsonTransformerName;
 
-@interface JCKStringToDataTransformer : JCKStringTransformer
+@interface JCKUnixDateFromJsonTransformer : NSValueTransformer
+@end
+
+extern NSValueTransformerName const JCKDataFromJsonTransformerName;
+
+@interface JCKDataFromJsonTransformer : NSValueTransformer
 
 @property (nonatomic, readonly) NSDataBase64DecodingOptions decodingOptions;
 @property (nonatomic, readonly) NSDataBase64EncodingOptions encodingOptions;
 
-- (instancetype)initWithDecodingOptions:(NSDataBase64DecodingOptions)decOpts encodingOptions:(NSDataBase64EncodingOptions)encOpts NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithDecodingOptions:(NSDataBase64DecodingOptions)decOpts encodingOptions:(NSDataBase64EncodingOptions)encOpts;
 
 @end
 
-FOUNDATION_EXPORT NSValueTransformerName const JCKStringToColorTransformerName;
+extern NSValueTransformerName const JCKColorFromJsonTransformerName;
 
-@interface JCKStringToColorTransformer : JCKStringTransformer
+@interface JCKColorFromJsonTransformer : NSValueTransformer
 
 @property (nonatomic, readonly) BOOL exportAlpha;
 
-- (instancetype)initWithExportAlpha:(BOOL)value NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithExportAlpha:(BOOL)value;
 
 @end

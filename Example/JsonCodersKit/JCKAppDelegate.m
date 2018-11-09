@@ -15,8 +15,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    NSValueTransformer *dateCodingHelper = [[JCKStringToDateTransformer alloc] initWithFormatter: [[NSISO8601DateFormatter alloc] init]];
-    [NSDate setJck_directCodingHelper: dateCodingHelper];
+    //NSValueTransformer *dateCodingHelper = [[JCKStringToDateTransformer alloc] initWithFormatter: [[NSISO8601DateFormatter alloc] init]];
+    //[NSDate setJck_directCodingHelper: dateCodingHelper];
+    [JCKJsonDecoder setTransformer: JCKUnixDateFromJsonTransformerName forClass: [NSDate class]];
     return YES;
 }
 

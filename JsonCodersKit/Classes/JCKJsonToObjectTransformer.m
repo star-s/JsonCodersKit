@@ -10,7 +10,6 @@
 #import "JCKJsonDecoder.h"
 #import "JCKJsonEncoder.h"
 #import "CollectionMapping.h"
-#import "NSObject+DirectCoding.h"
 
 @implementation JCKJsonToObjectTransformer
 
@@ -34,9 +33,11 @@
     return self;
 }
 
+// decode json
 - (id)transformedValue:(id)value
 {
-    if ([value isKindOfClass: self.transformedValueClass]) {
+    Class resultValueClass = self.transformedValueClass;
+    if ([value isKindOfClass: resultValueClass]) {
         return value;
     }
     if ([value isKindOfClass: [NSArray class]]) {
@@ -44,26 +45,38 @@
     } else {
         id result = nil;
         
-        NSValueTransformer *helper = [self.transformedValueClass jck_directCodingHelper];
-        
-        if ([value jck_isValidJSONObject]) {
-            // Forward transformation Json -> Obj
-            if ([value isKindOfClass: self.transformedValueClass]) {
-                result = value;
-            } else if (helper) {
-                result = [helper transformedValue: value];
-            } else if ([value isKindOfClass: [NSDictionary class]]) {
-                JCKJsonDecoder *coder = [[JCKJsonDecoder alloc] initWithJSONObject: value];
-                result = [coder decodeTopLevelObjectOfClass: self.transformedValueClass];
-            }
-        } else if ([value isKindOfClass: self.transformedValueClass]) {
+        NSValueTransformer *helper = [JCKJsonDecoder transformerForClass: resultValueClass];
+        if (helper) {
+            result = [helper transformedValue: value];
+        } else if ([value isKindOfClass: [NSDictionary class]]) {
+            JCKJsonDecoder *coder = [[JCKJsonDecoder alloc] initWithJSONObject: value];
+            result = [coder decodeTopLevelObjectOfClass: resultValueClass];
+        }
+        return result;
+    }
+}
+
+// encode json
+- (id)reverseTransformedValue:(id)value
+{
+    if ([value isKindOfClass: [NSArray class]]) {
+        return [value transformedArray: self reverseTransformation: YES];
+    } else {
+        id result = nil;
+        if ([value isKindOfClass: self.transformedValueClass]) {
             // Reverse transformation Obj -> Json
-            if (helper) {
-                result = [helper reverseTransformedValue: value];
+            NSValueTransformer *encoderHelper = [JCKJsonEncoder transformerForClass: [value class]];
+            if (encoderHelper) {
+                result = [encoderHelper transformedValue: value];
             } else {
-                JCKJsonEncoder *coder = [[JCKJsonEncoder alloc] init];
-                [coder encodeRootObject: value];
-                result = [coder encodedJSONObject];
+                NSValueTransformer *helper = [JCKJsonEncoder reversedTransformerForClass: [value class]];
+                if (helper) {
+                    result = [helper reverseTransformedValue: value];
+                } else if ([value conformsToProtocol: @protocol(NSCoding)]) {
+                    JCKJsonEncoder *coder = [[JCKJsonEncoder alloc] init];
+                    [coder encodeRootObject: value];
+                    result = coder.encodedJSONObject;
+                }
             }
         }
         return result;

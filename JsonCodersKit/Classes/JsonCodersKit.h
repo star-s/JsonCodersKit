@@ -20,8 +20,6 @@ FOUNDATION_EXPORT const unsigned char JsonCodersKitVersionString[];
 #import <JsonCodersKit/CollectionMapping.h>
 #import <JsonCodersKit/Color+HexString.h>
 #import <JsonCodersKit/JCKCompositeTransformer.h>
-#import <JsonCodersKit/JCKDefaultDecodingHelper.h>
-#import <JsonCodersKit/JCKDefaultEncodingHelper.h>
 #import <JsonCodersKit/JCKDirectCodingHelpers.h>
 #import <JsonCodersKit/JCKJsonDecoder.h>
 #import <JsonCodersKit/JCKJsonEncoder.h>
@@ -29,4 +27,3 @@ FOUNDATION_EXPORT const unsigned char JsonCodersKitVersionString[];
 #import <JsonCodersKit/JCKObjectToJsonTransformer.h>
 #import <JsonCodersKit/NSCoder+JCKAdditions.h>
 #import <JsonCodersKit/NSNull+NumericExtension.h>
-#import <JsonCodersKit/NSObject+DirectCoding.h>

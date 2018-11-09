@@ -7,33 +7,7 @@
 //
 
 #import "JCKJsonEncoder.h"
-#import "NSObject+DirectCoding.h"
 #import "CollectionMapping.h"
-#import <objc/runtime.h>
-
-#import "JCKDefaultEncodingHelper.h"
-
-@implementation NSObject (EncodingHelper)
-
-static void * kHelperKey = &kHelperKey;
-
-+ (void)load
-{
-    self.jck_encodingHelper = [[JCKDefaultEncodingHelper alloc] init];
-}
-
-+ (id <JCKJsonEncoderDelegate>)jck_encodingHelper
-{
-    id result = objc_getAssociatedObject(self, kHelperKey);
-    return result ? result : [[self superclass] jck_encodingHelper];
-}
-
-+ (void)setJck_encodingHelper:(id<JCKJsonEncoderDelegate>)helper
-{
-    objc_setAssociatedObject(self, kHelperKey, helper, OBJC_ASSOCIATION_RETAIN);
-}
-
-@end
 
 @interface JCKJsonEncoder ()
 
@@ -88,9 +62,6 @@ static BOOL encodeNilValue = NO;
             [NSException raise: NSInvalidArgumentException format: @"It's not valid JSON object %@", objectForCoding];
         }
     } else {
-        if (!self.delegate) {
-            self.delegate = [[objectForCoding class] jck_encodingHelper];
-        }
         [objectForCoding encodeWithCoder: self];
     }
 }
@@ -140,9 +111,6 @@ static BOOL encodeNilValue = NO;
 
 - (id)jsonObjectFromObject:(id)object
 {
-    if (!object || [object jck_isValidJSONObject]) {
-        return object;
-    }
     if ([object isKindOfClass: [NSArray class]]) {
         return [(NSArray *)object mapWithBlock: ^(id anObject) {
             return [self jsonObjectFromObject: anObject];
@@ -150,12 +118,11 @@ static BOOL encodeNilValue = NO;
     }
     id encodedObject = nil;
     
-    if (self.delegate) {
-        encodedObject = [self.delegate encoder: self encodeJsonObjectFromValue: object];
+    NSValueTransformer *encoderHelper = [self.class transformerForClass: [object class]];
+    if (encoderHelper) {
+        encodedObject = [encoderHelper transformedValue: object];
     } else {
-        //
-        NSValueTransformer *helper = [[object class] jck_directCodingHelper];
-        
+        NSValueTransformer *helper = [self.class reversedTransformerForClass: [object class]];
         if (helper) {
             encodedObject = [helper reverseTransformedValue: object];
         } else {
@@ -165,6 +132,38 @@ static BOOL encodeNilValue = NO;
         }
     }
     return encodedObject;
+}
+
+@end
+
+#import "JCKJsonDecoder.h"
+
+@implementation JCKJsonEncoder (Transformers)
+
++ (NSArray <Class> *)classHierarchyFor:(Class)aClass
+{
+    NSMutableArray <Class> *classes = [NSMutableArray array];
+    do {
+        [classes addObject: aClass];
+        aClass = [aClass superclass];
+    } while (aClass);
+    return [classes copy];
+}
+
++ (NSValueTransformer *)transformerForClass:(Class)aClass
+{
+    return nil;
+}
+
++ (NSValueTransformer *)reversedTransformerForClass:(Class)aClass
+{
+    __block NSValueTransformer *result = nil;
+    
+    [[self classHierarchyFor: aClass] enumerateObjectsUsingBlock: ^(Class class, NSUInteger idx, BOOL * _Nonnull stop) {
+        result = [JCKJsonDecoder transformerForClass: class];
+        *stop = [[result class] allowsReverseTransformation];
+    }];
+    return result;
 }
 
 @end

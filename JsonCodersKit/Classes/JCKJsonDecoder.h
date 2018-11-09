@@ -8,19 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@class JCKJsonDecoder;
-
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol JCKJsonDecoderDelegate <NSObject>
-
-- (nullable id)decoder:(JCKJsonDecoder *)coder convertValue:(nullable id)value toObjectOfClass:(Class)aClass;
-
-@end
-
 @interface JCKJsonDecoder : NSCoder
-
-@property (nonatomic, nullable, weak) id <JCKJsonDecoderDelegate> delegate;
 
 @property (nonatomic, strong, readonly) NSDictionary *JSONObject;
 
@@ -34,9 +24,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface NSObject (DecodingHelper)
+@interface JCKJsonDecoder (Transformers)
 
-@property (class, nullable) id <JCKJsonDecoderDelegate> jck_decodingHelper;
++ (void)setTransformer:(nullable id)transformerOrName forClass:(Class)aClass;
+
++ (nullable NSValueTransformer *)transformerForClass:(Class)aClass;
 
 @end
 

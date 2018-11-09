@@ -31,37 +31,3 @@
 }
 
 @end
-
-@implementation NSCoder (JCKAdditions_deprecated)
-
-- (nullable NSString *)decodeStringForKey:(NSString *)key
-{
-    return [self decodeObjectOfClass: [NSString class] forKey: key];
-}
-
-- (nullable NSURL *)decodeURLForKey:(NSString *)key
-{
-    return [self decodeObjectOfClass: [NSURL class] forKey: key];
-}
-
-- (nullable NSUUID *)decodeUUIDForKey:(NSString *)key
-{
-    return [self decodeObjectOfClass: [NSUUID class] forKey: key];
-}
-
-- (nullable NSDate *)decodeDateFromUnixTimeForKey:(NSString *)key
-{
-    if ([self containsValueForKey: key]) {
-        return [NSDate dateWithTimeIntervalSince1970: [self decodeDoubleForKey: key]];
-    }
-    return nil;
-}
-
-- (void)encodeDateAsUnixTime:(NSDate *)date forKey:(NSString *)key
-{
-    if (date) {
-        [self encodeDouble: date.timeIntervalSince1970 forKey: key];
-    }
-}
-
-@end
