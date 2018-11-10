@@ -8,6 +8,7 @@
 
 #import "JCKJsonEncoder.h"
 #import "CollectionMapping.h"
+#import "JCKDirectCodingHelpers.h"
 
 @interface JCKJsonEncoder ()
 
@@ -127,38 +128,6 @@ static BOOL encodeNilValue = NO;
         encodedObject = coder.encodedJSONObject;
     }
     return encodedObject;
-}
-
-@end
-
-#import "JCKJsonDecoder.h"
-
-static  NSArray <Class> *JCKClassHierarchyFor(Class aClass)
-{
-    NSMutableArray <Class> *classes = [NSMutableArray array];
-    do {
-        [classes addObject: aClass];
-        aClass = [aClass superclass];
-    } while (aClass);
-    return [classes copy];
-}
-
-@implementation NSObject (JCKJsonEncoderPrivate)
-
-- (NSArray <Class> *)jck_classHierarchy
-{
-    return JCKClassHierarchyFor([self class]);
-}
-
-- (NSValueTransformer *)jck_jsonValueTransformer
-{
-    __block NSValueTransformer *result = nil;
-    
-    [self.jck_classHierarchy enumerateObjectsUsingBlock: ^(Class class, NSUInteger idx, BOOL *stop) {
-        result = [JCKJsonDecoder transformerForClass: class];
-        *stop = [[result class] allowsReverseTransformation];
-    }];
-    return result;
 }
 
 @end

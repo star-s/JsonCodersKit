@@ -8,6 +8,7 @@
 
 #import "JCKJsonDecoder.h"
 #import "CollectionMapping.h"
+#import "JCKDirectCodingHelpers.h"
 
 @implementation JCKJsonDecoder
 
@@ -104,7 +105,7 @@
     }
     id result = nil;
     
-    NSValueTransformer *helper = [self.class transformerForClass: aClass];
+    NSValueTransformer *helper = [aClass jck_jsonValueTransformer];
     
     if (helper) { // Decode simple classes (NSURL, NSUUID, ...)
         result = [helper transformedValue: rawValue];
@@ -117,64 +118,6 @@
 #endif
     }
     return result;
-}
-
-@end
-
-#import <objc/runtime.h>
-#import "JCKDirectCodingHelpers.h"
-
-@implementation JCKJsonDecoder (Transformers)
-
-+ (NSMapTable *)transformersMap
-{
-    @synchronized (self) {
-        NSMapTable *result = objc_getAssociatedObject(self, _cmd);
-        if (!result) {
-            result = [NSMapTable strongToStrongObjectsMapTable];
-            objc_setAssociatedObject(self, _cmd, result, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-        }
-        return result;
-    }
-}
-
-+ (void)setValueTransformerOrHisName:(id)obj forClass:(Class)aClass
-{
-    NSString *key = NSStringFromClass(aClass);
-    NSMapTable *map = self.transformersMap;
-    if (obj) {
-        NSAssert([obj isKindOfClass: [NSString class]] || [obj isKindOfClass: [NSValueTransformer class]], @"%@ is not NSString or NSValueTransformer", obj);
-        [map setObject: obj forKey: key];
-    } else {
-        [map removeObjectForKey: key];
-    }
-}
-
-+ (nullable NSValueTransformer *)transformerForClass:(Class)aClass
-{
-    NSString *key = NSStringFromClass(aClass);
-    id result = [self.transformersMap objectForKey: key];
-    if (!result) {
-        static NSDictionary *defaultTransformers = nil;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            defaultTransformers = @{
-                                    @"NSString"     : JCKStringFromJsonTransformerName,
-                                    @"NSNull"       : JCKNullFromJsonTransformerName,
-                                    @"NSNumber"     : JCKNumberFromJsonTransformerName,
-                                    @"NSDictionary" : JCKDictionaryFromJsonTransformerName,
-                                    @"NSArray"      : JCKArrayFromJsonTransformerName,
-                                    @"NSURL"        : JCKURLFromJsonTransformerName,
-                                    @"NSUUID"       : JCKUUIDFromJsonTransformerName,
-                                    @"NSDate"       : JCKDateFromJsonTransformerName,
-                                    @"NSData"       : JCKDataFromJsonTransformerName,
-                                    @"UIColor"      : JCKColorFromJsonTransformerName,
-                                    @"NSColor"      : JCKColorFromJsonTransformerName
-                                    };
-        });
-        result = defaultTransformers[key];
-    }
-    return [result isKindOfClass: [NSString class]] ? [NSValueTransformer valueTransformerForName: result] : result;
 }
 
 @end

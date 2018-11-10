@@ -7,6 +7,18 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
+@interface NSObject (JCKHelpers)
+
++ (void)jck_setJsonValueTransformerOrHisName:(nullable id)transformerOrName;
+
++ (NSValueTransformer *)jck_jsonValueTransformer;
+
+- (NSValueTransformer *)jck_jsonValueTransformer;
+
+@end
+
 #pragma mark - JSON values without coding
 
 extern NSValueTransformerName const JCKStringFromJsonTransformerName;
@@ -73,7 +85,8 @@ extern NSValueTransformerName const JCKDataFromJsonTransformerName;
 @property (nonatomic, readonly) NSDataBase64DecodingOptions decodingOptions;
 @property (nonatomic, readonly) NSDataBase64EncodingOptions encodingOptions;
 
-- (instancetype)initWithDecodingOptions:(NSDataBase64DecodingOptions)decOpts encodingOptions:(NSDataBase64EncodingOptions)encOpts;
+- (instancetype)initWithDecodingOptions:(NSDataBase64DecodingOptions)decOpts
+                        encodingOptions:(NSDataBase64EncodingOptions)encOpts;
 
 @end
 
@@ -86,3 +99,5 @@ extern NSValueTransformerName const JCKColorFromJsonTransformerName;
 - (instancetype)initWithExportAlpha:(BOOL)value;
 
 @end
+
+NS_ASSUME_NONNULL_END

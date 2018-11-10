@@ -22,15 +22,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface NSObject (JCKJsonEncoderPrivate)
-
-@property (nonatomic, strong, readonly) NSArray <Class> *jck_classHierarchy;
-/*
- Return transformer that can convert a JSON value to a value of the same class as instance
- searching in transformers registered with method [JCKJsonDecoder +setValueTransformerOrHisName:forClass:]
- */
-@property (nonatomic, nullable, readonly) NSValueTransformer *jck_jsonValueTransformer;
-
-@end
-
 NS_ASSUME_NONNULL_END

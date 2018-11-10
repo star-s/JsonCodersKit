@@ -10,6 +10,7 @@
 #import "JCKJsonDecoder.h"
 #import "JCKJsonEncoder.h"
 #import "CollectionMapping.h"
+#import "JCKDirectCodingHelpers.h"
 
 @implementation JCKJsonToObjectTransformer
 
@@ -36,16 +37,13 @@
 // decode json
 - (id)transformedValue:(id)value
 {
-    Class resultValueClass = self.transformedValueClass;
-    if ([value isKindOfClass: resultValueClass]) {
-        return value;
-    }
     if ([value isKindOfClass: [NSArray class]]) {
         return [value transformedArray: self];
     } else {
+        Class resultValueClass = self.transformedValueClass;
         id result = nil;
         
-        NSValueTransformer *helper = [JCKJsonDecoder transformerForClass: resultValueClass];
+        NSValueTransformer *helper = [resultValueClass jck_jsonValueTransformer];
         if (helper) {
             result = [helper transformedValue: value];
         } else if ([value isKindOfClass: [NSDictionary class]]) {
