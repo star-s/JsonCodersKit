@@ -6,6 +6,104 @@
 //
 
 #import "JCKDirectCodingHelpers.h"
+#import <objc/runtime.h>
+
+@interface NSValueTransformer (JCKPrivate)
+
++ (void)jck_setJsonValueTransformerOrHisName:(nullable id)transformerOrName forClass:(Class)aClass;
+
++ (nullable NSValueTransformer *)jck_jsonValueTransformerForClass:(Class)aClass;
+
+@end
+
+@implementation NSValueTransformer (JCKPrivate)
+
++ (NSMapTable *)transformersMap
+{
+    static NSMapTable *map = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        map = [NSMapTable strongToStrongObjectsMapTable];
+    });
+    return map;
+}
+
++ (void)jck_setJsonValueTransformerOrHisName:(id)obj forClass:(Class)aClass
+{
+    NSString *key = NSStringFromClass(aClass);
+    NSMapTable *map = self.transformersMap;
+    if (obj) {
+        NSAssert([obj isKindOfClass: [NSString class]] || [obj isKindOfClass: [NSValueTransformer class]], @"%@ is not NSString or NSValueTransformer", obj);
+        [map setObject: obj forKey: key];
+    } else {
+        [map removeObjectForKey: key];
+    }
+}
+
++ (NSValueTransformer *)jck_jsonValueTransformerForClass:(Class)aClass
+{
+    NSString *key = NSStringFromClass(aClass);
+    id result = [self.transformersMap objectForKey: key];
+    if (!result) {
+        static NSDictionary *defaultTransformers = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            defaultTransformers = @{
+                                    @"NSString"     : JCKStringFromJsonTransformerName,
+                                    @"NSNull"       : JCKNullFromJsonTransformerName,
+                                    @"NSNumber"     : JCKNumberFromJsonTransformerName,
+                                    @"NSDictionary" : JCKDictionaryFromJsonTransformerName,
+                                    @"NSArray"      : JCKArrayFromJsonTransformerName,
+                                    @"NSURL"        : JCKURLFromJsonTransformerName,
+                                    @"NSUUID"       : JCKUUIDFromJsonTransformerName,
+                                    @"NSDate"       : JCKDateFromJsonTransformerName,
+                                    @"NSData"       : JCKDataFromJsonTransformerName,
+                                    @"UIColor"      : JCKColorFromJsonTransformerName,
+                                    @"NSColor"      : JCKColorFromJsonTransformerName
+                                    };
+        });
+        result = defaultTransformers[key];
+    }
+    return [result isKindOfClass: [NSString class]] ? [self valueTransformerForName: result] : result;
+}
+
+@end
+
+@implementation NSObject (JCKHelpers)
+
++ (void)jck_setJsonValueTransformerOrHisName:(id)transformerOrName
+{
+    [NSValueTransformer jck_setJsonValueTransformerOrHisName: transformerOrName forClass: self];
+}
+
++ (NSValueTransformer *)jck_jsonValueTransformer
+{
+    return [NSValueTransformer jck_jsonValueTransformerForClass: self];
+}
+
+- (NSValueTransformer *)jck_jsonValueTransformer
+{
+    __block NSValueTransformer *result = nil;
+    
+    [self.jck_classHierarchy enumerateObjectsUsingBlock: ^(Class class, NSUInteger idx, BOOL *stop) {
+        result = [class jck_jsonValueTransformer];
+        *stop = [[result class] allowsReverseTransformation];
+    }];
+    return result;
+}
+
+- (NSArray <Class> *)jck_classHierarchy
+{
+    NSMutableArray <Class> *classes = [NSMutableArray array];
+    Class aClass = [self class];
+    do {
+        [classes addObject: aClass];
+        aClass = [aClass superclass];
+    } while (aClass);
+    return [classes copy];
+}
+
+@end
 
 #pragma mark - JSON values without coding
 
