@@ -16,16 +16,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface NSCoder (JCKAdditions_deprecated)
-
-- (nullable NSString *)decodeStringForKey:(NSString *)key DEPRECATED_MSG_ATTRIBUTE("Don't use this method");
-- (nullable NSURL *)decodeURLForKey:(NSString *)key DEPRECATED_MSG_ATTRIBUTE("Don't use this method");
-- (nullable NSUUID *)decodeUUIDForKey:(NSString *)key DEPRECATED_MSG_ATTRIBUTE("Don't use this method");
-
-- (nullable NSDate *)decodeDateFromUnixTimeForKey:(NSString *)key DEPRECATED_MSG_ATTRIBUTE("Don't use this method");
-
-- (void)encodeDateAsUnixTime:(NSDate *)date forKey:(NSString *)key DEPRECATED_MSG_ATTRIBUTE("Don't use this method");
-
-@end
-
 NS_ASSUME_NONNULL_END

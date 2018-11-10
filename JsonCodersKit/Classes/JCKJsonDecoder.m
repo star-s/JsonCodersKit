@@ -7,18 +7,9 @@
 //
 
 #import "JCKJsonDecoder.h"
-#import "NSObject+DirectCoding.h"
 #import "CollectionMapping.h"
-#import "NSNull+NumericExtension.h"
-
-static BOOL nullIsTheValue = NO;
 
 @implementation JCKJsonDecoder
-
-+ (void)setDecodeNullAsValue:(BOOL)nullValue
-{
-    nullIsTheValue = nullValue;
-}
 
 - (instancetype)initWithJSONObject:(NSDictionary *)obj
 {
@@ -37,21 +28,13 @@ static BOOL nullIsTheValue = NO;
 
 - (BOOL)containsValueForKey:(NSString *)key
 {
-    if (nullIsTheValue) {
-        return [self.JSONObject.allKeys containsObject: key];
-    } else {
-        return [self decodeObjectForKey: key] != nil;
-    }
+    return [self.JSONObject.allKeys containsObject: key];
 }
 
 - (id)decodeObjectForKey:(NSString *)key
 {
-    if (nullIsTheValue) {
-        return [self.JSONObject objectForKey: key];
-    } else {
-        id value = [self.JSONObject objectForKey: key];
-        return [value isEqual: [NSNull null]] ? nil : value;
-    }
+    id value = [self.JSONObject objectForKey: key];
+    return [value isEqual: [NSNull null]] ? nil : value;
 }
 
 - (BOOL)decodeBoolForKey:(NSString *)key
@@ -116,12 +99,12 @@ static BOOL nullIsTheValue = NO;
 
 - (id)convertRawValue:(id)rawValue toObjectOfClass:(Class)aClass
 {
-    if (!rawValue || [rawValue isKindOfClass: aClass]) { // No decoding needed
+    if (!rawValue || [rawValue isKindOfClass: aClass]) { // No decoding needed ???
         return rawValue;
     }
     id result = nil;
     
-    NSValueTransformer *helper = [aClass jck_directCodingHelper];
+    NSValueTransformer *helper = [self.class transformerForClass: aClass];
     
     if (helper) { // Decode simple classes (NSURL, NSUUID, ...)
         result = [helper transformedValue: rawValue];
@@ -134,6 +117,64 @@ static BOOL nullIsTheValue = NO;
 #endif
     }
     return result;
+}
+
+@end
+
+#import <objc/runtime.h>
+#import "JCKDirectCodingHelpers.h"
+
+@implementation JCKJsonDecoder (Transformers)
+
++ (NSMapTable *)transformersMap
+{
+    @synchronized (self) {
+        NSMapTable *result = objc_getAssociatedObject(self, _cmd);
+        if (!result) {
+            result = [NSMapTable strongToStrongObjectsMapTable];
+            objc_setAssociatedObject(self, _cmd, result, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        }
+        return result;
+    }
+}
+
++ (void)setValueTransformerOrHisName:(id)obj forClass:(Class)aClass
+{
+    NSString *key = NSStringFromClass(aClass);
+    NSMapTable *map = self.transformersMap;
+    if (obj) {
+        NSAssert([obj isKindOfClass: [NSString class]] || [obj isKindOfClass: [NSValueTransformer class]], @"%@ is not NSString or NSValueTransformer", obj);
+        [map setObject: obj forKey: key];
+    } else {
+        [map removeObjectForKey: key];
+    }
+}
+
++ (nullable NSValueTransformer *)transformerForClass:(Class)aClass
+{
+    NSString *key = NSStringFromClass(aClass);
+    id result = [self.transformersMap objectForKey: key];
+    if (!result) {
+        static NSDictionary *defaultTransformers = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            defaultTransformers = @{
+                                    @"NSString"     : JCKStringFromJsonTransformerName,
+                                    @"NSNull"       : JCKNullFromJsonTransformerName,
+                                    @"NSNumber"     : JCKNumberFromJsonTransformerName,
+                                    @"NSDictionary" : JCKDictionaryFromJsonTransformerName,
+                                    @"NSArray"      : JCKArrayFromJsonTransformerName,
+                                    @"NSURL"        : JCKURLFromJsonTransformerName,
+                                    @"NSUUID"       : JCKUUIDFromJsonTransformerName,
+                                    @"NSDate"       : JCKDateFromJsonTransformerName,
+                                    @"NSData"       : JCKDataFromJsonTransformerName,
+                                    @"UIColor"      : JCKColorFromJsonTransformerName,
+                                    @"NSColor"      : JCKColorFromJsonTransformerName
+                                    };
+        });
+        result = defaultTransformers[key];
+    }
+    return [result isKindOfClass: [NSString class]] ? [NSValueTransformer valueTransformerForName: result] : result;
 }
 
 @end

@@ -29,6 +29,10 @@ JCKSynthesizeTransformer(JCKVCModel)
     NSValueTransformer *transformer = [NSValueTransformer valueTransformerForName: JCKVCModelTransformerName];
     JCKVCModel *model = [transformer transformedValue: json];
     NSLog(@"%@", model);
+    JCKJsonEncoder *coder = [[JCKJsonEncoder alloc] init];
+    [coder encodeRootObject: model];
+    NSDictionary *encodedJson = coder.encodedJSONObject;
+    NSLog(@"%@", encodedJson);
 }
 
 - (void)didReceiveMemoryWarning

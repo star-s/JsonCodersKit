@@ -7,77 +7,195 @@
 
 #import "JCKDirectCodingHelpers.h"
 
-@implementation JCKStringTransformer
+#pragma mark - JSON values without coding
 
-- (nullable id)transformedValue:(nullable id)value
+NSValueTransformerName const JCKStringFromJsonTransformerName = @"JCKStringFromJsonTransformer";
+
+@implementation JCKStringFromJsonTransformer
+
++ (Class)transformedValueClass
 {
-    if ([value isKindOfClass: [NSString class]]) {
-        return [self valueFromString: value];
-    } else if ([[value class] isSubclassOfClass: [self.class transformedValueClass]]) {
-        return [self stringFromValue: value];
+    return [NSString class];
+}
+
+- (NSString *)transformedValue:(id)value
+{
+    if ([value isKindOfClass: self.class.transformedValueClass]) {
+        return value;
+    } else if ([value respondsToSelector: @selector(stringValue)]) {
+        return [value stringValue];
     }
-    return nil;
-}
-
-- (id)valueFromString:(NSString *)string
-{
-    [NSException raise: NSGenericException format: @"Method %@ is abstract, override it!", NSStringFromSelector(_cmd)];
-    return nil;
-}
-
-- (NSString *)stringFromValue:(id)value
-{
-    [NSException raise: NSGenericException format: @"Method %@ is abstract, override it!", NSStringFromSelector(_cmd)];
     return nil;
 }
 
 @end
 
-NSValueTransformerName const JCKStringToURLTransformerName = @"JCKStringToURLTransformer";
+NSValueTransformerName const JCKNullFromJsonTransformerName = @"JCKNullFromJsonTransformer";
 
-@implementation JCKStringToURLTransformer
+@implementation JCKNullFromJsonTransformer
+
++ (Class)transformedValueClass
+{
+    return [NSNull class];
+}
+
+- (id)transformedValue:(id)value
+{
+    if ([value isKindOfClass: self.class.transformedValueClass]) {
+        return value;
+    }
+    return nil;
+}
+
+@end
+
+NSValueTransformerName const JCKNumberFromJsonTransformerName = @"JCKNumberFromJsonTransformer";
+
+@implementation JCKNumberFromJsonTransformer
+
++ (Class)transformedValueClass
+{
+    return [NSNumber class];
+}
+
+- (id)transformedValue:(id)value
+{
+    if ([value isKindOfClass: self.class.transformedValueClass]) {
+        return value;
+    }
+    return nil;
+}
+
+@end
+
+NSValueTransformerName const JCKDictionaryFromJsonTransformerName = @"JCKDictionaryFromJsonTransformer";
+
+@implementation JCKDictionaryFromJsonTransformer
+
++ (Class)transformedValueClass
+{
+    return [NSDictionary class];
+}
+
+- (id)transformedValue:(id)value
+{
+    if ([value isKindOfClass: self.class.transformedValueClass]) {
+        return value;
+    }
+    return nil;
+}
+
+- (id)reverseTransformedValue:(id)value
+{
+    if (![value isKindOfClass: self.class.transformedValueClass]) {
+        return nil;
+    }
+    return [NSJSONSerialization isValidJSONObject: value] ? value : nil;
+}
+
+@end
+
+NSValueTransformerName const JCKArrayFromJsonTransformerName = @"JCKArrayFromJsonTransformer";
+
+@implementation JCKArrayFromJsonTransformer
+
++ (Class)transformedValueClass
+{
+    return [NSArray class];
+}
+
+- (id)transformedValue:(id)value
+{
+    if ([value isKindOfClass: self.class.transformedValueClass]) {
+        return value;
+    }
+    return nil;
+}
+
+- (id)reverseTransformedValue:(id)value
+{
+    if (![value isKindOfClass: self.class.transformedValueClass]) {
+        return nil;
+    }
+    return [NSJSONSerialization isValidJSONObject: value] ? value : nil;
+}
+
+@end
+
+#pragma mark - JSON values with coding
+
+NSValueTransformerName const JCKURLFromJsonTransformerName = @"JCKURLFromJsonTransformer";
+
+@implementation JCKURLFromJsonTransformer
 
 + (Class)transformedValueClass
 {
     return [NSURL class];
 }
 
-- (NSURL *)valueFromString:(NSString *)string
+- (id)transformedValue:(id)value
 {
-    return [NSURL URLWithString: string];
+    if ([value isKindOfClass: [NSString class]]) {
+        return [NSURL URLWithString: value];
+    }
+    return nil;
 }
 
-- (NSString *)stringFromValue:(NSURL *)value
+- (id)reverseTransformedValue:(NSURL *)value
 {
+    if (![value isKindOfClass: self.class.transformedValueClass]) {
+        return nil;
+    }
     return value.absoluteString;
 }
 
 @end
 
-NSValueTransformerName const JCKStringToUUIDTransformerName = @"JCKStringToUUIDTransformer";
+NSValueTransformerName const JCKUUIDFromJsonTransformerName = @"JCKUUIDFromJsonTransformer";
 
-@implementation JCKStringToUUIDTransformer
+@implementation JCKUUIDFromJsonTransformer
 
 + (Class)transformedValueClass
 {
     return [NSUUID class];
 }
 
-- (NSUUID *)valueFromString:(NSString *)string
+- (instancetype)init
 {
-    return [[NSUUID alloc] initWithUUIDString: string];
+    return [self initWithConversionToLowercaseString: YES];
 }
 
-- (NSString *)stringFromValue:(NSUUID *)value
+- (instancetype)initWithConversionToLowercaseString:(BOOL)convert
 {
-    return value.UUIDString;
+    self = [super init];
+    if (self) {
+        _convertToLowercaseString = convert;
+    }
+    return self;
+}
+
+- (id)transformedValue:(id)value
+{
+    if ([value isKindOfClass: [NSString class]]) {
+        return [[NSUUID alloc] initWithUUIDString: value];
+    }
+    return nil;
+}
+
+- (id)reverseTransformedValue:(NSUUID *)value
+{
+    if (![value isKindOfClass: self.class.transformedValueClass]) {
+        return nil;
+    }
+    NSString *result = value.UUIDString;
+    return self.convertToLowercaseString ? result.lowercaseString : result;
 }
 
 @end
 
-NSValueTransformerName const JCKStringToDateTransformerName = @"JCKStringToDateTransformer";
+NSValueTransformerName const JCKDateFromJsonTransformerName = @"JCKDateFromJsonTransformer";
 
-@implementation JCKStringToDateTransformer
+@implementation JCKDateFromJsonTransformer
 
 + (Class)transformedValueClass
 {
@@ -86,13 +204,17 @@ NSValueTransformerName const JCKStringToDateTransformerName = @"JCKStringToDateT
 
 - (instancetype)init
 {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    
-    [formatter setLocale: [[NSLocale alloc] initWithLocaleIdentifier: @"en_US_POSIX"]];
-    [formatter setDateFormat: @"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"];
-    [formatter setTimeZone: [NSTimeZone timeZoneForSecondsFromGMT: 0]];
-    
-    return [self initWithFormatter: formatter];
+    if (@available(iOS 10.0, macOS 10.12, tvOS 10.0, watchOS 3.0, *)) {
+        return [self initWithFormatter: [[NSISO8601DateFormatter alloc] init]];
+    } else {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        
+        formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier: @"en_US_POSIX"];
+        formatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssXXXXX";
+        formatter.timeZone = [NSTimeZone timeZoneForSecondsFromGMT: 0];
+        
+        return [self initWithFormatter: formatter];
+    }
 }
 
 - (instancetype)initWithFormatter:(NSFormatter *)formatter
@@ -104,22 +226,28 @@ NSValueTransformerName const JCKStringToDateTransformerName = @"JCKStringToDateT
     return self;
 }
 
-- (NSDate *)valueFromString:(NSString *)string
+- (id)transformedValue:(id)value
 {
+    if (![value isKindOfClass: [NSString class]]) {
+        return nil;
+    }
     NSDate *result = nil;
     
     __kindof NSFormatter *formatter = self.formatter;
     
     if ([formatter respondsToSelector: @selector(dateFromString:)]) {
-        result = [formatter dateFromString: string];
+        result = [formatter dateFromString: value];
     } else {
-        [formatter getObjectValue: &result forString: string errorDescription: NULL];
+        [formatter getObjectValue: &result forString: value errorDescription: NULL];
     }
     return result;
 }
 
-- (NSString *)stringFromValue:(NSDate *)value
+- (id)reverseTransformedValue:(id)value
 {
+    if (![value isKindOfClass: self.class.transformedValueClass]) {
+        return nil;
+    }
     NSString *result = nil;
     
     __kindof NSFormatter *formatter = self.formatter;
@@ -134,9 +262,39 @@ NSValueTransformerName const JCKStringToDateTransformerName = @"JCKStringToDateT
 
 @end
 
-NSValueTransformerName const JCKStringToDataTransformerName = @"JCKStringToDataTransformer";
+NSValueTransformerName const JCKUnixDateFromJsonTransformerName = @"JCKUnixDateFromJsonTransformer";
 
-@implementation JCKStringToDataTransformer
+@implementation JCKUnixDateFromJsonTransformer
+
++ (Class)transformedValueClass
+{
+    return [NSDate class];
+}
+
+- (id)transformedValue:(id)value
+{
+    NSTimeInterval interval = 0.0;
+    if ([value respondsToSelector: @selector(doubleValue)]) {
+        interval = [value doubleValue];
+    } else if ([value respondsToSelector: @selector(floatValue)]) {
+        interval = [value floatValue];
+    }
+    return interval > 0.0 ? [NSDate dateWithTimeIntervalSince1970: interval] : nil;
+}
+
+- (id)reverseTransformedValue:(NSDate *)value
+{
+    if (![value isKindOfClass: self.class.transformedValueClass]) {
+        return nil;
+    }
+    return [NSNumber numberWithDouble: value.timeIntervalSince1970];
+}
+
+@end
+
+NSValueTransformerName const JCKDataFromJsonTransformerName = @"JCKDataFromJsonTransformer";
+
+@implementation JCKDataFromJsonTransformer
 
 + (Class)transformedValueClass
 {
@@ -158,13 +316,19 @@ NSValueTransformerName const JCKStringToDataTransformerName = @"JCKStringToDataT
     return self;
 }
 
-- (NSData *)valueFromString:(NSString *)string
+- (id)transformedValue:(id)value
 {
-    return [[NSData alloc] initWithBase64EncodedString: string options: self.decodingOptions];
+    if ([value isKindOfClass: [NSString class]]) {
+        return [[NSData alloc] initWithBase64EncodedString: value options: self.decodingOptions];
+    }
+    return nil;
 }
 
-- (NSString *)stringFromValue:(NSData *)value
+- (id)reverseTransformedValue:(NSData *)value
 {
+    if (![value isKindOfClass: self.class.transformedValueClass]) {
+        return nil;
+    }
     return [value base64EncodedStringWithOptions: self.encodingOptions];
 }
 
@@ -172,9 +336,9 @@ NSValueTransformerName const JCKStringToDataTransformerName = @"JCKStringToDataT
 
 #import "Color+HexString.h"
 
-NSValueTransformerName const JCKStringToColorTransformerName = @"JCKStringToColorTransformer";
+NSValueTransformerName const JCKColorFromJsonTransformerName = @"JCKColorFromJsonTransformer";
 
-@implementation JCKStringToColorTransformer
+@implementation JCKColorFromJsonTransformer
 
 + (Class)transformedValueClass
 {
@@ -183,7 +347,7 @@ NSValueTransformerName const JCKStringToColorTransformerName = @"JCKStringToColo
 
 - (instancetype)init
 {
-    return [self initWithExportAlpha: NO];
+    return [self initWithExportAlpha: YES];
 }
 
 - (instancetype)initWithExportAlpha:(BOOL)value
@@ -195,13 +359,19 @@ NSValueTransformerName const JCKStringToColorTransformerName = @"JCKStringToColo
     return self;
 }
 
-- (JCKColor *)valueFromString:(NSString *)string
+- (id)transformedValue:(id)value
 {
-    return string.length > 0 ? [JCKColor jck_colorWithHexString: string] : nil;
+    if ([value isKindOfClass: [NSString class]] && ([value length] > 0)) {
+        return [JCKColor jck_colorWithHexString: value];
+    }
+    return nil;
 }
 
-- (NSString *)stringFromValue:(JCKColor *)value
+- (id)reverseTransformedValue:(JCKColor *)value
 {
+    if (![value isKindOfClass: self.class.transformedValueClass]) {
+        return nil;
+    }
     return [value jck_hexStringWithAlpha: self.exportAlpha];
 }
 

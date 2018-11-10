@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSArray *)transformedArray:(NSValueTransformer *)transformer;
 
+- (NSArray *)transformedArray:(NSValueTransformer *)transformer reverseTransformation:(BOOL)reverse;
+
 - (NSArray *)mapWithBlock:(id __nullable(^)(id anObject))block;
 
 @end

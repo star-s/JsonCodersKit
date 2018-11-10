@@ -48,10 +48,15 @@
 
 - (NSArray *)transformedArray:(NSValueTransformer *)transformer
 {
+    return [self transformedArray: transformer reverseTransformation: NO];
+}
+
+- (NSArray *)transformedArray:(NSValueTransformer *)transformer reverseTransformation:(BOOL)reverse
+{
     NSMutableArray *result = [NSMutableArray arrayWithCapacity: self.count];
     
     for (id object in self) {
-        id transformedObject = [transformer transformedValue: object];
+        id transformedObject = reverse ? [transformer reverseTransformedValue: object] : [transformer transformedValue: object];
         if (transformedObject) {
             [result addObject: transformedObject];
         }
