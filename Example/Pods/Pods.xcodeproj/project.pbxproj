@@ -7,48 +7,48 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		06F79AFA892AEAD558647FAE3E670B1E /* NSCoder+JCKAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = FEB3C115A6F9FB84A1A278F1D384F5DC /* NSCoder+JCKAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0BBEB6E6C70FD91D84F71979B6B44B0A /* JCKDirectCodingHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = E3E345A4DCCCD415A3859C8CB6AF04D9 /* JCKDirectCodingHelpers.m */; };
-		0C569FC3394E0E3AE65EA2D4EA99A1C9 /* CollectionMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 800DDA753FC643FB53DB857747CD948E /* CollectionMapping.m */; };
-		203FCF75D6ADB80B09199DB0CE3E52C1 /* JCKObjectToJsonTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E9406D77139700673D62CDC7BADAD8 /* JCKObjectToJsonTransformer.m */; };
-		285A96C61CB13C61C0FBA20E1E5F0660 /* JCKCompositeTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 9737B1D609A99C3BFE5512EA5E84CBCA /* JCKCompositeTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2BB6B0E53C9909310849D12763F7E789 /* Color+HexString.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E9396948F283C9095538F88B2BEB509 /* Color+HexString.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2E0A4A8A9F998E5D700916B9F77F85CC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		2E23D57601D7FFAF3F9CC5C798E941C3 /* JCKCompositeTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0008D007B46C04B76F42C970A4D2CAB1 /* JCKCompositeTransformer.m */; };
-		30C6ED87302BD136BE0A749A0A733A95 /* JCKJsonDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C19B7A79F8AD505620907B6CD69D77 /* JCKJsonDecoder.m */; };
-		3D3DD5037C37E50821C697BBBB85BBCC /* JCKDirectCodingHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BDC1ABF1D15D10FC0613789360C087E /* JCKDirectCodingHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3EF205D8B1AAB4C56DEB1C6F24BA95DA /* Pods-JsonCodersKit_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EC6492F200D7FF114DED373948CC1A49 /* Pods-JsonCodersKit_Example-dummy.m */; };
-		5098FC8B23265F91E7D7A8273005CAEA /* JCKJsonToObjectTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CCF76DD54BFFCB601F8D48F51ABFD28 /* JCKJsonToObjectTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5AD5A12E4BA173A32F93C6F5A0E9189E /* JCKJsonEncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = E44CDB19DAF73F7B80F5C633289E112F /* JCKJsonEncoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5BD0740D28112D81E669A34B33D8F82C /* Pods-JsonCodersKit_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 66F54F490B1A185204839B46D0EA8A94 /* Pods-JsonCodersKit_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6525148A864DDA3CAC9F730B518EF714 /* JCKJsonDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = B719812050065D6AAD52FD616554F4F9 /* JCKJsonDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6726B8C4BA681D6C8A5DD01D94384820 /* JCKJsonToObjectTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1785DF298A169B39064726CBA3F36C02 /* JCKJsonToObjectTransformer.m */; };
-		6D0273441F66BED0BEA63458390DC1C4 /* CollectionMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 22F27B2325E93BCDBE9F183E57FDE6A1 /* CollectionMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		718457DB31E7CA65697679F58B6828F6 /* JsonCodersKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A76C25901D1E2D62274EEC9E5E750ECA /* JsonCodersKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7C581ABE4C897E55FB4323B44998F223 /* NSCoder+JCKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D3080DFD60DA010F1C4512372192BF /* NSCoder+JCKAdditions.m */; };
-		9007F2AE577B570CE437B08CC6C02F15 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		967FECAB68DCEBB98DA2919AEDD594C0 /* JCKObjectToJsonTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = ED4DA0646DD0027E19A48C4A6B451B73 /* JCKObjectToJsonTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9A663AFCBEB5B1937538FB327637B8EC /* Pods-JsonCodersKit_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EF127A8E98835117213FADB75966A959 /* Pods-JsonCodersKit_Tests-dummy.m */; };
-		CD1890CF851C3FB4C26BE14265A04FD7 /* Pods-JsonCodersKit_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 645A5699E5A317F4520C05A5C8F71E8A /* Pods-JsonCodersKit_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D8113B2BF52BF32B75185644DBA2B50F /* Color+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = F571C9373697ABEA69F1DE1B2DCAEF6B /* Color+HexString.m */; };
-		E631950A6034ADAE926C9C8BE21F2869 /* JCKJsonEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 390857FA6C6E407833B5374653AE41DE /* JCKJsonEncoder.m */; };
-		EFC9332E1020BD3ADC9F5DA8D0F2D6FD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		FF7BC40373C8676CA1F334D7FB64DD02 /* JsonCodersKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2566E8D990FA610CBA77EFD5294A33 /* JsonCodersKit-dummy.m */; };
+		0827D060A306F93B69BC44FB753363D0 /* Pods-JsonCodersKit_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 645A5699E5A317F4520C05A5C8F71E8A /* Pods-JsonCodersKit_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1001D2CB8A6FB106B36494D122E69A93 /* JCKDirectCodingHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BDC1ABF1D15D10FC0613789360C087E /* JCKDirectCodingHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		18E54614AA6B03F0433AF5B7A8139429 /* JCKJsonEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 390857FA6C6E407833B5374653AE41DE /* JCKJsonEncoder.m */; };
+		2226E50B964366804D266936AAEA40B0 /* Pods-JsonCodersKit_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EF127A8E98835117213FADB75966A959 /* Pods-JsonCodersKit_Tests-dummy.m */; };
+		32A5DAED162AC92B6866B928A6D4915A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		519F0B5BAA34A5FCF5953C3132281950 /* JCKJsonToObjectTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CCF76DD54BFFCB601F8D48F51ABFD28 /* JCKJsonToObjectTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5364B2BBE67B209144F7141841769B95 /* Color+HexString.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E9396948F283C9095538F88B2BEB509 /* Color+HexString.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		557F979C473BE7B49BAA9C85C5F0935B /* Pods-JsonCodersKit_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 66F54F490B1A185204839B46D0EA8A94 /* Pods-JsonCodersKit_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5FB2CFB3D91AC751B17A9A7F942875F9 /* JsonCodersKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FC2566E8D990FA610CBA77EFD5294A33 /* JsonCodersKit-dummy.m */; };
+		6AB204D8AB94C9B6565DC333819F6A51 /* Color+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = F571C9373697ABEA69F1DE1B2DCAEF6B /* Color+HexString.m */; };
+		6D479AA54C863DD5877565B65C27E054 /* JsonCodersKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A76C25901D1E2D62274EEC9E5E750ECA /* JsonCodersKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		830729D1B439100EB3FB003B1E11301A /* JCKCompositeTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0008D007B46C04B76F42C970A4D2CAB1 /* JCKCompositeTransformer.m */; };
+		8A7E7BAA52168BD14344AE774427DB56 /* JCKCompositeTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 9737B1D609A99C3BFE5512EA5E84CBCA /* JCKCompositeTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A08D7C77ABD23487E3C5EDDA312E08C9 /* JCKJsonDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C19B7A79F8AD505620907B6CD69D77 /* JCKJsonDecoder.m */; };
+		AF81B83CDB97195165169978B242EAAE /* NSCoder+JCKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D3080DFD60DA010F1C4512372192BF /* NSCoder+JCKAdditions.m */; };
+		B359B616A9DDAD0D505FA169C66063A7 /* CollectionMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 22F27B2325E93BCDBE9F183E57FDE6A1 /* CollectionMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BE0031B6CDFB6B9299DDB4893ECFD3B2 /* JCKObjectToJsonTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E9406D77139700673D62CDC7BADAD8 /* JCKObjectToJsonTransformer.m */; };
+		C9813B2191354A3F7BD8044FBEF7BCC4 /* CollectionMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 800DDA753FC643FB53DB857747CD948E /* CollectionMapping.m */; };
+		CD0A21266DA50C11602AB56C64529B47 /* JCKObjectToJsonTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = ED4DA0646DD0027E19A48C4A6B451B73 /* JCKObjectToJsonTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD8632B667F965FBA1A40B484AABB069 /* JCKJsonDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = B719812050065D6AAD52FD616554F4F9 /* JCKJsonDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9221B071404910FD846FCF2B222C710 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		DDC959B45B724A8B7D354772A6CFF8EE /* JCKDirectCodingHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = E3E345A4DCCCD415A3859C8CB6AF04D9 /* JCKDirectCodingHelpers.m */; };
+		E4144566D2383267165BED933B0BD78D /* JCKJsonEncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = E44CDB19DAF73F7B80F5C633289E112F /* JCKJsonEncoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EFE81AC9916E516E8F05DD6E3416B6BA /* Pods-JsonCodersKit_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EC6492F200D7FF114DED373948CC1A49 /* Pods-JsonCodersKit_Example-dummy.m */; };
+		F2DC74DC0053D916D6C57AEB29350130 /* NSCoder+JCKAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = FEB3C115A6F9FB84A1A278F1D384F5DC /* NSCoder+JCKAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F6FDDAD5D64E82B270516EA5EAA57AFD /* JCKJsonToObjectTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1785DF298A169B39064726CBA3F36C02 /* JCKJsonToObjectTransformer.m */; };
+		FCD013EA4160B8B388510EEBEDBA2B41 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		BE07C26C7A175BB743D56F8B97158AAA /* PBXContainerItemProxy */ = {
+		402A98BA3223DD6423CE7FCF8A3510B1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 23FBE5199D2CA3ACA30AE2FCC28D4B1D;
+			remoteGlobalIDString = E479A3A20167EAEE7594F4454F0F7556;
 			remoteInfo = JsonCodersKit;
 		};
-		C72A5524B49205D92FFC828960D8211F /* PBXContainerItemProxy */ = {
+		6BD211802AEEDDB7174806740A92EC57 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8AF50B48F1235FD42B8FFC4902CA589C;
+			remoteGlobalIDString = CD5B9A7F486B97C6302359EB2A4D72EC;
 			remoteInfo = "Pods-JsonCodersKit_Example";
 		};
 /* End PBXContainerItemProxy section */
@@ -110,27 +110,27 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		44FF4C096ED0EB07B64299EB953777EF /* Frameworks */ = {
+		8A70FA5DD8F787F14A2534B98D7D021E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EFC9332E1020BD3ADC9F5DA8D0F2D6FD /* Foundation.framework in Frameworks */,
+				32A5DAED162AC92B6866B928A6D4915A /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		54F5D88C3397D0A311CB9B16A971CB4C /* Frameworks */ = {
+		8D2115F277FF76AAAAEC045A9C08C086 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E0A4A8A9F998E5D700916B9F77F85CC /* Foundation.framework in Frameworks */,
+				FCD013EA4160B8B388510EEBEDBA2B41 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		674287C1D48E9A91BA01921772E336BF /* Frameworks */ = {
+		982FFC0EFBC9A1501B2BE7F2F9C96A4F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9007F2AE577B570CE437B08CC6C02F15 /* Foundation.framework in Frameworks */,
+				D9221B071404910FD846FCF2B222C710 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,50 +283,85 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		6E1C3021A6FFAD7735F0F27101587DB5 /* Headers */ = {
+		7A1C178149B48102A8B97E9650BF48FA /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D0273441F66BED0BEA63458390DC1C4 /* CollectionMapping.h in Headers */,
-				2BB6B0E53C9909310849D12763F7E789 /* Color+HexString.h in Headers */,
-				285A96C61CB13C61C0FBA20E1E5F0660 /* JCKCompositeTransformer.h in Headers */,
-				3D3DD5037C37E50821C697BBBB85BBCC /* JCKDirectCodingHelpers.h in Headers */,
-				6525148A864DDA3CAC9F730B518EF714 /* JCKJsonDecoder.h in Headers */,
-				5AD5A12E4BA173A32F93C6F5A0E9189E /* JCKJsonEncoder.h in Headers */,
-				5098FC8B23265F91E7D7A8273005CAEA /* JCKJsonToObjectTransformer.h in Headers */,
-				967FECAB68DCEBB98DA2919AEDD594C0 /* JCKObjectToJsonTransformer.h in Headers */,
-				718457DB31E7CA65697679F58B6828F6 /* JsonCodersKit.h in Headers */,
-				06F79AFA892AEAD558647FAE3E670B1E /* NSCoder+JCKAdditions.h in Headers */,
+				557F979C473BE7B49BAA9C85C5F0935B /* Pods-JsonCodersKit_Tests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		99D6130F91442554F02EE97C12C71BAD /* Headers */ = {
+		EDFDA9F5752F5F8DA3B8EC1531B33231 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD1890CF851C3FB4C26BE14265A04FD7 /* Pods-JsonCodersKit_Example-umbrella.h in Headers */,
+				0827D060A306F93B69BC44FB753363D0 /* Pods-JsonCodersKit_Example-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FE8DDEC9C0B692CB7D11DDDA6E22D199 /* Headers */ = {
+		F3F4716097FE86BB6FAC39BE27C04E37 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BD0740D28112D81E669A34B33D8F82C /* Pods-JsonCodersKit_Tests-umbrella.h in Headers */,
+				B359B616A9DDAD0D505FA169C66063A7 /* CollectionMapping.h in Headers */,
+				5364B2BBE67B209144F7141841769B95 /* Color+HexString.h in Headers */,
+				8A7E7BAA52168BD14344AE774427DB56 /* JCKCompositeTransformer.h in Headers */,
+				1001D2CB8A6FB106B36494D122E69A93 /* JCKDirectCodingHelpers.h in Headers */,
+				CD8632B667F965FBA1A40B484AABB069 /* JCKJsonDecoder.h in Headers */,
+				E4144566D2383267165BED933B0BD78D /* JCKJsonEncoder.h in Headers */,
+				519F0B5BAA34A5FCF5953C3132281950 /* JCKJsonToObjectTransformer.h in Headers */,
+				CD0A21266DA50C11602AB56C64529B47 /* JCKObjectToJsonTransformer.h in Headers */,
+				6D479AA54C863DD5877565B65C27E054 /* JsonCodersKit.h in Headers */,
+				F2DC74DC0053D916D6C57AEB29350130 /* NSCoder+JCKAdditions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		23FBE5199D2CA3ACA30AE2FCC28D4B1D /* JsonCodersKit */ = {
+		1054D7EDECEBDA343B9DA8B494559D53 /* Pods-JsonCodersKit_Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3011BF9E0EE8F2AE7D61F531C570100A /* Build configuration list for PBXNativeTarget "JsonCodersKit" */;
+			buildConfigurationList = BE3A2692271CE3E9FCCCE1CD046AB997 /* Build configuration list for PBXNativeTarget "Pods-JsonCodersKit_Tests" */;
 			buildPhases = (
-				6E1C3021A6FFAD7735F0F27101587DB5 /* Headers */,
-				67ACDDF5C93F6AB194F731CA5CEDBA17 /* Sources */,
-				54F5D88C3397D0A311CB9B16A971CB4C /* Frameworks */,
-				C57193E7475F05271E1D05ADC7C6DDE1 /* Resources */,
+				EE86A0967D9FD51D8A14693A7748664C /* Sources */,
+				982FFC0EFBC9A1501B2BE7F2F9C96A4F /* Frameworks */,
+				7A1C178149B48102A8B97E9650BF48FA /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9DF420D875ADCD2ECD06DDB069EF636C /* PBXTargetDependency */,
+			);
+			name = "Pods-JsonCodersKit_Tests";
+			productName = "Pods-JsonCodersKit_Tests";
+			productReference = C9E9A7F2C20D0CC659F752E39D49B98E /* Pods_JsonCodersKit_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		CD5B9A7F486B97C6302359EB2A4D72EC /* Pods-JsonCodersKit_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CC16F08596BE011159D04AB018738E5 /* Build configuration list for PBXNativeTarget "Pods-JsonCodersKit_Example" */;
+			buildPhases = (
+				D00234B22BAC43FC7CD8B85666CA6551 /* Sources */,
+				8A70FA5DD8F787F14A2534B98D7D021E /* Frameworks */,
+				EDFDA9F5752F5F8DA3B8EC1531B33231 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F981A5C40DD045C8C8620EA2BB768C01 /* PBXTargetDependency */,
+			);
+			name = "Pods-JsonCodersKit_Example";
+			productName = "Pods-JsonCodersKit_Example";
+			productReference = F0129E2B2688B237814B4946F87540E7 /* Pods_JsonCodersKit_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E479A3A20167EAEE7594F4454F0F7556 /* JsonCodersKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DAF4F351B6761D9CC5E0FF4C38003E85 /* Build configuration list for PBXNativeTarget "JsonCodersKit" */;
+			buildPhases = (
+				273132DA043E86C3902A57E8ACB2227F /* Sources */,
+				8D2115F277FF76AAAAEC045A9C08C086 /* Frameworks */,
+				F3F4716097FE86BB6FAC39BE27C04E37 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -335,44 +370,6 @@
 			name = JsonCodersKit;
 			productName = JsonCodersKit;
 			productReference = 6B2CB1BEAAE44973D718EDAD9ADBE4D5 /* JsonCodersKit.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		8AF50B48F1235FD42B8FFC4902CA589C /* Pods-JsonCodersKit_Example */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BB9FB2DFA7E8CCAA69D26CAB42375CA4 /* Build configuration list for PBXNativeTarget "Pods-JsonCodersKit_Example" */;
-			buildPhases = (
-				99D6130F91442554F02EE97C12C71BAD /* Headers */,
-				8684467C8523D6484E695C5650DA22CC /* Sources */,
-				44FF4C096ED0EB07B64299EB953777EF /* Frameworks */,
-				C7CF6C939AC2F03201D6C03FE34F261E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				1F2D570FD38BBAD4438A12BE043E7FDB /* PBXTargetDependency */,
-			);
-			name = "Pods-JsonCodersKit_Example";
-			productName = "Pods-JsonCodersKit_Example";
-			productReference = F0129E2B2688B237814B4946F87540E7 /* Pods_JsonCodersKit_Example.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		C8EA41CADD61A110E6238BD8C8A3B057 /* Pods-JsonCodersKit_Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 52666E6C77A2CC8B791278E314E6C68A /* Build configuration list for PBXNativeTarget "Pods-JsonCodersKit_Tests" */;
-			buildPhases = (
-				FE8DDEC9C0B692CB7D11DDDA6E22D199 /* Headers */,
-				FB804E410FAE248664291A5D23AEB82C /* Sources */,
-				674287C1D48E9A91BA01921772E336BF /* Frameworks */,
-				7D9CE22A9611535B4295141533F20A5F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DEE6E6500D2D3AF27ADA25FC9CBD33DD /* PBXTargetDependency */,
-			);
-			name = "Pods-JsonCodersKit_Tests";
-			productName = "Pods-JsonCodersKit_Tests";
-			productReference = C9E9A7F2C20D0CC659F752E39D49B98E /* Pods_JsonCodersKit_Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -396,92 +393,132 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				23FBE5199D2CA3ACA30AE2FCC28D4B1D /* JsonCodersKit */,
-				8AF50B48F1235FD42B8FFC4902CA589C /* Pods-JsonCodersKit_Example */,
-				C8EA41CADD61A110E6238BD8C8A3B057 /* Pods-JsonCodersKit_Tests */,
+				E479A3A20167EAEE7594F4454F0F7556 /* JsonCodersKit */,
+				CD5B9A7F486B97C6302359EB2A4D72EC /* Pods-JsonCodersKit_Example */,
+				1054D7EDECEBDA343B9DA8B494559D53 /* Pods-JsonCodersKit_Tests */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		7D9CE22A9611535B4295141533F20A5F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C57193E7475F05271E1D05ADC7C6DDE1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C7CF6C939AC2F03201D6C03FE34F261E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		67ACDDF5C93F6AB194F731CA5CEDBA17 /* Sources */ = {
+		273132DA043E86C3902A57E8ACB2227F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C569FC3394E0E3AE65EA2D4EA99A1C9 /* CollectionMapping.m in Sources */,
-				D8113B2BF52BF32B75185644DBA2B50F /* Color+HexString.m in Sources */,
-				2E23D57601D7FFAF3F9CC5C798E941C3 /* JCKCompositeTransformer.m in Sources */,
-				0BBEB6E6C70FD91D84F71979B6B44B0A /* JCKDirectCodingHelpers.m in Sources */,
-				30C6ED87302BD136BE0A749A0A733A95 /* JCKJsonDecoder.m in Sources */,
-				E631950A6034ADAE926C9C8BE21F2869 /* JCKJsonEncoder.m in Sources */,
-				6726B8C4BA681D6C8A5DD01D94384820 /* JCKJsonToObjectTransformer.m in Sources */,
-				203FCF75D6ADB80B09199DB0CE3E52C1 /* JCKObjectToJsonTransformer.m in Sources */,
-				FF7BC40373C8676CA1F334D7FB64DD02 /* JsonCodersKit-dummy.m in Sources */,
-				7C581ABE4C897E55FB4323B44998F223 /* NSCoder+JCKAdditions.m in Sources */,
+				C9813B2191354A3F7BD8044FBEF7BCC4 /* CollectionMapping.m in Sources */,
+				6AB204D8AB94C9B6565DC333819F6A51 /* Color+HexString.m in Sources */,
+				830729D1B439100EB3FB003B1E11301A /* JCKCompositeTransformer.m in Sources */,
+				DDC959B45B724A8B7D354772A6CFF8EE /* JCKDirectCodingHelpers.m in Sources */,
+				A08D7C77ABD23487E3C5EDDA312E08C9 /* JCKJsonDecoder.m in Sources */,
+				18E54614AA6B03F0433AF5B7A8139429 /* JCKJsonEncoder.m in Sources */,
+				F6FDDAD5D64E82B270516EA5EAA57AFD /* JCKJsonToObjectTransformer.m in Sources */,
+				BE0031B6CDFB6B9299DDB4893ECFD3B2 /* JCKObjectToJsonTransformer.m in Sources */,
+				5FB2CFB3D91AC751B17A9A7F942875F9 /* JsonCodersKit-dummy.m in Sources */,
+				AF81B83CDB97195165169978B242EAAE /* NSCoder+JCKAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8684467C8523D6484E695C5650DA22CC /* Sources */ = {
+		D00234B22BAC43FC7CD8B85666CA6551 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EF205D8B1AAB4C56DEB1C6F24BA95DA /* Pods-JsonCodersKit_Example-dummy.m in Sources */,
+				EFE81AC9916E516E8F05DD6E3416B6BA /* Pods-JsonCodersKit_Example-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FB804E410FAE248664291A5D23AEB82C /* Sources */ = {
+		EE86A0967D9FD51D8A14693A7748664C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A663AFCBEB5B1937538FB327637B8EC /* Pods-JsonCodersKit_Tests-dummy.m in Sources */,
+				2226E50B964366804D266936AAEA40B0 /* Pods-JsonCodersKit_Tests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		1F2D570FD38BBAD4438A12BE043E7FDB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = JsonCodersKit;
-			target = 23FBE5199D2CA3ACA30AE2FCC28D4B1D /* JsonCodersKit */;
-			targetProxy = BE07C26C7A175BB743D56F8B97158AAA /* PBXContainerItemProxy */;
-		};
-		DEE6E6500D2D3AF27ADA25FC9CBD33DD /* PBXTargetDependency */ = {
+		9DF420D875ADCD2ECD06DDB069EF636C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-JsonCodersKit_Example";
-			target = 8AF50B48F1235FD42B8FFC4902CA589C /* Pods-JsonCodersKit_Example */;
-			targetProxy = C72A5524B49205D92FFC828960D8211F /* PBXContainerItemProxy */;
+			target = CD5B9A7F486B97C6302359EB2A4D72EC /* Pods-JsonCodersKit_Example */;
+			targetProxy = 6BD211802AEEDDB7174806740A92EC57 /* PBXContainerItemProxy */;
+		};
+		F981A5C40DD045C8C8620EA2BB768C01 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = JsonCodersKit;
+			target = E479A3A20167EAEE7594F4454F0F7556 /* JsonCodersKit */;
+			targetProxy = 402A98BA3223DD6423CE7FCF8A3510B1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		3C76470597D0ACE936CB47ABFE1B0111 /* Release */ = {
+		0BA0718E6DCB4B18DD434731BBEBF200 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0C26BA488B261A1AF38F0D2F3E43209B /* Pods-JsonCodersKit_Tests.release.xcconfig */;
+			baseConfigurationReference = 7F9841B88320F0A2678919E9EF05A54F /* Pods-JsonCodersKit_Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-JsonCodersKit_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-JsonCodersKit_Example/Pods-JsonCodersKit_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		2137F871DBF4503F6B2D3AAF679D52BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6FC545D1A1532FF521E5E278D5D7D25 /* JsonCodersKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/JsonCodersKit/JsonCodersKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/JsonCodersKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/JsonCodersKit/JsonCodersKit.modulemap";
+				PRODUCT_MODULE_NAME = JsonCodersKit;
+				PRODUCT_NAME = JsonCodersKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		3F5FBC0C6C5554018D502B62F617A35F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4911392678B6FCC4EC58691C8096A36 /* Pods-JsonCodersKit_Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -507,43 +544,12 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		49B04FCFC0FD80E8A53E5F2293D5B536 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B6FC545D1A1532FF521E5E278D5D7D25 /* JsonCodersKit.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/JsonCodersKit/JsonCodersKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/JsonCodersKit/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/JsonCodersKit/JsonCodersKit.modulemap";
-				PRODUCT_MODULE_NAME = JsonCodersKit;
-				PRODUCT_NAME = JsonCodersKit;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		5B36152D4BAA218B4C8255F916459B79 /* Release */ = {
+		9DDBB3EBA227679B9619681935F0E4ED /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2FCA27945DD678E397C791A2ACC27B08 /* Pods-JsonCodersKit_Example.release.xcconfig */;
 			buildSettings = {
@@ -577,7 +583,41 @@
 			};
 			name = Release;
 		};
-		73ABC2D18F03827B7773405E7F2AD926 /* Debug */ = {
+		9F74BD0FA277A70B5DFC60A457D88247 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C26BA488B261A1AF38F0D2F3E43209B /* Pods-JsonCodersKit_Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-JsonCodersKit_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-JsonCodersKit_Tests/Pods-JsonCodersKit_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C7BE62186E17127FF3B5B27A193214BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -631,8 +671,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
@@ -641,7 +680,7 @@
 			};
 			name = Debug;
 		};
-		9B6B989AABD96BB9DECB1784EA5E2534 /* Release */ = {
+		D077E5AF30E3A09910AC48CA760A1280 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -693,47 +732,13 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
 		};
-		AE178EE0A23DC268F4AC65AD2DDDFA65 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B4911392678B6FCC4EC58691C8096A36 /* Pods-JsonCodersKit_Tests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-JsonCodersKit_Tests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-JsonCodersKit_Tests/Pods-JsonCodersKit_Tests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		C0503BA25E1F6635EF5AA4A4F5644996 /* Release */ = {
+		D791F0BFC4E7723D7092F4156091B549 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B6FC545D1A1532FF521E5E278D5D7D25 /* JsonCodersKit.xcconfig */;
 			buildSettings = {
@@ -758,40 +763,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		E96F85AF21101E3F92206280492CF9C4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7F9841B88320F0A2678919E9EF05A54F /* Pods-JsonCodersKit_Example.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-JsonCodersKit_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-JsonCodersKit_Example/Pods-JsonCodersKit_Example.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -803,35 +774,35 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				73ABC2D18F03827B7773405E7F2AD926 /* Debug */,
-				9B6B989AABD96BB9DECB1784EA5E2534 /* Release */,
+				C7BE62186E17127FF3B5B27A193214BD /* Debug */,
+				D077E5AF30E3A09910AC48CA760A1280 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3011BF9E0EE8F2AE7D61F531C570100A /* Build configuration list for PBXNativeTarget "JsonCodersKit" */ = {
+		6CC16F08596BE011159D04AB018738E5 /* Build configuration list for PBXNativeTarget "Pods-JsonCodersKit_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				49B04FCFC0FD80E8A53E5F2293D5B536 /* Debug */,
-				C0503BA25E1F6635EF5AA4A4F5644996 /* Release */,
+				0BA0718E6DCB4B18DD434731BBEBF200 /* Debug */,
+				9DDBB3EBA227679B9619681935F0E4ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		52666E6C77A2CC8B791278E314E6C68A /* Build configuration list for PBXNativeTarget "Pods-JsonCodersKit_Tests" */ = {
+		BE3A2692271CE3E9FCCCE1CD046AB997 /* Build configuration list for PBXNativeTarget "Pods-JsonCodersKit_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AE178EE0A23DC268F4AC65AD2DDDFA65 /* Debug */,
-				3C76470597D0ACE936CB47ABFE1B0111 /* Release */,
+				3F5FBC0C6C5554018D502B62F617A35F /* Debug */,
+				9F74BD0FA277A70B5DFC60A457D88247 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BB9FB2DFA7E8CCAA69D26CAB42375CA4 /* Build configuration list for PBXNativeTarget "Pods-JsonCodersKit_Example" */ = {
+		DAF4F351B6761D9CC5E0FF4C38003E85 /* Build configuration list for PBXNativeTarget "JsonCodersKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E96F85AF21101E3F92206280492CF9C4 /* Debug */,
-				5B36152D4BAA218B4C8255F916459B79 /* Release */,
+				D791F0BFC4E7723D7092F4156091B549 /* Debug */,
+				2137F871DBF4503F6B2D3AAF679D52BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
