@@ -62,16 +62,7 @@ NSValueTransformerName const JCKNumberFromJsonTransformerName = @"JCKNumberFromJ
 {
     if ([value isKindOfClass: self.class.transformedValueClass]) {
         return value;
-    }/*
-    if ([value respondsToSelector: @selector(integerValue)]) {
-        return [NSNumber numberWithInteger: [value integerValue]];
     }
-    if ([value respondsToSelector: @selector(doubleValue)]) {
-        return [NSNumber numberWithDouble: [value doubleValue]];
-    }
-    if ([value respondsToSelector: @selector(boolValue)]) {
-        return [NSNumber numberWithBool: [value boolValue]];
-    }*/
     return nil;
 }
 
@@ -94,6 +85,14 @@ NSValueTransformerName const JCKDictionaryFromJsonTransformerName = @"JCKDiction
     return nil;
 }
 
+- (id)reverseTransformedValue:(id)value
+{
+    if (![value isKindOfClass: self.class.transformedValueClass]) {
+        return nil;
+    }
+    return [NSJSONSerialization isValidJSONObject: value] ? value : nil;
+}
+
 @end
 
 NSValueTransformerName const JCKArrayFromJsonTransformerName = @"JCKArrayFromJsonTransformer";
@@ -111,6 +110,14 @@ NSValueTransformerName const JCKArrayFromJsonTransformerName = @"JCKArrayFromJso
         return value;
     }
     return nil;
+}
+
+- (id)reverseTransformedValue:(id)value
+{
+    if (![value isKindOfClass: self.class.transformedValueClass]) {
+        return nil;
+    }
+    return [NSJSONSerialization isValidJSONObject: value] ? value : nil;
 }
 
 @end
