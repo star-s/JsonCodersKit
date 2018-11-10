@@ -13,9 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)jck_setJsonValueTransformerOrHisName:(nullable id)transformerOrName;
 
-+ (NSValueTransformer *)jck_jsonValueTransformer;
++ (nullable NSValueTransformer *)jck_jsonValueTransformer;
 
-- (NSValueTransformer *)jck_jsonValueTransformer;
+- (nullable NSValueTransformer *)jck_jsonValueTransformer;
 
 @end
 
