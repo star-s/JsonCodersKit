@@ -138,7 +138,7 @@
     }
 }
 
-+ (void)setTransformer:(id)obj forClass:(Class)aClass
++ (void)setValueTransformerOrHisName:(id)obj forClass:(Class)aClass
 {
     NSString *key = NSStringFromClass(aClass);
     NSMapTable *map = self.transformersMap;

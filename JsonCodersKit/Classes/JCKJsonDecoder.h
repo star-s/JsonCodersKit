@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JCKJsonDecoder (Transformers)
 
-+ (void)setTransformer:(nullable id)transformerOrName forClass:(Class)aClass;
++ (void)setValueTransformerOrHisName:(nullable id)transformerOrName forClass:(Class)aClass;
 
 + (nullable NSValueTransformer *)transformerForClass:(Class)aClass;
 

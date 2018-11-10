@@ -118,18 +118,13 @@ static BOOL encodeNilValue = NO;
     }
     id encodedObject = nil;
     
-    NSValueTransformer *encoderHelper = [self.class transformerForClass: [object class]];
-    if (encoderHelper) {
-        encodedObject = [encoderHelper transformedValue: object];
+    NSValueTransformer *helper = [object jck_jsonValueTransformer];
+    if (helper) {
+        encodedObject = [helper reverseTransformedValue: object];
     } else {
-        NSValueTransformer *helper = [self.class reversedTransformerForClass: [object class]];
-        if (helper) {
-            encodedObject = [helper reverseTransformedValue: object];
-        } else {
-            JCKJsonEncoder *coder = [[self.class alloc] init];
-            [coder encodeRootObject: object];
-            encodedObject = coder.encodedJSONObject;
-        }
+        JCKJsonEncoder *coder = [[self.class alloc] init];
+        [coder encodeRootObject: object];
+        encodedObject = coder.encodedJSONObject;
     }
     return encodedObject;
 }
@@ -138,30 +133,28 @@ static BOOL encodeNilValue = NO;
 
 #import "JCKJsonDecoder.h"
 
-@implementation JCKJsonEncoder (Transformers)
-
-+ (NSArray <Class> *)classHierarchyFor:(Class)aClass
+static  NSArray <Class> *JCKClassHierarchyFor(Class aClass)
 {
     NSMutableArray <Class> *classes = [NSMutableArray array];
-    if (aClass) {
-        do {
-            [classes addObject: aClass];
-            aClass = [aClass superclass];
-        } while (aClass);
-    }
+    do {
+        [classes addObject: aClass];
+        aClass = [aClass superclass];
+    } while (aClass);
     return [classes copy];
 }
 
-+ (NSValueTransformer *)transformerForClass:(Class)aClass
+@implementation NSObject (JCKJsonEncoderPrivate)
+
+- (NSArray <Class> *)jck_classHierarchy
 {
-    return nil;
+    return JCKClassHierarchyFor([self class]);
 }
 
-+ (NSValueTransformer *)reversedTransformerForClass:(Class)aClass
+- (NSValueTransformer *)jck_jsonValueTransformer
 {
     __block NSValueTransformer *result = nil;
     
-    [[self classHierarchyFor: aClass] enumerateObjectsUsingBlock: ^(Class class, NSUInteger idx, BOOL * _Nonnull stop) {
+    [self.jck_classHierarchy enumerateObjectsUsingBlock: ^(Class class, NSUInteger idx, BOOL *stop) {
         result = [JCKJsonDecoder transformerForClass: class];
         *stop = [[result class] allowsReverseTransformation];
     }];
