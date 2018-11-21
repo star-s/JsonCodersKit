@@ -332,7 +332,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-JsonCodersKit_Example/Pods-JsonCodersKit_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-JsonCodersKit_Example/Pods-JsonCodersKit_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/JsonCodersKit/JsonCodersKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -341,7 +341,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JsonCodersKit_Example/Pods-JsonCodersKit_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JsonCodersKit_Example/Pods-JsonCodersKit_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CCBA6B7408A8FC513EB76BFB /* [CP] Check Pods Manifest.lock */ = {
