@@ -69,9 +69,6 @@ static BOOL encodeNilValue = NO;
 
 - (void)encodeObject:(nullable id)objv forKey:(NSString *)key
 {
-    if (encodeNilValue) {
-        objv = objv ? objv : [NSNull null];
-    }
     self.dictionary[key] = [self jsonObjectFromObject: objv];
 }
 
@@ -112,6 +109,9 @@ static BOOL encodeNilValue = NO;
 
 - (id)jsonObjectFromObject:(id)object
 {
+    if (object == nil) {
+        return encodeNilValue ? [NSNull null] : object;
+    }
     if ([object isKindOfClass: [NSArray class]]) {
         return [(NSArray *)object mapWithBlock: ^(id anObject) {
             return [self jsonObjectFromObject: anObject];
@@ -122,7 +122,7 @@ static BOOL encodeNilValue = NO;
     NSValueTransformer *helper = [object jck_jsonValueTransformer];
     if (helper) {
         encodedObject = [helper reverseTransformedValue: object];
-    } else {
+    } else if ([object conformsToProtocol: @protocol(NSCoding)]) {
         JCKJsonEncoder *coder = [[self.class alloc] init];
         [coder encodeRootObject: object];
         encodedObject = coder.encodedJSONObject;
